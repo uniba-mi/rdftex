@@ -42,7 +42,7 @@ There are currently five types of contributions that can be imported from and ex
     - `https://example.org/scikg/terms/figure_description`
     - `https://example.org/scikg/terms/figure_url`
     - `https://example.org/scikg/terms/figure_mime`
-- Experimental Results
+- Experimentals
     - `https://example.org/scikg/terms/expresult_description`
     - `https://example.org/scikg/terms/expresult_result`
     - `https://example.org/scikg/terms/expresult_samplesize`

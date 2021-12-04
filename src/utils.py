@@ -1,6 +1,7 @@
 import re
 from typing import Dict
 
+
 def generate_snippet(contribution_data: Dict, import_label: str, citation_key: str) -> str:
     """
     Generates a LaTeX snippet based on the specified contribution data, import label,
@@ -60,6 +61,7 @@ Description: ``{contribution_data["https://example.org/scikg/terms/dataset_descr
 
     return snippet
 
+
 def generate_custom_envs(processed_lines, preamble_end_index, imported_types) -> None:
 
     dataset_env = """
@@ -72,10 +74,15 @@ def generate_custom_envs(processed_lines, preamble_end_index, imported_types) ->
 \\newenvironment{expresult}[1][]{\\refstepcounter{expresult}\\par\\medskip
 \\textit{Experimental Result~\\thedataset. #1} \\rmfamily}{\\medskip}
 """
-    custom_envs = {"Dataset": dataset_env, "ExpResult": expresult_env}
+    figure_env = """
+\\usepackage[export]{adjustbox}
+"""
+
+    custom_envs = {"Dataset": dataset_env,
+                   "ExpResult": expresult_env, "Figure": figure_env}
 
     for import_type in imported_types:
-        if import_type in dataset_env:
+        if import_type in custom_envs:
             processed_lines.insert(
                 preamble_end_index, custom_envs[import_type])
 

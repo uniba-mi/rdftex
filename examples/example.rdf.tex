@@ -1,5 +1,42 @@
 \documentclass{article}
 
+\usepackage{graphicx}
+
+\rdfprefix{publ}{https://example.org/scikg/publications/}
+
+\title{RDFtex: Import and Export Examples}
+\date{}
+
 \begin{document}
-    document
+\maketitle
+
+\section{Imported Contributions}
+
+\subsection*{Definition Import}
+
+\subsection*{Dataset Import}
+
+\subsection*{Figure Import}
+
+\rdfimport{fig:contentual-contextual}{Martin21}{publ:Martin21/contrib2}
+
+\subsection*{Experimental Result Import}
+
+\subsection*{Software Import}
+
+\section{Export}
+
+\subsection*{Definition Export}
+
+\subsection*{Dataset Export}
+
+\subsection*{Figure Export}
+
+\subsection*{Experimental Result Export}
+
+\subsection*{Software Export}
+
+\bibliographystyle{plain}
+\bibliography{example}
+
 \end{document}

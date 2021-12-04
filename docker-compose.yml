@@ -18,7 +18,7 @@ services:
     image: texlive/texlive:latest
     container_name: tex
     volumes: 
-      - ./tex:/tex
+      - ./examples:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
 
   # services for the actual project
@@ -27,17 +27,17 @@ services:
     container_name: python
     volumes:
       - ./src:/src
-      - ../example-kgs/rdftex/tex:/tex
+      - ../example-kgs/rdftex:/tex
   _rdftex-watch:
     build: ./src
     container_name: python
     volumes:
       - ./src:/src
-      - ../example-kgs/rdftex/tex:/tex
+      - ../example-kgs/rdftex:/tex
     entrypoint: ./Preprocessor.py watch
   _latexmk:
     image: texlive/texlive:latest
     container_name: tex
     volumes: 
-      - ../example-kgs/rdftex/tex:/tex
+      - ../example-kgs/rdftex:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/main.tex

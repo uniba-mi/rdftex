@@ -72,15 +72,19 @@ class Preprocessor:
         processed_param_list = []
 
         for param in param_list:
-            uri = param
-
-            for prefix, written_out in self.vocab.items():
-                if prefix + ":" in param:
-                    uri = param.replace(prefix + ":", written_out)
-
-            processed_param_list.append(uri)
+            resolvedparam = self.__resolve__prefix(param)
+            processed_param_list.append(resolvedparam)
 
         return processed_param_list, index + 1
+
+    def __resolve__prefix(self, string):
+        resolved = string
+
+        for prefix, written_out in self.vocab.items():
+            if prefix + ":" in string:
+                resolved = string.replace(prefix + ":", written_out)
+
+        return resolved
 
     def __handle_prefix(self, line) -> None:
         """
@@ -118,6 +122,7 @@ class Preprocessor:
                 f"SELECT ?p ?o WHERE {{<{import_uri}> ?p ?o .}}")
             contribution_data = {str(entry[0]): str(
                 entry[1]) for entry in contribution_data}
+            print(import_uri)
         except ParseException:
             logging.warning(
                 "Error during processing SPARQL query -> Skipping import")
