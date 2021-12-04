@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  rdftex:
+    build: ./src
+    container_name: python
+    volumes:
+      - ./src:/src
+      - ./examples:/tex
+  rdftex-watch:
+    build: ./src
+    container_name: python
+    volumes:
+      - ./src:/src
+      - ./examples:/tex
+    entrypoint: ./Preprocessor.py watch
+  latexmk:
+    image: texlive/texlive:latest
+    container_name: tex
+    volumes: 
+      - ./tex:/tex
+    entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
+
+  # services for the actual project
+  _rdftex:
+    build: ./src
+    container_name: python
+    volumes:
+      - ./src:/src
+      - ../example-kgs/rdftex/tex:/tex
+  _rdftex-watch:
+    build: ./src
+    container_name: python
+    volumes:
+      - ./src:/src
+      - ../example-kgs/rdftex/tex:/tex
+    entrypoint: ./Preprocessor.py watch
+  _latexmk:
+    image: texlive/texlive:latest
+    container_name: tex
+    volumes: 
+      - ../example-kgs/rdftex/tex:/tex
+    entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/main.tex
