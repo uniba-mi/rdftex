@@ -262,9 +262,9 @@ class Preprocessor:
         """
 
         imported_types = set()
-        root_tex_path = ""
-        root_tex_lines = []
-        root_tex_preamble_end_index = -1
+        roottex_path = ""
+        roottex_lines = []
+        roottex_preamble_endindex = -1
 
         for rdftexpath in glob.glob(f"{self.texdir}*.rdf.tex"):
             logging.info(f"Preprocessing {rdftexpath}...")
@@ -272,9 +272,9 @@ class Preprocessor:
 
             if preamble_end_index != -1:
                 logging.info(f"Identified {rdftexpath} as root file...")
-                root_tex_path = rdftexpath.replace(".rdf.tex", ".tex")
-                root_tex_lines = processed_lines
-                root_tex_preamble_end_index = preamble_end_index
+                roottex_path = rdftexpath.replace(".rdf.tex", ".tex")
+                roottex_lines = processed_lines
+                roottex_preamble_endindex = preamble_end_index
             else:
                 texpath = rdftexpath.replace(".rdf.tex", ".tex")
                 logging.info(f"Writing tex file at {texpath}...")
@@ -282,11 +282,11 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
-        add_custom_envs(root_tex_lines, root_tex_preamble_end_index, imported_types)
+        add_custom_envs(roottex_lines, roottex_preamble_endindex, imported_types)
 
-        logging.info(f"Adding custom environments to {root_tex_path}...")
-        with open(root_tex_path, "w+") as file:
-            file.writelines(root_tex_lines)
+        logging.info(f"Adding custom environments to {roottex_path}...")
+        with open(roottex_path, "w+") as file:
+            file.writelines(roottex_lines)
 
         self.skg.generate_exports_kg(self.exports, self.exportpath)
 

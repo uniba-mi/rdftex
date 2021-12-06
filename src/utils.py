@@ -52,7 +52,7 @@ Description: ``{contribution_data["https://example.org/scikg/terms/dataset_descr
         snippet = f"""
 \\begin{{software}}
 {contribution_data["https://example.org/scikg/terms/software_name"]}~\\cite{{{citation_key}}}\\\\
-URL: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
+Available at: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
 Description: ``{contribution_data["https://example.org/scikg/terms/software_description"]}"~\\cite{{{citation_key}}}
 \\label{{{import_label}}}
 \\end{{software}}

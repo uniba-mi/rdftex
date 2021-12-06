@@ -140,14 +140,15 @@ class MinSKG:
                 scikg.add(
                     (contrib1, self.terms["type"], Literal("Software")))
                 scikg.add((contrib1, self.terms["software_description"], Literal(
-                    "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies. Numerous plugins provide alternative visualization mechanisms, enable management of multiple ontologies, allow the use of inference engines and problem solvers with Prot\\'{e}g\\'{e} ontologies, and provide other functionality.")))
-                scikg.add((contrib1, self.terms["software_name"], Literal("Prot{\\'{e}}g{\\'{e}}-2000")))
-                scikg.add((contrib1, self.terms["software_url"], Literal("https://protege.stanford.edu")))
-
+                    "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies.")))
+                scikg.add((contrib1, self.terms["software_name"], Literal(
+                    "Prot{\\'{e}}g{\\'{e}}-2000")))
+                scikg.add((contrib1, self.terms["software_url"], Literal(
+                    "https://protege.stanford.edu")))
 
         return scikg
 
-    def __validate_export(self, _, tuples) -> bool:
+    def __validate_export(self, subject, tuples) -> bool:
         """
         Checks if a contribution to be exported represented by a subject and predicate
         object tuples is valid.
@@ -161,6 +162,13 @@ class MinSKG:
             [str(elem) for elem in self.supported_contributions[export_type]])
 
         if included_predicates != necessary_predicates:
+            diff = set(necessary_predicates).difference(
+                set(included_predicates))
+            diffstring = ", ".join([element for element in diff])
+
+            logging.warning(
+                f"Export of {subject} is skipped due to missing predicates: {diffstring}")
+
             return False
 
         return True
@@ -217,7 +225,7 @@ class MinSKG:
 
             export_ctr += 1
 
-        store_graph(self.skg, exportsfilepath)
+        store_graph(exports_graph, exportsfilepath)
 
         logging.info(
             f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")
