@@ -21,7 +21,7 @@ services:
       - ./examples:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
 
-  # services for the actual project
+  # services for debugging (can be ignored)
   _rdftex:
     build: ./src
     container_name: python

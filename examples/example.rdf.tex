@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{graphicx}
+\usepackage{cleveref}
 
 \rdfprefix{publ}{https://example.org/scikg/publications/}
 
@@ -10,31 +11,9 @@
 \begin{document}
 \maketitle
 
-\section{Imported Contributions}
+\input{./example_imports.tex}
 
-\subsection*{Definition Import}
-
-\subsection*{Dataset Import}
-
-\subsection*{Figure Import}
-
-\rdfimport{fig:contentual-contextual}{Martin21}{publ:Martin21/contrib2}
-
-\subsection*{Experimental Result Import}
-
-\subsection*{Software Import}
-
-\section{Export}
-
-\subsection*{Definition Export}
-
-\subsection*{Dataset Export}
-
-\subsection*{Figure Export}
-
-\subsection*{Experimental Result Export}
-
-\subsection*{Software Export}
+\input{./example_exports.tex}
 
 \bibliographystyle{plain}
 \bibliography{example}

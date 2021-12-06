@@ -68,6 +68,9 @@ def generate_custom_envs(processed_lines, preamble_end_index, imported_types) ->
 \\newcounter{dataset}[section]
 \\newenvironment{dataset}[1][]{\\refstepcounter{dataset}\\par\\medskip
 \\textit{Dataset~\\thedataset. #1} \\rmfamily}{\\medskip}
+
+\\crefname{dataset}{Dataset}{Datasets}  
+\\Crefname{dataset}{Dataset}{Datasets}
 """
     expresult_env = """
 \\newcounter{expresult}[section]

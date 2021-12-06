@@ -212,13 +212,13 @@ class Preprocessor:
         else:
             processed_lines.append(line)
 
-    def __preprocess_file(self, rdftexpath="./tex/main.rdf.tex") -> None:
+    def __preprocess_file(self, rdftexpath, imported_types) -> None:
         """
         Scans files for custom RDFtex commands and issues their processing.
         """
 
+        preamble_end_index = -1
         processed_lines = []
-        imported_types = set()
 
         with open(rdftexpath, "r") as file:
             for linenumber, line in enumerate(file):
@@ -254,23 +254,39 @@ class Preprocessor:
                 else:
                     processed_lines.append(line)
 
-        generate_custom_envs(
-            processed_lines, preamble_end_index, imported_types)
-
-        texpath = rdftexpath.replace(".rdf.tex", ".tex")
-        logging.info(f"Writing tex file at {texpath}...")
-
-        with open(texpath, "w+") as file:
-            file.writelines(processed_lines)
+        return preamble_end_index, processed_lines
 
     def run(self):
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
 
-        for file in glob.glob(f"{self.texdir}*.rdf.tex"):
-            logging.info(f"Preprocessing {file}...")
-            self.__preprocess_file(file)
+        imported_types = set()
+        root_tex_path = ""
+        root_tex_lines = []
+        root_tex_preamble_end_index = -1
+
+        for rdftexpath in glob.glob(f"{self.texdir}*.rdf.tex"):
+            logging.info(f"Preprocessing {rdftexpath}...")
+            preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types)
+
+            if preamble_end_index != -1:
+                logging.info(f"Identified {rdftexpath} as root file...")
+                root_tex_path = rdftexpath.replace(".rdf.tex", ".tex")
+                root_tex_lines = processed_lines
+                root_tex_preamble_end_index = preamble_end_index
+            else:
+                texpath = rdftexpath.replace(".rdf.tex", ".tex")
+                logging.info(f"Writing tex file at {texpath}...")
+
+                with open(texpath, "w+") as file:
+                    file.writelines(processed_lines)
+
+        generate_custom_envs(root_tex_lines, root_tex_preamble_end_index, imported_types)
+
+        logging.info(f"Adding custom environments to {root_tex_path}...")
+        with open(root_tex_path, "w+") as file:
+            file.writelines(root_tex_lines)
 
         self.skg.generate_exports_kg(self.exports, self.exportpath)
 

@@ -1,47 +1,27 @@
 \documentclass{article}
 
 \usepackage{graphicx}
+\usepackage{cleveref}
 
 
 \title{RDFtex: Import and Export Examples}
 \date{}
 
 
+\newcounter{dataset}[section]
+\newenvironment{dataset}[1][]{\refstepcounter{dataset}\par\medskip
+\textit{Dataset~\thedataset. #1} \rmfamily}{\medskip}
+
+\crefname{dataset}{Dataset}{Datasets}  
+\Crefname{dataset}{Dataset}{Datasets}
+
 \usepackage[export]{adjustbox}
 \begin{document}
 \maketitle
 
-\section{Imported Contributions}
+\input{./example_imports.tex}
 
-\subsection*{Definition Import}
-
-\subsection*{Dataset Import}
-
-\subsection*{Figure Import}
-
-
-\begin{figure}[htb!]
-\centering
-\includegraphics[max width=0.7\columnwidth]{./figures/triple_example}
-\caption{A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \emph{{pub1}}. All non-literal triple members are identified using IRIs. (Figure and caption adopted from~\cite{Martin21}.)}
-\label{fig:contentual-contextual}
-\end{figure}
-
-\subsection*{Experimental Result Import}
-
-\subsection*{Software Import}
-
-\section{Export}
-
-\subsection*{Definition Export}
-
-\subsection*{Dataset Export}
-
-\subsection*{Figure Export}
-
-\subsection*{Experimental Result Export}
-
-\subsection*{Software Export}
+\input{./example_exports.tex}
 
 \bibliographystyle{plain}
 \bibliography{example}
