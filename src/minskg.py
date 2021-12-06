@@ -164,7 +164,7 @@ class MinSKG:
         if included_predicates != necessary_predicates:
             diff = set(necessary_predicates).difference(
                 set(included_predicates))
-            diffstring = ", ".join([element for element in diff])
+            diffstring = ", ".join(list(diff))
 
             logging.warning(
                 f"Export of {subject} is skipped due to missing predicates: {diffstring}")

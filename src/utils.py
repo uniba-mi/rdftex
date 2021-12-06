@@ -1,3 +1,5 @@
+"""Utility module for common tasks."""
+
 import re
 import glob
 from typing import Dict
@@ -40,11 +42,13 @@ Description: ``{contribution_data["https://example.org/scikg/terms/dataset_descr
 """
 
     elif import_type == "Figure":
-        figurepath = "/tex/" + contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
+        figurepath = "/tex/" + \
+            contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
 
         if not glob.glob(figurepath):
-            raise NotImplementedError("Currently only the import of locally stored figures is supported!")
-            
+            raise NotImplementedError(
+                "Currently only the import of locally stored figures is supported!")
+
         snippet = f"""
 \\begin{{figure}}[htb!]
 \\centering
@@ -70,6 +74,10 @@ Description: ``{contribution_data["https://example.org/scikg/terms/software_desc
 
 
 def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None:
+    """
+    Adds custom environments to the LaTeX project if necessary based on the types
+    of the imported contributions.
+    """
 
     dataset_env = """
 \\newcounter{dataset}[section]
@@ -109,5 +117,9 @@ def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None
 
 
 def store_graph(graph, exportpath) -> None:
+    """
+    Serializes and stores a graph at the specified path.
+    """
+
     with open(exportpath, "w+") as file:
         file.write(graph.serialize(format="ttl"))
