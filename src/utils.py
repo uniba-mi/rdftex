@@ -1,4 +1,5 @@
 import re
+import glob
 from typing import Dict
 
 
@@ -39,6 +40,12 @@ Description: ``{contribution_data["https://example.org/scikg/terms/dataset_descr
 """
 
     elif import_type == "Figure":
+        figurepath = "/tex/" + contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
+
+        if not glob.glob(figurepath):
+            print(figurepath)
+            raise NotImplementedError("Currently only the import of locally stored figures is supported!")
+            
         snippet = f"""
 \\begin{{figure}}[htb!]
 \\centering
