@@ -133,6 +133,18 @@ class MinSKG:
                 scikg.add((contrib1, self.terms["definition_content"], Literal(
                     "Nanopublications [provide] a granular and principled way of publishing scientific (and other types of) data in a provenance-centric manner. Such a nanopublication consists of an atomic snippet of a formal statement [...] that comes with information about where this knowledge came from [...] and with metadata about the nanopublication as a whole [...]. All these three parts are represented as Linked Data (in RDF) [...].")))
 
+            elif pub == self.publ["DBLP:conf/amia/NoyCFKTVM03"]:
+                contrib1 = self.publ[f"{entry['ID']}/contrib1"]
+
+                scikg.add((pub, self.terms["has_contribution"], contrib1))
+                scikg.add(
+                    (contrib1, self.terms["type"], Literal("Software")))
+                scikg.add((contrib1, self.terms["software_description"], Literal(
+                    "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies. Numerous plugins provide alternative visualization mechanisms, enable management of multiple ontologies, allow the use of inference engines and problem solvers with Prot\\'{e}g\\'{e} ontologies, and provide other functionality.")))
+                scikg.add((contrib1, self.terms["software_name"], Literal("Prot{\\'{e}}g{\\'{e}}-2000")))
+                scikg.add((contrib1, self.terms["software_url"], Literal("https://protege.stanford.edu")))
+
+
         return scikg
 
     def __validate_export(self, _, tuples) -> bool:

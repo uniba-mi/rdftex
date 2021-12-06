@@ -1,5 +1,8 @@
 @prefix ns1: <https://example.org/scikg/terms/> .
 
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/meta> .
+
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> .
 
@@ -51,6 +54,24 @@
 
 <https://example.org/scikg/publications/WEB:XANADU> ns1:has_meta_information <https://example.org/scikg/publications/WEB:XANADU/meta> .
 
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies. Numerous plugins provide alternative visualization mechanisms, enable management of multiple ontologies, allow the use of inference engines and problem solvers with Prot\\'{e}g\\'{e} ontologies, and provide other functionality." ;
+    ns1:software_name "Prot{\\'{e}}g{\\'{e}}-2000" ;
+    ns1:software_url "https://protege.stanford.edu" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/meta> ns1:has_author <https://example.org/scikg/authors/Holger_Knublauch>,
+        <https://example.org/scikg/authors/Jennifer_Vendetti>,
+        <https://example.org/scikg/authors/Mark_A._Musen>,
+        <https://example.org/scikg/authors/Monica_Crubézy>,
+        <https://example.org/scikg/authors/Natalya_Fridman_Noy>,
+        <https://example.org/scikg/authors/Ray_W._Fergerson>,
+        <https://example.org/scikg/authors/Samson_W._Tu> ;
+    ns1:has_cite_key "DBLP:conf/amia/NoyCFKTVM03" ;
+    ns1:has_publication_year "2003" ;
+    ns1:has_title """Prot{\\'{e}}g{\\'{e}}-2000: An Open-Source Ontology-Development
+and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
+    ns1:url "https://knowledge.amia.org/amia-55142-a2003a-1.616734/t-002-1.618748/f-001-1.618749/a-336-1.619077/a-337-1.619074" .
+
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ns1:dataset_description "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts." ;
     ns1:dataset_domain "Artificial Intelligence" ;
     ns1:dataset_name "SciERC" ;
@@ -61,7 +82,6 @@
         <https://example.org/scikg/authors/Mari_Ostendorf>,
         <https://example.org/scikg/authors/Yi_Luan> ;
     ns1:has_cite_key "DBLP:conf/emnlp/LuanHOH18" ;
-    ns1:has_doi "10.18653/v1/d18-1360" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title """Multi-Task Identification of Entities, Relations, and Coreference
 for Scientific Knowledge Graph Construction""" ;
@@ -73,7 +93,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Ralph_Ewerth>,
         <https://example.org/scikg/authors/Sören_Auer> ;
     ns1:has_cite_key "DBLP:conf/ercimdl/BrackHSAE20" ;
-    ns1:has_doi "10.1007/978-3-030-54956-5\\_1" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title "Requirements Analysis for an Open Research Knowledge Graph" ;
     ns1:url "https://doi.org/10.1007/978-3-030-54956-5\\_1" .
@@ -93,7 +112,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
         <https://example.org/scikg/authors/Sören_Auer> ;
     ns1:has_cite_key "DBLP:conf/jcdl/OelenJSA20" ;
-    ns1:has_doi "10.1145/3383583.3398520" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title "Generate {FAIR} Literature Surveys with Scholarly Knowledge Graphs" ;
     ns1:url "https://doi.org/10.1145/3383583.3398520" .
@@ -103,7 +121,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Sören_Auer> ;
     ns1:has_cite_key "DBLP:conf/jcdl/VogtDSA20" ;
-    ns1:has_doi "10.1145/3383583.3398530" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title """Toward Representing Research Contributions in Scholarly Knowledge
 Graphs Using Knowledge Graph Cells""" ;
@@ -118,7 +135,6 @@ Graphs Using Knowledge Graph Cells""" ;
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
         <https://example.org/scikg/authors/Sören_Auer> ;
     ns1:has_cite_key "DBLP:conf/kcap/JaradehOFPDKSA19" ;
-    ns1:has_doi "10.1145/3360901.3364435" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """Open Research Knowledge Graph: Next Generation Infrastructure for
 Semantic Scholarly Knowledge""" ;
@@ -141,7 +157,6 @@ Semantic Scholarly Knowledge""" ;
         <https://example.org/scikg/authors/Ting_Liu>,
         <https://example.org/scikg/authors/Tong_Zhao> ;
     ns1:has_cite_key "DBLP:conf/kdd/JiangZ00C019" ;
-    ns1:has_doi "10.1145/3292500.3330942" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """The Role of {"Condition"}: {A} Novel Scientific Knowledge Graph Representation and
 Construction Model""" ;
@@ -166,7 +181,6 @@ Construction Model""" ;
         <https://example.org/scikg/authors/Qaiser_Mehmood>,
         <https://example.org/scikg/authors/Syed_Ahmad_Chan_Bukhari> ;
     ns1:has_cite_key "DBLP:conf/www/0001SCBMN19" ;
-    ns1:has_doi "10.1145/3308558.3313556" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """How Representative Is a {SPARQL} Benchmark? An Analysis of {RDF} Triplestore
 Benchmarks""" ;
@@ -176,7 +190,6 @@ Benchmarks""" ;
         <https://example.org/scikg/authors/Gerhard_Weikum>,
         <https://example.org/scikg/authors/Patrick_Ernst> ;
     ns1:has_cite_key "DBLP:journals/bmcbi/ErnstSW15" ;
-    ns1:has_doi "10.1186/s12859-015-0549-5" ;
     ns1:has_publication_year "2015" ;
     ns1:has_title """KnowLife: a versatile approach for constructing a large knowledge
 graph for biomedical sciences""" ;
@@ -187,7 +200,6 @@ graph for biomedical sciences""" ;
         <https://example.org/scikg/authors/Oren_Etzioni>,
         <https://example.org/scikg/authors/Stephen_Soderl> ;
     ns1:has_cite_key "DBLP:journals/cacm/EtzioniBSW08" ;
-    ns1:has_doi "10.1145/1409360.1409378" ;
     ns1:has_publication_year "2008" ;
     ns1:has_title "Open information extraction from the web" ;
     ns1:url "https://doi.org/10.1145/1409360.1409378" .
@@ -245,7 +257,6 @@ Linked Data""" ;
         <https://example.org/scikg/authors/Ivan_López-Arévalo>,
         <https://example.org/scikg/authors/José-Lázaro_Martínez-Rodríguez> ;
     ns1:has_cite_key "DBLP:journals/eswa/Martinez-Rodriguez18" ;
-    ns1:has_doi "10.1016/j.eswa.2018.07.017" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title "OpenIE-based approach for Knowledge Graph construction from text" ;
     ns1:url "https://doi.org/10.1016/j.eswa.2018.07.017" .
@@ -263,7 +274,7 @@ Linked Data""" ;
         <https://example.org/scikg/authors/Robin_Jegan> ;
     ns1:has_cite_key "Martin21" ;
     ns1:has_doi "" ;
-    ns1:has_publication_year "2021" ;
+    ns1:has_publication_year "(accepted for publication) 2021" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
 

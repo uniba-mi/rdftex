@@ -14,7 +14,7 @@ from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
 from minskg import MinSKG
-from utils import generate_custom_envs, generate_snippet
+from utils import add_custom_envs, generate_snippet
 
 
 class Preprocessor:
@@ -282,7 +282,7 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
-        generate_custom_envs(root_tex_lines, root_tex_preamble_end_index, imported_types)
+        add_custom_envs(root_tex_lines, root_tex_preamble_end_index, imported_types)
 
         logging.info(f"Adding custom environments to {root_tex_path}...")
         with open(root_tex_path, "w+") as file:
