@@ -43,7 +43,6 @@ Description: ``{contribution_data["https://example.org/scikg/terms/dataset_descr
         figurepath = "/tex/" + contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
 
         if not glob.glob(figurepath):
-            print(figurepath)
             raise NotImplementedError("Currently only the import of locally stored figures is supported!")
             
         snippet = f"""

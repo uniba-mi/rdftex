@@ -122,7 +122,6 @@ class Preprocessor:
                 f"SELECT ?p ?o WHERE {{<{import_uri}> ?p ?o .}}")
             contribution_data = {str(entry[0]): str(
                 entry[1]) for entry in contribution_data}
-            print(import_uri)
         except ParseException:
             logging.warning(
                 "Error during processing SPARQL query -> Skipping import")
@@ -191,7 +190,7 @@ class Preprocessor:
             # This workaround is only necessary for the RDFtex paper and can be removed later
             if export_object == "<object>":
                 logging.warning(
-                    f"Found <object> as export_object (rdftex workaround) -> Skipping")
+                    f"Found <object> as export_object (RDFtex workaround) -> Skipping")
                 parsing_successful = False
                 break
 
