@@ -78,19 +78,21 @@ The [docker-compose.yml](./docker-compose.yml) is currently configured to run RD
 
 ### Fully automatic build process (only on Linux hosts)
 
-1. Run `docker-compose run rdftex-tex` to start up a `latexmk` instance that listens for changes made to `.tex` files in a command line.
+1. Run `docker-compose run latexmk` in a command line to start up a `latexmk` container that listens for changes made to `.tex` files.
 
-2. Run `docker-compose run rdftex-watch` to start up a preprocessor instance that listens for changes made to `.rdf.tex` files in another command line.
+2. Run `docker-compose run rdftex-watch` in another command line to start up a preprocessor container that listens for changes made to `.rdf.tex` files. `latexmk` will then detect the changes and thus recompile the PDF.
 
 3. Whenever you edit any `.rdf.tex` file and save, the preprocessor first generate the `.tex` files accordingly. `latexmk` will then detect the changes and thus recompile the PDF.
 
 ### Semi-automatic build process
 
-1. Run `docker-compose run rdftex-tex` to start up a `latexmk` instance that listens for changes made to `.tex` files in a command line.
+1. Run `docker-compose run latexmk` in a command line to start up a `latexmk` container that listens for changes made to `.tex` files.
 
-2. Run `docker-compose run rdftex` to start up a container for the preprocessor in another command line and attach to its command line.
+2. Run `docker-compose run rdftex` in another command line to start up a container for the preprocessor and attach to its command line.
 
-3. Whenever you edit any `.rdf.tex` file and save, run `./preprocessor.py run` in the container command line to generate the `.tex` files. `latexmk` will then detect the changes and thus recompile the PDF.
+3. Whenever you edit any `.rdf.tex` file and save, run `./preprocessor.py run` in the container command line to trigger the preprocessor and generate the `.tex` files.
+
+To run the benchmark used in the paper to assess the duration of the preprocessing on __your__ RDFtex project, run `./benchmark.py` after steps 1 and 2 of the semi-automatic build process.
 
 ## Examples
 

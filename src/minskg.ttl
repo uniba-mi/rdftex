@@ -54,7 +54,7 @@
 
 <https://example.org/scikg/publications/WEB:XANADU> ns1:has_meta_information <https://example.org/scikg/publications/WEB:XANADU/meta> .
 
-<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies. Numerous plugins provide alternative visualization mechanisms, enable management of multiple ontologies, allow the use of inference engines and problem solvers with Prot\\'{e}g\\'{e} ontologies, and provide other functionality." ;
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies." ;
     ns1:software_name "Prot{\\'{e}}g{\\'{e}}-2000" ;
     ns1:software_url "https://protege.stanford.edu" ;
     ns1:type "Software" .

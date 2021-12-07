@@ -19,11 +19,12 @@ def run(runs=100):
 
     command = "./preprocessor.py run"
 
-    for _ in range(runs):
+    for ctr in range(runs):
         t1_start = time.perf_counter()
         subprocess.run([command], capture_output=True, shell=True, check=False)
         t1_stop = time.perf_counter()
 
+        logging.info(f"Run {ctr} completed..")
         times_per_run.append(t1_stop - t1_start)
 
     logging.info(f"Longest run: {max(times_per_run)}")
