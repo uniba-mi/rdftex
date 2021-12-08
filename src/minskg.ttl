@@ -66,7 +66,6 @@
         <https://example.org/scikg/authors/Natalya_Fridman_Noy>,
         <https://example.org/scikg/authors/Ray_W._Fergerson>,
         <https://example.org/scikg/authors/Samson_W._Tu> ;
-    ns1:has_cite_key "DBLP:conf/amia/NoyCFKTVM03" ;
     ns1:has_publication_year "2003" ;
     ns1:has_title """Prot{\\'{e}}g{\\'{e}}-2000: An Open-Source Ontology-Development
 and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
@@ -81,7 +80,6 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
         <https://example.org/scikg/authors/Luheng_He>,
         <https://example.org/scikg/authors/Mari_Ostendorf>,
         <https://example.org/scikg/authors/Yi_Luan> ;
-    ns1:has_cite_key "DBLP:conf/emnlp/LuanHOH18" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title """Multi-Task Identification of Entities, Relations, and Coreference
 for Scientific Knowledge Graph Construction""" ;
@@ -92,7 +90,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Ralph_Ewerth>,
         <https://example.org/scikg/authors/Sören_Auer> ;
-    ns1:has_cite_key "DBLP:conf/ercimdl/BrackHSAE20" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title "Requirements Analysis for an Open Research Knowledge Graph" ;
     ns1:url "https://doi.org/10.1007/978-3-030-54956-5\\_1" .
@@ -102,7 +99,6 @@ for Scientific Knowledge Graph Construction""" ;
 
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> ns1:has_author <https://example.org/scikg/authors/Lisa_Ehrlinger>,
         <https://example.org/scikg/authors/Wolfram_Wöß> ;
-    ns1:has_cite_key "DBLP:conf/i-semantics/EhrlingerW16" ;
     ns1:has_publication_year "2016" ;
     ns1:has_title "Towards a Definition of Knowledge Graphs" ;
     ns1:url "http://ceur-ws.org/Vol-1695/paper4.pdf" .
@@ -111,7 +107,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
         <https://example.org/scikg/authors/Sören_Auer> ;
-    ns1:has_cite_key "DBLP:conf/jcdl/OelenJSA20" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title "Generate {FAIR} Literature Surveys with Scholarly Knowledge Graphs" ;
     ns1:url "https://doi.org/10.1145/3383583.3398520" .
@@ -120,7 +115,6 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Lars_Vogt>,
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Sören_Auer> ;
-    ns1:has_cite_key "DBLP:conf/jcdl/VogtDSA20" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title """Toward Representing Research Contributions in Scholarly Knowledge
 Graphs Using Knowledge Graph Cells""" ;
@@ -134,7 +128,6 @@ Graphs Using Knowledge Graph Cells""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
         <https://example.org/scikg/authors/Sören_Auer> ;
-    ns1:has_cite_key "DBLP:conf/kcap/JaradehOFPDKSA19" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """Open Research Knowledge Graph: Next Generation Infrastructure for
 Semantic Scholarly Knowledge""" ;
@@ -145,7 +138,6 @@ Semantic Scholarly Knowledge""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
         <https://example.org/scikg/authors/Sören_Auer> ;
-    ns1:has_cite_key "DBLP:conf/kcap/OelenJFSA19" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title "Comparing Research Contributions in a Scholarly Knowledge Graph" ;
     ns1:url "http://ceur-ws.org/Vol-2526/paper3.pdf" .
@@ -156,7 +148,6 @@ Semantic Scholarly Knowledge""" ;
         <https://example.org/scikg/authors/Tianwen_Jiang>,
         <https://example.org/scikg/authors/Ting_Liu>,
         <https://example.org/scikg/authors/Tong_Zhao> ;
-    ns1:has_cite_key "DBLP:conf/kdd/JiangZ00C019" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """The Role of {"Condition"}: {A} Novel Scientific Knowledge Graph Representation and
 Construction Model""" ;
@@ -168,7 +159,6 @@ Construction Model""" ;
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Sören_Auer>,
         <https://example.org/scikg/authors/Viktor_Kovtun> ;
-    ns1:has_cite_key "DBLP:conf/wims/AuerKPKSV18" ;
     ns1:has_doi "10.1145/3227609.3227689" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title "Towards a Knowledge Graph for Science" ;
@@ -180,7 +170,6 @@ Construction Model""" ;
         <https://example.org/scikg/authors/Muhammad_Saleem>,
         <https://example.org/scikg/authors/Qaiser_Mehmood>,
         <https://example.org/scikg/authors/Syed_Ahmad_Chan_Bukhari> ;
-    ns1:has_cite_key "DBLP:conf/www/0001SCBMN19" ;
     ns1:has_publication_year "2019" ;
     ns1:has_title """How Representative Is a {SPARQL} Benchmark? An Analysis of {RDF} Triplestore
 Benchmarks""" ;
@@ -189,7 +178,6 @@ Benchmarks""" ;
 <https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15/meta> ns1:has_author <https://example.org/scikg/authors/Amy_Siu>,
         <https://example.org/scikg/authors/Gerhard_Weikum>,
         <https://example.org/scikg/authors/Patrick_Ernst> ;
-    ns1:has_cite_key "DBLP:journals/bmcbi/ErnstSW15" ;
     ns1:has_publication_year "2015" ;
     ns1:has_title """KnowLife: a versatile approach for constructing a large knowledge
 graph for biomedical sciences""" ;
@@ -199,7 +187,6 @@ graph for biomedical sciences""" ;
         <https://example.org/scikg/authors/Michele_Banko>,
         <https://example.org/scikg/authors/Oren_Etzioni>,
         <https://example.org/scikg/authors/Stephen_Soderl> ;
-    ns1:has_cite_key "DBLP:journals/cacm/EtzioniBSW08" ;
     ns1:has_publication_year "2008" ;
     ns1:has_title "Open information extraction from the web" ;
     ns1:url "https://doi.org/10.1145/1409360.1409378" .
@@ -224,7 +211,6 @@ graph for biomedical sciences""" ;
         <https://example.org/scikg/authors/Tobias_Kuhn>,
         <https://example.org/scikg/authors/a>,
         <https://example.org/scikg/authors/er_Malic> ;
-    ns1:has_cite_key "DBLP:journals/corr/abs-1809-06532" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title """Nanopublications: {A} Growing Resource of Provenance-Centric Scientific
 Linked Data""" ;
@@ -248,7 +234,6 @@ Linked Data""" ;
         <https://example.org/scikg/authors/Sabrina_Kirrane>,
         <https://example.org/scikg/authors/Sebastian_Neumaier>,
         <https://example.org/scikg/authors/Steffen_Staab> ;
-    ns1:has_cite_key "DBLP:journals/corr/abs-2003-02320" ;
     ns1:has_publication_year "2020" ;
     ns1:has_title "Knowledge Graphs" ;
     ns1:url "https://arxiv.org/abs/2003.02320" .
@@ -256,7 +241,6 @@ Linked Data""" ;
 <https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18/meta> ns1:has_author <https://example.org/scikg/authors/Ana_B._Ríos-Alvarado>,
         <https://example.org/scikg/authors/Ivan_López-Arévalo>,
         <https://example.org/scikg/authors/José-Lázaro_Martínez-Rodríguez> ;
-    ns1:has_cite_key "DBLP:journals/eswa/Martinez-Rodriguez18" ;
     ns1:has_publication_year "2018" ;
     ns1:has_title "OpenIE-based approach for Knowledge Graph construction from text" ;
     ns1:url "https://doi.org/10.1016/j.eswa.2018.07.017" .
@@ -272,21 +256,18 @@ Linked Data""" ;
 <https://example.org/scikg/publications/Martin21/meta> ns1:has_author <https://example.org/scikg/authors/Andreas_Henrich>,
         <https://example.org/scikg/authors/Leon_Martin>,
         <https://example.org/scikg/authors/Robin_Jegan> ;
-    ns1:has_cite_key "Martin21" ;
     ns1:has_doi "" ;
     ns1:has_publication_year "(accepted for publication) 2021" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
 
 <https://example.org/scikg/publications/WEB:ACMCCS/meta> ns1:has_author <https://example.org/scikg/authors/Association_for_Computing_Machinery_(ACM)> ;
-    ns1:has_cite_key "WEB:ACMCCS" ;
     ns1:has_publication_year "2021" ;
     ns1:has_title "Computing Classification System" ;
     ns1:url "https://dl.acm.org/ccs" .
 
 <https://example.org/scikg/publications/WEB:Brickley14/meta> ns1:has_author <https://example.org/scikg/authors/Brickley,_Dan>,
         <https://example.org/scikg/authors/Guha,_R.V.> ;
-    ns1:has_cite_key "WEB:Brickley14" ;
     ns1:has_publication_year "2014" ;
     ns1:has_title "RDF Schema 1.1" ;
     ns1:url "https://www.w3.org/TR/rdf-schema" .
@@ -295,7 +276,6 @@ Linked Data""" ;
         <https://example.org/scikg/authors/Cyganiak,_Richard>,
         <https://example.org/scikg/authors/Hyl>,
         <https://example.org/scikg/authors/Lanthaler,_Markus> ;
-    ns1:has_cite_key "WEB:Cyganiak14" ;
     ns1:has_publication_year "2014" ;
     ns1:has_title "RDF 1.1 Concepts and Abstract Syntax" ;
     ns1:url "https://www.w3.org/TR/rdf11-concepts" .
@@ -304,25 +284,21 @@ Linked Data""" ;
         <https://example.org/scikg/authors/Birbeck,_Mark>,
         <https://example.org/scikg/authors/Herman,_Ivan>,
         <https://example.org/scikg/authors/Sporny,_Manu> ;
-    ns1:has_cite_key "WEB:Herman15" ;
     ns1:has_publication_year "2015" ;
     ns1:has_title "RDFa 1.1 Primer" ;
     ns1:url "https://www.w3.org/TR/rdfa-primer" .
 
 <https://example.org/scikg/publications/WEB:W3COWLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_OWL_Working_Group> ;
-    ns1:has_cite_key "WEB:W3COWLWG" ;
     ns1:has_publication_year "2012" ;
     ns1:has_title "OWL 2 Web Ontology Language Document Overview (Second Edition)" ;
     ns1:url "https://www.w3.org/TR/owl2-overview" .
 
 <https://example.org/scikg/publications/WEB:W3CSPARQLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_SPARQL_Working_Group> ;
-    ns1:has_cite_key "WEB:W3CSPARQLWG" ;
     ns1:has_publication_year "2013" ;
     ns1:has_title "SPARQL 1.1 Overview" ;
     ns1:url "https://www.w3.org/TR/sparql11-overview" .
 
 <https://example.org/scikg/publications/WEB:XANADU/meta> ns1:has_author <https://example.org/scikg/authors/Project_Xanadu> ;
-    ns1:has_cite_key "WEB:XANADU" ;
     ns1:has_publication_year "2021" ;
     ns1:has_title "Project Xanadu" ;
     ns1:url "https://www.xanadu.net" .

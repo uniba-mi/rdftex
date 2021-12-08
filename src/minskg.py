@@ -50,10 +50,6 @@ class MinSKG:
 
             scikg.add((pub, self.terms["has_meta_information"], meta))
 
-            if "ID" in entry:
-                scikg.add(
-                    (meta, self.terms["has_cite_key"], Literal(entry["ID"])))
-
             if "doi" in entry:
                 scikg.add(
                     (meta, self.terms["has_doi"], Literal(entry["doi"])))
