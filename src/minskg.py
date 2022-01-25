@@ -37,7 +37,6 @@ class MinSKG:
 
         return contribution_mapping
 
-    # TODO remove line breaks
     def __populate_scikg(self, bib_data: dict) -> Graph:
 
         scikg = Graph()
