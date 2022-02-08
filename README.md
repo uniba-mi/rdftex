@@ -69,7 +69,7 @@ The file [minskg.ttl](./src/minskg.ttl) contains the MinSKG serialized in the Tu
 
 RDFtex operates on `.rdf.tex` files that feature custom commands for importing and exporting contributions. To preprocess `.rdf.tex` of a LaTeX project files and produce a PDF based on the automatically generated `.tex` files, there are several options.
 
-## Installation
+### Installation
 
 The recommended and easier way to run RDFtex is to use Docker, which also ensures reproducibility. In this case, you only have to install:
 - Docker
