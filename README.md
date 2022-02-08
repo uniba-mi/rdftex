@@ -69,16 +69,18 @@ The file [minskg.ttl](./src/minskg.ttl) contains the MinSKG serialized in the Tu
 
 RDFtex operates on `.rdf.tex` files that feature custom commands for importing and exporting contributions. To preprocess `.rdf.tex` of a LaTeX project files and produce a PDF based on the automatically generated `.tex` files, there are several options.
 
+## Installation
+
 The recommended and easier way to run RDFtex is to use Docker, which also ensures reproducibility. In this case, you only have to install:
 - Docker
 - Docker Compose
+
+The [docker-compose.yml](./docker-compose.yml) is currently configured to run RDFtex on the exemplary `.rdf.tex` files in the [tex](./tex/) folder. If you want to run RDFtex on another LaTeX project, edit the `volumes` option therein accordingly. Another option is to copy your project to the [tex](./tex/) folder instead.
 
 Running the software without Docker might cause problems depending on the host system. If you still want to execute the software without Docker you have to install:
 - Python 3.9
 - The Python dependencies listed in [requirements.txt](./src/requirements.txt)
 - [Latexmk](https://mg.readthedocs.io/latexmk.html)
-
-The [docker-compose.yml](./docker-compose.yml) is currently configured to run RDFtex on the exemplary `.rdf.tex` files in the [tex](./tex/) folder. If you want to run RDFtex on another LaTeX project, edit the `volumes` option therein accordingly. Another option is to copy your project to the [tex](./tex/) folder instead.
 
 ### Fully automatic build process (only on Linux hosts)
 
