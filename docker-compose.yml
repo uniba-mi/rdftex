@@ -17,27 +17,6 @@ services:
   latexmk:
     image: texlive/texlive:latest
     container_name: tex
-    volumes: 
+    volumes:
       - ./tex:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
-
-  # services for debugging (can be ignored)
-  _rdftex:
-    build: ./src
-    container_name: python
-    volumes:
-      - ./src:/src
-      - ../knowledge-graphs/rdftex:/tex
-  _rdftex-watch:
-    build: ./src
-    container_name: python
-    volumes:
-      - ./src:/src
-      - ../knowledge-graphs/rdftex:/tex
-    entrypoint: ./preprocessor.py watch
-  _latexmk:
-    image: texlive/texlive:latest
-    container_name: tex
-    volumes: 
-      - ../knowledge-graphs/rdftex:/tex
-    entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/main.tex
