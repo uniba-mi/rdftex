@@ -43,6 +43,18 @@ class Preprocessor:
         Parses the custom RDFtex commands and returns the parameters.
         """
 
+        def resolve__prefix(string):
+            """
+            Replace parameters in prefix syntax by their full URIs
+            """
+            resolved = string
+
+            for prefix, written_out in self.vocab.items():
+                if prefix + ":" in string:
+                    resolved = string.replace(prefix + ":", written_out)
+
+            return resolved
+
         param_list = []
         param_range = [0, 0]
         bracket_counter = 0
@@ -68,27 +80,13 @@ class Preprocessor:
                     if substring[index + 1] != "{":
                         break
 
-        # replace prefxes by full URIs
-        processed_param_list = []
+        resolved_param_list = [resolve__prefix(param) for param in param_list]
 
-        for param in param_list:
-            resolvedparam = self.__resolve__prefix(param)
-            processed_param_list.append(resolvedparam)
-
-        return processed_param_list, index + 1
-
-    def __resolve__prefix(self, string):
-        resolved = string
-
-        for prefix, written_out in self.vocab.items():
-            if prefix + ":" in string:
-                resolved = string.replace(prefix + ":", written_out)
-
-        return resolved
+        return resolved_param_list, index + 1
 
     def __handle_prefix(self, line) -> None:
         """
-        Handles the custom \\rdfprefix command.
+        Handles lines with the custom \\rdfprefix command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -104,7 +102,7 @@ class Preprocessor:
 
     def __handle_import(self, processed_lines, imported_types, line) -> None:
         """
-        Handles the custom \\rdfimport command.
+        Handles lines with the custom \\rdfimport command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -137,7 +135,7 @@ class Preprocessor:
 
     def __handle_export(self, processed_lines, line) -> None:
         """
-        Handles the custom \\rdfexport command.
+        Handles lines with the custom \\rdfexport command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -165,7 +163,7 @@ class Preprocessor:
 
     def __handle_property(self, processed_lines, line) -> None:
         """
-        Handles the custom \\rdfproperty command.
+        Handles lines with the custom \\rdfproperty command.
         """
 
         processed_line = ""
@@ -222,7 +220,7 @@ class Preprocessor:
         with open(rdftexpath, "r") as file:
             for linenumber, line in enumerate(file):
                 if "\\begin{document}" in line:
-                    # store preamble end index for potential insertion of custom environments
+                    # store preamble end index for insertion of custom environments if needed
                     preamble_end_index = len(processed_lines)
 
                 if re.search(r"(?<! )\\rdfprefix", line):
@@ -291,7 +289,7 @@ class Preprocessor:
 
     def watch(self) -> None:
         """
-        Issues the preprocessing when there changes made to the .rdf.tex files in the specified
+        Issues the preprocessing if changes are made to the .rdf.tex files in the specified
         project directory. Note that this only works on Linux properly
         (s. https://william-yeh.net/post/2019/06/inotify-in-containers/).
         """
