@@ -177,7 +177,7 @@ class MinSKG:
         parser = BibTexParser(common_strings=False)
         parser.ignore_nonstandard_types = False
 
-        with open("/tex/main.bib") as bibtex_file:
+        with open("/tex/example.bib") as bibtex_file:
             bib_data = bibtexparser.load(bibtex_file, parser)
 
         logging.info("Building MinSKG...")
