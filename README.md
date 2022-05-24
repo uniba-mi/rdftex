@@ -18,12 +18,12 @@
     <a href="#license">License</a>
 </p>
 
-## !!! Attention !!!
+<!-- ## !!! Attention !!!
 
 If your are viewing the anonymized version of this repository, we want to make two important remarks:
 
 - Some of the files included in the repository are not displayed correctly in the web interface of the anonymization service. If you encounter such a file, please download it for the best experience. Also some links within this README file do not work correctly.
-- To get all files within the repository without downloading each file individually, we included a zipped archive of the repository called [rdftex.zip](./rdftex.zip) that you can easily download for your convenience.
+- To get all files within the repository without downloading each file individually, we included a zipped archive of the repository called [rdftex.zip](./rdftex.zip) that you can easily download for your convenience. -->
 
 ## Summary
 
