@@ -192,12 +192,7 @@ class Preprocessor:
                 parsing_successful = False
                 break
 
-            if export_name in self.exports:
-                self.exports[export_name].append(
-                    (export_predicate, export_object))
-            else:
-                self.exports[export_name] = [
-                    (export_predicate, export_object)]
+            self.exports.setdefault(export_name, []).append((export_predicate, export_object))
 
             processed_line += line[lastcommandendindex:
                                    commandstartindex] + export_object
