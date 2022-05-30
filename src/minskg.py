@@ -152,6 +152,8 @@ class MinSKG(SkgInterface):
         object tuples is valid.
         """
 
+        valid = True
+
         predicate_object_dict = {tuple[0]: tuple[1] for tuple in tuples}
         export_type = predicate_object_dict["https://example.org/scikg/terms/type"]
 
@@ -162,14 +164,13 @@ class MinSKG(SkgInterface):
         if included_predicates != necessary_predicates:
             diff = set(necessary_predicates).difference(
                 set(included_predicates))
-            diffstring = ", ".join(list(diff))
 
             logging.warning(
-                f"Export of {subject} is skipped due to missing predicates: {diffstring}")
+                f"Export of {subject} is skipped due to missing predicates: {', '.join(list(diff))}")
 
-            return False
+            valid = False
 
-        return True
+        return valid
 
     def build(self) -> None:
         """
