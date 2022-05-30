@@ -32,7 +32,10 @@ RDFtex is a framework that employs extended LaTeX documents and a preprocessor p
 - The export functionality allows to export original research contributions from LaTeX documents to a SciKG via custom export commands
 
 This repository contains the proof-of-concept implementation of RDFtex as proposed in the RDFtex paper as well as other sources.
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 ## MinSKG
 
 Currently, RDFtex can only interact with the MinSKG, a minimal SciKG that serves as a temporal makeshift for an actual SciKG. The MinSKG is populated with all publications that are used as references for the RDFtex paper. The contextual information of the publications, i.e., the metadata, was added automatically by parsing their entries from the `bibtex` file using a simple script. The contentual information, i.e, their contributions, was added manually.

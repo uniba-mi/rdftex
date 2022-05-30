@@ -6,6 +6,7 @@
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> .
 
+<<<<<<< HEAD
 <https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20/meta> .
 
 <https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07/meta> .
@@ -40,23 +41,14 @@
 
 <https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18/meta> .
 
+=======
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> .
+
+>>>>>>> main
 <https://example.org/scikg/publications/Martin21> ns1:has_contribution <https://example.org/scikg/publications/Martin21/contrib1>,
         <https://example.org/scikg/publications/Martin21/contrib2> ;
     ns1:has_meta_information <https://example.org/scikg/publications/Martin21/meta> .
-
-<https://example.org/scikg/publications/WEB:ACMCCS> ns1:has_meta_information <https://example.org/scikg/publications/WEB:ACMCCS/meta> .
-
-<https://example.org/scikg/publications/WEB:Brickley14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Brickley14/meta> .
-
-<https://example.org/scikg/publications/WEB:Cyganiak14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Cyganiak14/meta> .
-
-<https://example.org/scikg/publications/WEB:Herman15> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Herman15/meta> .
-
-<https://example.org/scikg/publications/WEB:W3COWLWG> ns1:has_meta_information <https://example.org/scikg/publications/WEB:W3COWLWG/meta> .
-
-<https://example.org/scikg/publications/WEB:W3CSPARQLWG> ns1:has_meta_information <https://example.org/scikg/publications/WEB:W3CSPARQLWG/meta> .
-
-<https://example.org/scikg/publications/WEB:XANADU> ns1:has_meta_information <https://example.org/scikg/publications/WEB:XANADU/meta> .
 
 <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies." ;
     ns1:software_name "Prot{\\'{e}}g{\\'{e}}-2000" ;
@@ -89,6 +81,7 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
 for Scientific Knowledge Graph Construction""" ;
     ns1:url "https://doi.org/10.18653/v1/d18-1360" .
 
+<<<<<<< HEAD
 <https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20/meta> ns1:has_author <https://example.org/scikg/authors/Anett_Hoppe>,
         <https://example.org/scikg/authors/Arthur_Brack>,
         <https://example.org/scikg/authors/Markus_Stocker>,
@@ -108,6 +101,8 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_title "{SALT} - Semantically Annotated LaTeX for Scientific Publications" ;
     ns1:url "https://doi.org/10.1007/978-3-540-72667-8\\_37" .
 
+=======
+>>>>>>> main
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ns1:definition_content "A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge." ;
     ns1:type "Definition" .
 
@@ -117,6 +112,7 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_title "Towards a Definition of Knowledge Graphs" ;
     ns1:url "http://ceur-ws.org/Vol-1695/paper4.pdf" .
 
+<<<<<<< HEAD
 <https://example.org/scikg/publications/DBLP:conf/jcdl/OelenJSA20/meta> ns1:has_author <https://example.org/scikg/authors/Allard_Oelen>,
         <https://example.org/scikg/authors/Markus_Stocker>,
         <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
@@ -265,6 +261,8 @@ Linked Data""" ;
     ns1:has_title "OpenIE-based approach for Knowledge Graph construction from text" ;
     ns1:url "https://doi.org/10.1016/j.eswa.2018.07.017" .
 
+=======
+>>>>>>> main
 <https://example.org/scikg/publications/Martin21/contrib1> ns1:definition_content "[...] knowledge graphs that result from transforming document-based publications will be referred to as RDF-transformed publications." ;
     ns1:type "Definition" .
 
@@ -280,46 +278,4 @@ Linked Data""" ;
     ns1:has_publication_year "(accepted for publication) 2021" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
-
-<https://example.org/scikg/publications/WEB:ACMCCS/meta> ns1:has_author <https://example.org/scikg/authors/Association_for_Computing_Machinery_(ACM)> ;
-    ns1:has_publication_year "2021" ;
-    ns1:has_title "Computing Classification System" ;
-    ns1:url "https://dl.acm.org/ccs" .
-
-<https://example.org/scikg/publications/WEB:Brickley14/meta> ns1:has_author <https://example.org/scikg/authors/Brickley,_Dan>,
-        <https://example.org/scikg/authors/Guha,_R.V.> ;
-    ns1:has_publication_year "2014" ;
-    ns1:has_title "RDF Schema 1.1" ;
-    ns1:url "https://www.w3.org/TR/rdf-schema" .
-
-<https://example.org/scikg/publications/WEB:Cyganiak14/meta> ns1:has_author <https://example.org/scikg/authors/-Wood,_David>,
-        <https://example.org/scikg/authors/Cyganiak,_Richard>,
-        <https://example.org/scikg/authors/Hyl>,
-        <https://example.org/scikg/authors/Lanthaler,_Markus> ;
-    ns1:has_publication_year "2014" ;
-    ns1:has_title "RDF 1.1 Concepts and Abstract Syntax" ;
-    ns1:url "https://www.w3.org/TR/rdf11-concepts" .
-
-<https://example.org/scikg/publications/WEB:Herman15/meta> ns1:has_author <https://example.org/scikg/authors/Adida,_Ben>,
-        <https://example.org/scikg/authors/Birbeck,_Mark>,
-        <https://example.org/scikg/authors/Herman,_Ivan>,
-        <https://example.org/scikg/authors/Sporny,_Manu> ;
-    ns1:has_publication_year "2015" ;
-    ns1:has_title "RDFa 1.1 Primer" ;
-    ns1:url "https://www.w3.org/TR/rdfa-primer" .
-
-<https://example.org/scikg/publications/WEB:W3COWLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_OWL_Working_Group> ;
-    ns1:has_publication_year "2012" ;
-    ns1:has_title "OWL 2 Web Ontology Language Document Overview (Second Edition)" ;
-    ns1:url "https://www.w3.org/TR/owl2-overview" .
-
-<https://example.org/scikg/publications/WEB:W3CSPARQLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_SPARQL_Working_Group> ;
-    ns1:has_publication_year "2013" ;
-    ns1:has_title "SPARQL 1.1 Overview" ;
-    ns1:url "https://www.w3.org/TR/sparql11-overview" .
-
-<https://example.org/scikg/publications/WEB:XANADU/meta> ns1:has_author <https://example.org/scikg/authors/Project_Xanadu> ;
-    ns1:has_publication_year "2021" ;
-    ns1:has_title "Project Xanadu" ;
-    ns1:url "https://www.xanadu.net" .
 
