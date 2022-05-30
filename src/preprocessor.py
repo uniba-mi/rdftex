@@ -30,7 +30,7 @@ class Preprocessor:
         self.exportpath = self.config["main"]["exportpath"]
 
         if self.config["main"]["skg"] == "MinSKG":
-            self.skg = MinSKG()
+            self.skg_wrapper = MinSKG()
         else:
             raise NotImplementedError(
                 "Currently, only the MinSKG is supported!")
@@ -116,10 +116,7 @@ class Preprocessor:
         import_label, citation_key, import_uri, *_ = param_list
 
         try:
-            contribution_data = self.skg.query(
-                f"SELECT ?p ?o WHERE {{<{import_uri}> ?p ?o .}}")
-            contribution_data = {str(entry[0]): str(
-                entry[1]) for entry in contribution_data}
+            contribution_data = self.skg_wrapper.get_pred_obj_for_subject(import_uri)
         except ParseException:
             logging.warning(
                 "Error during processing SPARQL query -> Skipping import")
@@ -280,7 +277,7 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.skg.generate_exports_kg(self.exports, self.exportpath)
+        self.skg_wrapper.generate_exports_document(self.exports, self.exportpath)
 
     def watch(self) -> None:
         """
