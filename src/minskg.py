@@ -13,9 +13,9 @@ from pylatexenc.latex2text import LatexNodes2Text
 from rdflib import Graph, Literal, Namespace, URIRef
 
 from utils import store_graph
+from skg_interface import SkgInterface
 
-
-class MinSKG:
+class MinSKG(SkgInterface):
     """
     The class representing the MinSKG that is used to demonstrate RDFtex.
     """
@@ -27,6 +27,9 @@ class MinSKG:
         self.supported_contributions = self.__get_supported_contributions()
 
     def __get_supported_contributions(self):
+        """
+        Returns a dictionary of the supported contribution types and the respectively required predicates.
+        """
         contribution_mapping = {
             "Definition": [self.terms["type"], self.terms["definition_content"]],
             "Dataset": [self.terms["type"], self.terms["dataset_name"], self.terms["dataset_domain"], self.terms["dataset_description"], self.terms["dataset_url"]],
@@ -149,6 +152,8 @@ class MinSKG:
         object tuples is valid.
         """
 
+        valid = True
+
         predicate_object_dict = {tuple[0]: tuple[1] for tuple in tuples}
         export_type = predicate_object_dict["https://example.org/scikg/terms/type"]
 
@@ -159,14 +164,13 @@ class MinSKG:
         if included_predicates != necessary_predicates:
             diff = set(necessary_predicates).difference(
                 set(included_predicates))
-            diffstring = ", ".join(list(diff))
 
             logging.warning(
-                f"Export of {subject} is skipped due to missing predicates: {diffstring}")
+                f"Export of {subject} is skipped due to missing predicates: {', '.join(list(diff))}")
 
-            return False
+            valid = False
 
-        return True
+        return valid
 
     def build(self) -> None:
         """
@@ -186,14 +190,17 @@ class MinSKG:
         logging.info("Storing MinSKG...")
         store_graph(self.skg, "./minskg.ttl")
 
-    def query(self, query: str) -> dict:
+    def get_pred_obj_for_subject(self, subject: str) -> dict:
         """
-        Allows querying the MinSKG.
+        Returns the predicates and objects related to a given subject.
         """
 
-        return self.skg.query(query)
+        result = self.skg.query(f"SELECT ?p ?o WHERE {{<{subject}> ?p ?o .}}")
+        result = {str(entry[0]): str(entry[1]) for entry in result}
 
-    def generate_exports_kg(self, exports: dict, exportsfilepath: str) -> None:
+        return result
+
+    def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
         """
         Generates a knowledge graph based on the exports of the preprocessed publication.
         """

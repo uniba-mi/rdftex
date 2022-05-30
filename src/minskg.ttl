@@ -6,9 +6,46 @@
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> .
 
+<<<<<<< HEAD
+<https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07/meta> .
+
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> .
 
+<https://example.org/scikg/publications/DBLP:conf/jcdl/OelenJSA20> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/jcdl/OelenJSA20/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/jcdl/VogtDSA20> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/jcdl/VogtDSA20/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/OelenJFSA19> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/kcap/OelenJFSA19/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/cacm/EtzioniBSW08> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/cacm/EtzioniBSW08/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-1006-4474> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/corr/abs-1006-4474/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-1809-06532> ns1:has_contribution <https://example.org/scikg/publications/DBLP:journals/corr/abs-1809-06532/contrib1> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/corr/abs-1809-06532/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-2003-02320> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/corr/abs-2003-02320/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18/meta> .
+
+=======
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> .
+
+>>>>>>> main
 <https://example.org/scikg/publications/Martin21> ns1:has_contribution <https://example.org/scikg/publications/Martin21/contrib1>,
         <https://example.org/scikg/publications/Martin21/contrib2> ;
     ns1:has_meta_information <https://example.org/scikg/publications/Martin21/meta> .
@@ -44,6 +81,28 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
 for Scientific Knowledge Graph Construction""" ;
     ns1:url "https://doi.org/10.18653/v1/d18-1360" .
 
+<<<<<<< HEAD
+<https://example.org/scikg/publications/DBLP:conf/ercimdl/BrackHSAE20/meta> ns1:has_author <https://example.org/scikg/authors/Anett_Hoppe>,
+        <https://example.org/scikg/authors/Arthur_Brack>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Ralph_Ewerth>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2020" ;
+    ns1:has_title "Requirements Analysis for an Open Research Knowledge Graph" ;
+    ns1:url "https://doi.org/10.1007/978-3-030-54956-5\\_1" .
+
+<https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07/meta> ns1:has_author <https://example.org/scikg/authors/Knud_Möller>,
+        <https://example.org/scikg/authors/Siegfried_H>,
+        <https://example.org/scikg/authors/Stefan_Decker>,
+        <https://example.org/scikg/authors/Tudor_Groza>,
+        <https://example.org/scikg/authors/schuh> ;
+    ns1:has_doi "10.1007/978-3-540-72667-8\\_37" ;
+    ns1:has_publication_year "2007" ;
+    ns1:has_title "{SALT} - Semantically Annotated LaTeX for Scientific Publications" ;
+    ns1:url "https://doi.org/10.1007/978-3-540-72667-8\\_37" .
+
+=======
+>>>>>>> main
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ns1:definition_content "A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge." ;
     ns1:type "Definition" .
 
@@ -53,6 +112,157 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_title "Towards a Definition of Knowledge Graphs" ;
     ns1:url "http://ceur-ws.org/Vol-1695/paper4.pdf" .
 
+<<<<<<< HEAD
+<https://example.org/scikg/publications/DBLP:conf/jcdl/OelenJSA20/meta> ns1:has_author <https://example.org/scikg/authors/Allard_Oelen>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2020" ;
+    ns1:has_title "Generate {FAIR} Literature Surveys with Scholarly Knowledge Graphs" ;
+    ns1:url "https://doi.org/10.1145/3383583.3398520" .
+
+<https://example.org/scikg/publications/DBLP:conf/jcdl/VogtDSA20/meta> ns1:has_author <https://example.org/scikg/authors/Jennifer_D'Souza>,
+        <https://example.org/scikg/authors/Lars_Vogt>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2020" ;
+    ns1:has_title """Toward Representing Research Contributions in Scholarly Knowledge
+Graphs Using Knowledge Graph Cells""" ;
+    ns1:url "https://doi.org/10.1145/3383583.3398530" .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19/meta> ns1:has_author <https://example.org/scikg/authors/Allard_Oelen>,
+        <https://example.org/scikg/authors/Gábor_Kismihók>,
+        <https://example.org/scikg/authors/Jennifer_D'Souza>,
+        <https://example.org/scikg/authors/Kheir_Eddine_Farfar>,
+        <https://example.org/scikg/authors/Manuel_Prinz>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """Open Research Knowledge Graph: Next Generation Infrastructure for
+Semantic Scholarly Knowledge""" ;
+    ns1:url "https://doi.org/10.1145/3360901.3364435" .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/OelenJFSA19/meta> ns1:has_author <https://example.org/scikg/authors/Allard_Oelen>,
+        <https://example.org/scikg/authors/Kheir_Eddine_Farfar>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title "Comparing Research Contributions in a Scholarly Knowledge Graph" ;
+    ns1:url "http://ceur-ws.org/Vol-2526/paper3.pdf" .
+
+<https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019/meta> ns1:has_author <https://example.org/scikg/authors/Bing_Qin>,
+        <https://example.org/scikg/authors/Meng_Jiang>,
+        <https://example.org/scikg/authors/Nitesh_V._Chawla>,
+        <https://example.org/scikg/authors/Tianwen_Jiang>,
+        <https://example.org/scikg/authors/Ting_Liu>,
+        <https://example.org/scikg/authors/Tong_Zhao> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """The Role of {"Condition"}: {A} Novel Scientific Knowledge Graph Representation and
+Construction Model""" ;
+    ns1:url "https://doi.org/10.1145/3292500.3330942" .
+
+<https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18/meta> ns1:has_author <https://example.org/scikg/authors/Anna_Kasprzik>,
+        <https://example.org/scikg/authors/Manuel_Prinz>,
+        <https://example.org/scikg/authors/Maria-Esther_Vidal>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Sören_Auer>,
+        <https://example.org/scikg/authors/Viktor_Kovtun> ;
+    ns1:has_publication_year "2018" ;
+    ns1:has_title "Towards a Knowledge Graph for Science" ;
+    ns1:url "https://doi.org/10.1145/3227609.3227689" .
+
+<https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19/meta> ns1:has_author <https://example.org/scikg/authors/Axel-Cyrille_Ngonga_Ngomo>,
+        <https://example.org/scikg/authors/Felix_Conrads>,
+        <https://example.org/scikg/authors/Gábor_Szárnyas>,
+        <https://example.org/scikg/authors/Muhammad_Saleem>,
+        <https://example.org/scikg/authors/Qaiser_Mehmood>,
+        <https://example.org/scikg/authors/Syed_Ahmad_Chan_Bukhari> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """How Representative Is a {SPARQL} Benchmark? An Analysis of {RDF} Triplestore
+Benchmarks""" ;
+    ns1:url "https://doi.org/10.1145/3308558.3313556" .
+
+<https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15/meta> ns1:has_author <https://example.org/scikg/authors/Amy_Siu>,
+        <https://example.org/scikg/authors/Gerhard_Weikum>,
+        <https://example.org/scikg/authors/Patrick_Ernst> ;
+    ns1:has_publication_year "2015" ;
+    ns1:has_title """KnowLife: a versatile approach for constructing a large knowledge
+graph for biomedical sciences""" ;
+    ns1:url "https://doi.org/10.1186/s12859-015-0549-5" .
+
+<https://example.org/scikg/publications/DBLP:journals/cacm/EtzioniBSW08/meta> ns1:has_author <https://example.org/scikg/authors/Daniel_S._Weld>,
+        <https://example.org/scikg/authors/Michele_Banko>,
+        <https://example.org/scikg/authors/Oren_Etzioni>,
+        <https://example.org/scikg/authors/Stephen_Soderl> ;
+    ns1:has_publication_year "2008" ;
+    ns1:has_title "Open information extraction from the web" ;
+    ns1:url "https://doi.org/10.1145/1409360.1409378" .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-1006-4474/meta> ns1:has_author <https://example.org/scikg/authors/Andrea_Kohlhase>,
+        <https://example.org/scikg/authors/Christoph_Lange>,
+        <https://example.org/scikg/authors/Michael_Kohlhase> ;
+    ns1:has_publication_year "2010" ;
+    ns1:has_title "sTeX+ - a System for Flexible Formalization of Linked Data" ;
+    ns1:url "http://arxiv.org/abs/1006.4474" .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-1809-06532/contrib1> ns1:definition_content "Nanopublications [provide] a granular and principled way of publishing scientific (and other types of) data in a provenance-centric manner. Such a nanopublication consists of an atomic snippet of a formal statement [...] that comes with information about where this knowledge came from [...] and with metadata about the nanopublication as a whole [...]. All these three parts are represented as Linked Data (in RDF) [...]." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-1809-06532/meta> ns1:has_author <https://example.org/scikg/authors/Albert_Meroño-Peñuela>,
+        <https://example.org/scikg/authors/Alex>,
+        <https://example.org/scikg/authors/Allen_H._Hurlbert>,
+        <https://example.org/scikg/authors/Chris_T._A._Evelo>,
+        <https://example.org/scikg/authors/Christine_Chichester>,
+        <https://example.org/scikg/authors/Egon_L._Willighagen>,
+        <https://example.org/scikg/authors/Emilio_Centeno>,
+        <https://example.org/scikg/authors/Friederike_Ehrhart>,
+        <https://example.org/scikg/authors/Jorrit_H._Poelen>,
+        <https://example.org/scikg/authors/Juan_M._B>,
+        <https://example.org/scikg/authors/Laura_I._Furlong>,
+        <https://example.org/scikg/authors/Michel_Dumontier>,
+        <https://example.org/scikg/authors/Núria_Queralt-Rosinach>,
+        <https://example.org/scikg/authors/Tareq_B._Malas>,
+        <https://example.org/scikg/authors/Tobias_Kuhn>,
+        <https://example.org/scikg/authors/a>,
+        <https://example.org/scikg/authors/er_Malic> ;
+    ns1:has_publication_year "2018" ;
+    ns1:has_title """Nanopublications: {A} Growing Resource of Provenance-Centric Scientific
+Linked Data""" ;
+    ns1:url "http://arxiv.org/abs/1809.06532" .
+
+<https://example.org/scikg/publications/DBLP:journals/corr/abs-2003-02320/meta> ns1:has_author <https://example.org/scikg/authors/Aidan_Hogan>,
+        <https://example.org/scikg/authors/Anisa_Rula>,
+        <https://example.org/scikg/authors/Antoine_Zimmermann>,
+        <https://example.org/scikg/authors/Axel-Cyrille_Ngonga_Ngomo>,
+        <https://example.org/scikg/authors/Axel_Polleres>,
+        <https://example.org/scikg/authors/Claudia_d'Amato>,
+        <https://example.org/scikg/authors/Claudio_Gutiérrez>,
+        <https://example.org/scikg/authors/Eva_Blomqvist>,
+        <https://example.org/scikg/authors/Gerard_de_Melo>,
+        <https://example.org/scikg/authors/José_Emilio_Labra_Gayo>,
+        <https://example.org/scikg/authors/Juan_F._Sequeda>,
+        <https://example.org/scikg/authors/Lukas_Schmelzeisen>,
+        <https://example.org/scikg/authors/Michael_Cochez>,
+        <https://example.org/scikg/authors/Roberto_Navigli>,
+        <https://example.org/scikg/authors/Sabbir_M._Rashid>,
+        <https://example.org/scikg/authors/Sabrina_Kirrane>,
+        <https://example.org/scikg/authors/Sebastian_Neumaier>,
+        <https://example.org/scikg/authors/Steffen_Staab> ;
+    ns1:has_publication_year "2020" ;
+    ns1:has_title "Knowledge Graphs" ;
+    ns1:url "https://arxiv.org/abs/2003.02320" .
+
+<https://example.org/scikg/publications/DBLP:journals/eswa/Martinez-Rodriguez18/meta> ns1:has_author <https://example.org/scikg/authors/Ana_B._Ríos-Alvarado>,
+        <https://example.org/scikg/authors/Ivan_López-Arévalo>,
+        <https://example.org/scikg/authors/José-Lázaro_Martínez-Rodríguez> ;
+    ns1:has_publication_year "2018" ;
+    ns1:has_title "OpenIE-based approach for Knowledge Graph construction from text" ;
+    ns1:url "https://doi.org/10.1016/j.eswa.2018.07.017" .
+
+=======
+>>>>>>> main
 <https://example.org/scikg/publications/Martin21/contrib1> ns1:definition_content "[...] knowledge graphs that result from transforming document-based publications will be referred to as RDF-transformed publications." ;
     ns1:type "Definition" .
 
