@@ -63,7 +63,7 @@ There are currently five types of contributions that can be imported from and ex
     - `https://example.org/scikg/terms/software_description`
     - `https://example.org/scikg/terms/software_url`
 
-The file [minskg.ttl](./src/minskg.ttl) contains the MinSKG serialized in the Turtle format.
+The file [minskg.ttl](./src/minskg.ttl) contains the MinSKG, as employed for the preparation of the research paper, serialized in the Turtle format.
 
 ## Usage
 
