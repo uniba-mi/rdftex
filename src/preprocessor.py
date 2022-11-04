@@ -35,7 +35,7 @@ class Preprocessor:
             raise NotImplementedError(
                 "Currently, only the MinSKG is supported!")
 
-        self.vocab = {}
+        self.prefixes = {}
         self.exports = {}
 
     def __parse_rdftex_command(self, substring: str) -> list:
@@ -49,7 +49,7 @@ class Preprocessor:
             """
             resolved = string
 
-            for prefix, written_out in self.vocab.items():
+            for prefix, written_out in self.prefixes.items():
                 if prefix + ":" in string:
                     resolved = string.replace(prefix + ":", written_out)
 
@@ -98,7 +98,7 @@ class Preprocessor:
 
         prefix, written_out, *_ = param_list
 
-        self.vocab[prefix] = written_out
+        self.prefixes[prefix] = written_out
 
     def __handle_import(self, processed_lines, imported_types, line) -> None:
         """
@@ -217,26 +217,26 @@ class Preprocessor:
 
                 if re.search(r"(?<! )\\rdfprefix", line):
                     logging.info(
-                        f"Handling rdf vocab command in line {linenumber}...")
+                        f"Handling rdfprefix command in line {linenumber}...")
 
                     self.__handle_prefix(line)
 
                 elif re.search(r"(?<! )\\rdfimport", line):
                     logging.info(
-                        f"Handling rdf import command in line {linenumber}...")
+                        f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
                         processed_lines, imported_types, line)
 
                 elif re.search(r"(?<! )\\rdfexport", line):
                     logging.info(
-                        f"Handling rdf export command in line {linenumber}...")
+                        f"Handling rdfexport command in line {linenumber}...")
 
                     self.__handle_export(processed_lines, line)
 
                 elif re.search(r"\\rdfproperty", line):
                     logging.info(
-                        f"Handling rdf property command(s) in line {linenumber}...")
+                        f"Handling rdfproperty command(s) in line {linenumber}...")
 
                     self.__handle_property(processed_lines, line)
 
