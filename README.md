@@ -17,13 +17,6 @@
     <a href="#license">License</a>
 </p>
 
-<!-- ## !!! Attention !!!
-
-If your are viewing the anonymized version of this repository, we want to make two important remarks:
-
-- Some of the files included in the repository are not displayed correctly in the web interface of the anonymization service. If you encounter such a file, please download it for the best experience. Also some links within this README file do not work correctly.
-- To get all files within the repository without downloading each file individually, we included a zipped archive of the repository called [rdftex.zip](./rdftex.zip) that you can easily download for your convenience. -->
-
 ## Summary
 
 RDFtex is a framework that employs extended LaTeX documents and a preprocessor program to support the production of research publications that allow a bidirectional knowledge exchange with a scientific knowledge graph (SciKG). To implement the said knowledge exchange, RDFtex provides two main functionalities:
@@ -31,7 +24,7 @@ RDFtex is a framework that employs extended LaTeX documents and a preprocessor p
 - The import functionality allows to import research contributions from a SciKG in LaTeX documents via custom import commands
 - The export functionality allows to export original research contributions from LaTeX documents to a SciKG via custom export commands
 
-This repository contains the proof-of-concept implementation of RDFtex as proposed in the RDFtex paper as well as other sources.
+This repository contains the proof-of-concept implementation of RDFtex and other sources as proposed in the RDFtex papers (https://link.springer.com/chapter/10.1007/978-3-031-16802-4_3).
 
 ## MinSKG
 
@@ -99,9 +92,9 @@ Running the software without Docker might cause problems depending on the host s
 
 2. Run `docker-compose run rdftex` in another command line to start up a container for the preprocessor and attach to its command line.
 
-3. Whenever you edit any `.rdf.tex` file and save, run `./preprocessor.py run` in the container command line to trigger the preprocessor and generate the `.tex` files.
+3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py run` in the container command line to trigger the preprocessor and generate the `.tex` files.
 
-To run the benchmark used in the paper to assess the duration of the preprocessing on **your** RDFtex project, run `./benchmark.py` after steps 1 and 2 of the semi-automatic build process.
+To run the benchmark used in the paper to assess the duration of the preprocessing on **your** RDFtex project, run `python3 benchmark.py` after steps 1 and 2 of the semi-automatic build process.
 
 ### Semi-automatic build process (without Docker)
 
@@ -109,7 +102,7 @@ To run the benchmark used in the paper to assess the duration of the preprocessi
 
 2. Open another command line and move to the [src](./src/) folder.
 
-3. Whenever you edit any `.rdf.tex` file and save, run `./preprocessor.py run` in the new command line to trigger the preprocessor and generate the `.tex` files.
+3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py run` in the new command line to trigger the preprocessor and generate the `.tex` files.
 
 ## Examples
 
