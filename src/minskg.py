@@ -12,7 +12,6 @@ from bibtexparser.bparser import BibTexParser
 from pylatexenc.latex2text import LatexNodes2Text
 from rdflib import Graph, Literal, Namespace, URIRef
 
-from utils import store_graph
 from skg_interface import SkgInterface
 
 class MinSKG(SkgInterface):
@@ -118,7 +117,7 @@ class MinSKG(SkgInterface):
                 scikg.add((contrib2, self.terms["figure_description"], Literal(
                     "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs.")))
                 scikg.add(
-                    (contrib2, self.terms["figure_type"], Literal("pdf")))
+                    (contrib2, self.terms["figure_mime"], Literal("pdf")))
                 scikg.add((contrib2, self.terms["figure_url"], Literal(
                     "./figures/triple_example")))
 
@@ -188,7 +187,7 @@ class MinSKG(SkgInterface):
         self.skg = self.__populate_scikg(bib_data.entries)
 
         logging.info("Storing MinSKG...")
-        store_graph(self.skg, "./minskg.ttl")
+        self.__store_graph(self.skg, "./minskg.ttl")
 
     def get_pred_obj_for_subject(self, subject: str) -> dict:
         """
@@ -227,11 +226,14 @@ class MinSKG(SkgInterface):
 
             export_ctr += 1
 
-        store_graph(exports_graph, exportsfilepath)
+        self.__store_graph(exports_graph, exportsfilepath)
 
         logging.info(
             f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")
 
+    def __store_graph(self, graph, exportpath) -> None:
+        with open(exportpath, "w+") as file:
+            file.write(graph.serialize(format="ttl"))
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)

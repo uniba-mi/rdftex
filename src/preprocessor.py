@@ -9,7 +9,6 @@ import time
 from configparser import ConfigParser
 
 import fire
-from pyparsing import ParseException
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
@@ -29,11 +28,11 @@ class Preprocessor:
         self.texdir = self.config["main"]["texdir"]
         self.exportpath = self.config["main"]["exportpath"]
 
-        if self.config["main"]["skg"] == "MinSKG":
-            self.skg_wrapper = MinSKG()
+        if self.config["main"]["exportskg"] == "MinSKG":
+            self.exportskg = MinSKG()
         else:
             raise NotImplementedError(
-                "Currently, only the MinSKG is supported!")
+                "Currently, only the MinSKG is supported for export!")
 
         self.prefixes = {}
         self.exports = {}
@@ -116,18 +115,13 @@ class Preprocessor:
         import_label, citation_key, import_uri, *_ = param_list
 
         try:
-            contribution_data = self.skg_wrapper.get_pred_obj_for_subject(import_uri)
-        except ParseException:
+            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key)
+        except:
             logging.warning(
-                "Error during processing SPARQL query -> Skipping import")
-            processed_lines.append(line)
+                "Error during snippet generation -> Skipping import")
             return
 
-        import_type = contribution_data["https://example.org/scikg/terms/type"]
-        imported_types.add(import_type)
-
-        snippet = generate_snippet(
-            contribution_data, import_label, citation_key)
+        imported_types.add(contribution_type)
         processed_lines.append(snippet)
 
     def __handle_export(self, processed_lines, line) -> None:
@@ -249,6 +243,8 @@ class Preprocessor:
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
+        
+        start_time = time.time()
 
         imported_types = set()
         roottex_path = ""
@@ -277,7 +273,9 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.skg_wrapper.generate_exports_document(self.exports, self.exportpath)
+        self.exportskg.generate_exports_document(self.exports, self.exportpath)
+
+        logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
     def watch(self) -> None:
         """
