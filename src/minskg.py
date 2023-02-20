@@ -12,10 +12,9 @@ from bibtexparser.bparser import BibTexParser
 from pylatexenc.latex2text import LatexNodes2Text
 from rdflib import Graph, Literal, Namespace, URIRef
 
-from utils import store_graph
+from skg_interface import SkgInterface
 
-
-class MinSKG:
+class MinSKG(SkgInterface):
     """
     The class representing the MinSKG that is used to demonstrate RDFtex.
     """
@@ -27,6 +26,9 @@ class MinSKG:
         self.supported_contributions = self.__get_supported_contributions()
 
     def __get_supported_contributions(self):
+        """
+        Returns a dictionary of the supported contribution types and the respectively required predicates.
+        """
         contribution_mapping = {
             "Definition": [self.terms["type"], self.terms["definition_content"]],
             "Dataset": [self.terms["type"], self.terms["dataset_name"], self.terms["dataset_domain"], self.terms["dataset_description"], self.terms["dataset_url"]],
@@ -115,7 +117,7 @@ class MinSKG:
                 scikg.add((contrib2, self.terms["figure_description"], Literal(
                     "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs.")))
                 scikg.add(
-                    (contrib2, self.terms["figure_type"], Literal("pdf")))
+                    (contrib2, self.terms["figure_mime"], Literal("pdf")))
                 scikg.add((contrib2, self.terms["figure_url"], Literal(
                     "./figures/triple_example")))
 
@@ -149,6 +151,8 @@ class MinSKG:
         object tuples is valid.
         """
 
+        valid = True
+
         predicate_object_dict = {tuple[0]: tuple[1] for tuple in tuples}
         export_type = predicate_object_dict["https://example.org/scikg/terms/type"]
 
@@ -159,14 +163,13 @@ class MinSKG:
         if included_predicates != necessary_predicates:
             diff = set(necessary_predicates).difference(
                 set(included_predicates))
-            diffstring = ", ".join(list(diff))
 
             logging.warning(
-                f"Export of {subject} is skipped due to missing predicates: {diffstring}")
+                f"Export of {subject} is skipped due to missing predicates: {', '.join(list(diff))}")
 
-            return False
+            valid = False
 
-        return True
+        return valid
 
     def build(self) -> None:
         """
@@ -177,23 +180,26 @@ class MinSKG:
         parser = BibTexParser(common_strings=False)
         parser.ignore_nonstandard_types = False
 
-        with open("/tex/main.bib") as bibtex_file:
+        with open("/tex/example.bib") as bibtex_file:
             bib_data = bibtexparser.load(bibtex_file, parser)
 
         logging.info("Building MinSKG...")
         self.skg = self.__populate_scikg(bib_data.entries)
 
         logging.info("Storing MinSKG...")
-        store_graph(self.skg, "./minskg.ttl")
+        self.__store_graph(self.skg, "./minskg.ttl")
 
-    def query(self, query: str) -> dict:
+    def get_pred_obj_for_subject(self, subject: str) -> dict:
         """
-        Allows querying the MinSKG.
+        Returns the predicates and objects related to a given subject.
         """
 
-        return self.skg.query(query)
+        result = self.skg.query(f"SELECT ?p ?o WHERE {{<{subject}> ?p ?o .}}")
+        result = {str(entry[0]): str(entry[1]) for entry in result}
 
-    def generate_exports_kg(self, exports: dict, exportsfilepath: str) -> None:
+        return result
+
+    def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
         """
         Generates a knowledge graph based on the exports of the preprocessed publication.
         """
@@ -220,11 +226,14 @@ class MinSKG:
 
             export_ctr += 1
 
-        store_graph(exports_graph, exportsfilepath)
+        self.__store_graph(exports_graph, exportsfilepath)
 
         logging.info(
             f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")
 
+    def __store_graph(self, graph, exportpath) -> None:
+        with open(exportpath, "w+") as file:
+            file.write(graph.serialize(format="ttl"))
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)

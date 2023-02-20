@@ -2,17 +2,37 @@
 
 import re
 import glob
+from pyparsing import ParseException
 from typing import Dict
 
+from minskg import MinSKG
 
-def generate_snippet(contribution_data: Dict, import_label: str, citation_key: str) -> str:
+def generate_snippet(import_uri: str, import_label: str, citation_key: str) -> str:
     """
     Generates a LaTeX snippet based on the specified contribution data, import label,
     and citation key.
     """
 
-    import_type = contribution_data["https://example.org/scikg/terms/type"]
+    # TODO detect to which skg uri belongs
+    importskg = "MinSKG"
 
+    if importskg == "MinSKG":
+        skg_wrapper = MinSKG()
+
+    contribution_data = skg_wrapper.get_pred_obj_for_subject(import_uri)
+
+    print(contribution_data)
+
+    for contribution_type, contribution_props in skg_wrapper.supported_contributions.items():
+        required_props = set([str(prop) for prop in contribution_props])
+        
+        if set(contribution_data.keys()).issubset(required_props):
+            import_type = contribution_type
+            break
+
+    if not import_type:
+        raise Exception("Data of contribution to be imported is incomplete.")
+        
     if import_type == "Dataset":
         snippet = f"""
 \\begin{{dataset}}
@@ -70,7 +90,7 @@ Description: ``{contribution_data["https://example.org/scikg/terms/software_desc
 
     snippet = re.sub(r" {2,}", " ", snippet)
 
-    return snippet
+    return snippet, import_type
 
 
 def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None:
@@ -114,12 +134,3 @@ def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None
         if import_type in custom_envs:
             processed_lines.insert(
                 preamble_end_index, custom_envs[import_type])
-
-
-def store_graph(graph, exportpath) -> None:
-    """
-    Serializes and stores a graph at the specified path.
-    """
-
-    with open(exportpath, "w+") as file:
-        file.write(graph.serialize(format="ttl"))

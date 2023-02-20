@@ -9,7 +9,6 @@ import time
 from configparser import ConfigParser
 
 import fire
-from pyparsing import ParseException
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
@@ -29,19 +28,31 @@ class Preprocessor:
         self.texdir = self.config["main"]["texdir"]
         self.exportpath = self.config["main"]["exportpath"]
 
-        if self.config["main"]["skg"] == "MinSKG":
-            self.skg = MinSKG()
+        if self.config["main"]["exportskg"] == "MinSKG":
+            self.exportskg = MinSKG()
         else:
             raise NotImplementedError(
-                "Currently, only the MinSKG is supported!")
+                "Currently, only the MinSKG is supported for export!")
 
-        self.vocab = {}
+        self.prefixes = {}
         self.exports = {}
 
     def __parse_rdftex_command(self, substring: str) -> list:
         """
         Parses the custom RDFtex commands and returns the parameters.
         """
+
+        def resolve__prefix(string):
+            """
+            Replace parameters in prefix syntax by their full URIs
+            """
+            resolved = string
+
+            for prefix, written_out in self.prefixes.items():
+                if prefix + ":" in string:
+                    resolved = string.replace(prefix + ":", written_out)
+
+            return resolved
 
         param_list = []
         param_range = [0, 0]
@@ -68,27 +79,13 @@ class Preprocessor:
                     if substring[index + 1] != "{":
                         break
 
-        # replace prefxes by full URIs
-        processed_param_list = []
+        resolved_param_list = [resolve__prefix(param) for param in param_list]
 
-        for param in param_list:
-            resolvedparam = self.__resolve__prefix(param)
-            processed_param_list.append(resolvedparam)
-
-        return processed_param_list, index + 1
-
-    def __resolve__prefix(self, string):
-        resolved = string
-
-        for prefix, written_out in self.vocab.items():
-            if prefix + ":" in string:
-                resolved = string.replace(prefix + ":", written_out)
-
-        return resolved
+        return resolved_param_list, index + 1
 
     def __handle_prefix(self, line) -> None:
         """
-        Handles the custom \\rdfprefix command.
+        Handles lines with the custom \\rdfprefix command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -100,11 +97,11 @@ class Preprocessor:
 
         prefix, written_out, *_ = param_list
 
-        self.vocab[prefix] = written_out
+        self.prefixes[prefix] = written_out
 
     def __handle_import(self, processed_lines, imported_types, line) -> None:
         """
-        Handles the custom \\rdfimport command.
+        Handles lines with the custom \\rdfimport command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -118,26 +115,18 @@ class Preprocessor:
         import_label, citation_key, import_uri, *_ = param_list
 
         try:
-            contribution_data = self.skg.query(
-                f"SELECT ?p ?o WHERE {{<{import_uri}> ?p ?o .}}")
-            contribution_data = {str(entry[0]): str(
-                entry[1]) for entry in contribution_data}
-        except ParseException:
+            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key)
+        except:
             logging.warning(
-                "Error during processing SPARQL query -> Skipping import")
-            processed_lines.append(line)
+                "Error during snippet generation -> Skipping import")
             return
 
-        import_type = contribution_data["https://example.org/scikg/terms/type"]
-        imported_types.add(import_type)
-
-        snippet = generate_snippet(
-            contribution_data, import_label, citation_key)
+        imported_types.add(contribution_type)
         processed_lines.append(snippet)
 
     def __handle_export(self, processed_lines, line) -> None:
         """
-        Handles the custom \\rdfexport command.
+        Handles lines with the custom \\rdfexport command.
         """
 
         param_list, _ = self.__parse_rdftex_command(line)
@@ -165,7 +154,7 @@ class Preprocessor:
 
     def __handle_property(self, processed_lines, line) -> None:
         """
-        Handles the custom \\rdfproperty command.
+        Handles lines with the custom \\rdfproperty command.
         """
 
         processed_line = ""
@@ -194,12 +183,7 @@ class Preprocessor:
                 parsing_successful = False
                 break
 
-            if export_name in self.exports:
-                self.exports[export_name].append(
-                    (export_predicate, export_object))
-            else:
-                self.exports[export_name] = [
-                    (export_predicate, export_object)]
+            self.exports.setdefault(export_name, []).append((export_predicate, export_object))
 
             processed_line += line[lastcommandendindex:
                                    commandstartindex] + export_object
@@ -222,31 +206,31 @@ class Preprocessor:
         with open(rdftexpath, "r") as file:
             for linenumber, line in enumerate(file):
                 if "\\begin{document}" in line:
-                    # store preamble end index for potential insertion of custom environments
+                    # store preamble end index for insertion of custom environments if needed
                     preamble_end_index = len(processed_lines)
 
                 if re.search(r"(?<! )\\rdfprefix", line):
                     logging.info(
-                        f"Handling rdf vocab command in line {linenumber}...")
+                        f"Handling rdfprefix command in line {linenumber}...")
 
                     self.__handle_prefix(line)
 
                 elif re.search(r"(?<! )\\rdfimport", line):
                     logging.info(
-                        f"Handling rdf import command in line {linenumber}...")
+                        f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
                         processed_lines, imported_types, line)
 
                 elif re.search(r"(?<! )\\rdfexport", line):
                     logging.info(
-                        f"Handling rdf export command in line {linenumber}...")
+                        f"Handling rdfexport command in line {linenumber}...")
 
                     self.__handle_export(processed_lines, line)
 
                 elif re.search(r"\\rdfproperty", line):
                     logging.info(
-                        f"Handling rdf property command(s) in line {linenumber}...")
+                        f"Handling rdfproperty command(s) in line {linenumber}...")
 
                     self.__handle_property(processed_lines, line)
 
@@ -259,6 +243,8 @@ class Preprocessor:
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
+        
+        start_time = time.time()
 
         imported_types = set()
         roottex_path = ""
@@ -287,11 +273,13 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.skg.generate_exports_kg(self.exports, self.exportpath)
+        self.exportskg.generate_exports_document(self.exports, self.exportpath)
+
+        logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
     def watch(self) -> None:
         """
-        Issues the preprocessing when there changes made to the .rdf.tex files in the specified
+        Issues the preprocessing if changes are made to the .rdf.tex files in the specified
         project directory. Note that this only works on Linux properly
         (s. https://william-yeh.net/post/2019/06/inotify-in-containers/).
         """
