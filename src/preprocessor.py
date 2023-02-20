@@ -92,7 +92,7 @@ class Preprocessor:
 
         if len(param_list) != 2:
             logging.warning(
-                f"RDFtex prefix commands require 2 parameters (got {len(param_list)}) -> Skipping")
+                f"RDFtex prefix commands require 2 parameters (got {len(param_list)}) -> Skipping prefix")
             return
 
         prefix, written_out, *_ = param_list
@@ -176,7 +176,7 @@ class Preprocessor:
 
             export_name, export_predicate, export_object, *_ = param_list
 
-            # This workaround is only necessary for the RDFtex paper and can be removed later
+            # FIXME This workaround is only necessary for the RDFtex papers and can be removed later
             if export_object == "<object>":
                 logging.warning(
                     f"Found <object> as export_object (RDFtex workaround) -> Skipping")
