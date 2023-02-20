@@ -18,6 +18,12 @@ class SkgInterface:
         """
         pass
 
+    def __store_graph(self, graph, exportpath) -> None:
+        """
+        Serializes and stores a graph at the specified path.
+        """
+        pass
+            
     def get_pred_obj_for_subject(self, subject: str) -> dict:
         """
         Returns the predicates and objects related to a given subject.

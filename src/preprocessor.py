@@ -9,7 +9,6 @@ import time
 from configparser import ConfigParser
 
 import fire
-from pyparsing import ParseException
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
@@ -29,13 +28,13 @@ class Preprocessor:
         self.texdir = self.config["main"]["texdir"]
         self.exportpath = self.config["main"]["exportpath"]
 
-        if self.config["main"]["skg"] == "MinSKG":
-            self.skg_wrapper = MinSKG()
+        if self.config["main"]["exportskg"] == "MinSKG":
+            self.exportskg = MinSKG()
         else:
             raise NotImplementedError(
-                "Currently, only the MinSKG is supported!")
+                "Currently, only the MinSKG is supported for export!")
 
-        self.vocab = {}
+        self.prefixes = {}
         self.exports = {}
 
     def __parse_rdftex_command(self, substring: str) -> list:
@@ -49,7 +48,7 @@ class Preprocessor:
             """
             resolved = string
 
-            for prefix, written_out in self.vocab.items():
+            for prefix, written_out in self.prefixes.items():
                 if prefix + ":" in string:
                     resolved = string.replace(prefix + ":", written_out)
 
@@ -98,7 +97,7 @@ class Preprocessor:
 
         prefix, written_out, *_ = param_list
 
-        self.vocab[prefix] = written_out
+        self.prefixes[prefix] = written_out
 
     def __handle_import(self, processed_lines, imported_types, line) -> None:
         """
@@ -107,27 +106,22 @@ class Preprocessor:
 
         param_list, _ = self.__parse_rdftex_command(line)
 
-        if len(param_list) != 3:
+        if len(param_list) != 4:
             logging.warning(
-                f"RDFtex import commands require 3 parameters (got {len(param_list)}) -> Skipping import")
+                f"RDFtex import commands require 4 parameters (got {len(param_list)}) -> Skipping import")
             processed_lines.append(line)
             return
 
-        import_label, citation_key, import_uri, *_ = param_list
+        import_label, citation_key, import_uri, target_skg, *_ = param_list
 
         try:
-            contribution_data = self.skg_wrapper.get_pred_obj_for_subject(import_uri)
-        except ParseException:
+            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key, target_skg)
+        except:
             logging.warning(
-                "Error during processing SPARQL query -> Skipping import")
-            processed_lines.append(line)
+                "Error during snippet generation -> Skipping import")
             return
 
-        import_type = contribution_data["https://example.org/scikg/terms/type"]
-        imported_types.add(import_type)
-
-        snippet = generate_snippet(
-            contribution_data, import_label, citation_key)
+        imported_types.add(contribution_type)
         processed_lines.append(snippet)
 
     def __handle_export(self, processed_lines, line) -> None:
@@ -217,26 +211,26 @@ class Preprocessor:
 
                 if re.search(r"(?<! )\\rdfprefix", line):
                     logging.info(
-                        f"Handling rdf vocab command in line {linenumber}...")
+                        f"Handling rdfprefix command in line {linenumber}...")
 
                     self.__handle_prefix(line)
 
                 elif re.search(r"(?<! )\\rdfimport", line):
                     logging.info(
-                        f"Handling rdf import command in line {linenumber}...")
+                        f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
                         processed_lines, imported_types, line)
 
                 elif re.search(r"(?<! )\\rdfexport", line):
                     logging.info(
-                        f"Handling rdf export command in line {linenumber}...")
+                        f"Handling rdfexport command in line {linenumber}...")
 
                     self.__handle_export(processed_lines, line)
 
                 elif re.search(r"\\rdfproperty", line):
                     logging.info(
-                        f"Handling rdf property command(s) in line {linenumber}...")
+                        f"Handling rdfproperty command(s) in line {linenumber}...")
 
                     self.__handle_property(processed_lines, line)
 
@@ -249,6 +243,8 @@ class Preprocessor:
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
+        
+        start_time = time.time()
 
         imported_types = set()
         roottex_path = ""
@@ -277,7 +273,9 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.skg_wrapper.generate_exports_document(self.exports, self.exportpath)
+        self.exportskg.generate_exports_document(self.exports, self.exportpath)
+
+        logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
     def watch(self) -> None:
         """

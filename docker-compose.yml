@@ -17,6 +17,6 @@ services:
   latexmk:
     image: texlive/texlive:latest
     container_name: tex
-    volumes: 
+    volumes:
       - ./tex:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
