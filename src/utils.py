@@ -7,22 +7,20 @@ from typing import Dict
 
 from minskg import MinSKG
 
-def generate_snippet(import_uri: str, import_label: str, citation_key: str) -> str:
+def generate_snippet(import_uri: str, import_label: str, citation_key: str, target_skg: str) -> str:
     """
     Generates a LaTeX snippet based on the specified contribution data, import label,
     and citation key.
     """
 
-    # TODO detect to which skg uri belongs
-    importskg = "MinSKG"
-
-    if importskg == "MinSKG":
+    if target_skg == "MinSKG":
         skg_wrapper = MinSKG()
 
+    else:
+        raise NotImplementedError("Only the MinSKG is currently supported for importing contributions.")
+
     contribution_data = skg_wrapper.get_pred_obj_for_subject(import_uri)
-
-    print(contribution_data)
-
+    
     for contribution_type, contribution_props in skg_wrapper.supported_contributions.items():
         required_props = set([str(prop) for prop in contribution_props])
         

@@ -106,16 +106,16 @@ class Preprocessor:
 
         param_list, _ = self.__parse_rdftex_command(line)
 
-        if len(param_list) != 3:
+        if len(param_list) != 4:
             logging.warning(
-                f"RDFtex import commands require 3 parameters (got {len(param_list)}) -> Skipping import")
+                f"RDFtex import commands require 4 parameters (got {len(param_list)}) -> Skipping import")
             processed_lines.append(line)
             return
 
-        import_label, citation_key, import_uri, *_ = param_list
+        import_label, citation_key, import_uri, target_skg, *_ = param_list
 
         try:
-            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key)
+            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key, target_skg)
         except:
             logging.warning(
                 "Error during snippet generation -> Skipping import")

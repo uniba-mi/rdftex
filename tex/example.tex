@@ -11,19 +11,19 @@
 
 \usepackage[export]{adjustbox}
 
-\newcounter{dataset}[section]
-\newenvironment{dataset}[1][]{\refstepcounter{dataset}\par\medskip
-\textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
-
-\crefname{dataset}{Dataset}{Datasets}  
-\Crefname{dataset}{Dataset}{Datasets}
-
 \newcounter{software}[section]
 \newenvironment{software}[1][]{\refstepcounter{software}\par\medskip
 \textbf{Software~\thedataset. #1} \rmfamily}{\medskip}
 
 \crefname{software}{Software}{Software}  
 \Crefname{software}{Software}{Software}
+
+\newcounter{dataset}[section]
+\newenvironment{dataset}[1][]{\refstepcounter{dataset}\par\medskip
+\textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
+
+\crefname{dataset}{Dataset}{Datasets}  
+\Crefname{dataset}{Dataset}{Datasets}
 \begin{document}
 \maketitle
 
