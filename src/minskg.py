@@ -189,7 +189,7 @@ class MinSKG(SkgInterface):
         logging.info("Storing MinSKG...")
         self.__store_graph(self.skg, "./minskg.ttl")
 
-    def get_pred_obj_for_subject(self, subject: str) -> dict:
+    def get_subgraph_for_subject(self, subject: str) -> dict:
         """
         Returns the subgraph where the specified subject is the root node.
         """
@@ -199,20 +199,24 @@ class MinSKG(SkgInterface):
 
         construct {{?s ?p ?o}}
         where {{
-          {subject} (x:|!x:)* ?s .
+          <{subject}> (x:|!x:)* ?s .
           ?s ?p ?o .
         }}
         """
-        print(query)
 
         result = self.skg.query(query)
+        triples = list({(str(s), str(p), str(o)) for s, p, o in result})
 
-        
-        result = {str(entry[0]): str(entry[1]) for entry in result}
-        print(result)
-        exit()
+        import_triples = list(filter(lambda x: x[1] == "https://example.org/scikg/terms/type", triples))
 
-        return result
+        if len(import_triples) >= 1:
+            import_type = import_triples[0][2]
+        else:
+            import_type = None
+
+        contribution_data = {triple[1]: triple[2] for triple in triples}
+
+        return import_type, contribution_data
 
     def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
         """

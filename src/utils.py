@@ -19,15 +19,8 @@ def generate_snippet(import_uri: str, import_label: str, citation_key: str, targ
     else:
         raise NotImplementedError("Only the MinSKG is currently supported for importing contributions.")
 
-    contribution_data = skg_wrapper.get_pred_obj_for_subject(import_uri)
+    import_type, contribution_data = skg_wrapper.get_subgraph_for_subject(import_uri)
     
-    for contribution_type, contribution_props in skg_wrapper.supported_contributions.items():
-        required_props = set([str(prop) for prop in contribution_props])
-        
-        if set(contribution_data.keys()).issubset(required_props):
-            import_type = contribution_type
-            break
-
     if not import_type:
         raise Exception("Data of contribution to be imported is incomplete.")
         
