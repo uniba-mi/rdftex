@@ -191,11 +191,26 @@ class MinSKG(SkgInterface):
 
     def get_pred_obj_for_subject(self, subject: str) -> dict:
         """
-        Returns the predicates and objects related to a given subject.
+        Returns the subgraph where the specified subject is the root node.
         """
 
-        result = self.skg.query(f"SELECT ?p ?o WHERE {{<{subject}> ?p ?o .}}")
+        query = """
+        prefix x: <>
+
+        construct {?s ?p ?o}
+        where {
+          <contrib-iri> (x:|!x:)* ?s .
+          ?s ?p ?o .
+        }
+        """
+        print(query)
+
+        result = self.skg.query(query)
+
+        
         result = {str(entry[0]): str(entry[1]) for entry in result}
+        print(result)
+        exit()
 
         return result
 
