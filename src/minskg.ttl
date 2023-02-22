@@ -33,6 +33,7 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ns1:dataset_description "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts." ;
     ns1:dataset_domain "Artificial Intelligence" ;
     ns1:dataset_name "SciERC" ;
+    ns1:dataset_url <https://paperswithcode.com/dataset/scierc> ;
     ns1:type "Dataset" .
 
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> ns1:has_author <https://example.org/scikg/authors/Hannaneh_Hajishirzi>,

@@ -5,6 +5,7 @@
 import logging
 import re
 import uuid
+import glob
 
 import bibtexparser
 import fire
@@ -99,6 +100,7 @@ class MinSKG(SkgInterface):
                            Literal("Artificial Intelligence")))
                 scikg.add((contrib1, self.terms["dataset_description"], Literal(
                     "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts.")))
+                scikg.add((contrib1, self.terms["dataset_url"], URIRef("https://paperswithcode.com/dataset/scierc")))
 
             elif pub == self.publ["Martin21"]:
                 contrib1 = self.publ[f"{entry['ID']}/contrib1"]
@@ -189,7 +191,7 @@ class MinSKG(SkgInterface):
         logging.info("Storing MinSKG...")
         self.__store_graph(self.skg, "./minskg.ttl")
 
-    def get_subgraph_for_subject(self, subject: str) -> dict:
+    def get_subgraph_for_subject(self, subject: str) -> str:
         """
         Returns the subgraph where the specified subject is the root node.
         """
@@ -249,6 +251,77 @@ class MinSKG(SkgInterface):
 
         logging.info(
             f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")
+
+    def generate_snippet(self, import_label, citation_key, import_type, contribution_data) -> str:
+        """
+        Returns the content snippet.
+        """
+
+        required_props = [str(prop) for prop in self.supported_contributions[import_type]]
+
+        if not set(required_props).issubset(contribution_data.keys()):
+            print(set(required_props))
+            print(contribution_data.keys())
+            raise Exception("Data of contribution to be imported is incomplete.")
+
+        if import_type == "Dataset":
+            snippet = f"""
+    \\begin{{dataset}}
+    {contribution_data["https://example.org/scikg/terms/dataset_name"]}~\\cite{{{citation_key}}}\\\\
+    Available at: \\url{{{contribution_data["https://example.org/scikg/terms/dataset_url"]}}}\\\\
+    Domain: {contribution_data["https://example.org/scikg/terms/dataset_domain"]}\\\\
+    Description: ``{contribution_data["https://example.org/scikg/terms/dataset_description"]}"~\\cite{{{citation_key}}}
+    \\label{{{import_label}}}
+    \\end{{dataset}}
+    """
+
+        elif import_type == "Definition":
+            snippet = f"""
+    \\begin{{definition}}
+    \\label{{{import_label}}}
+    {contribution_data["https://example.org/scikg/terms/definition_content"]}\\normalfont{{~\\cite{{{citation_key}}}}}
+    \\end{{definition}}
+    """
+
+        elif import_type == "ExpResult":
+            snippet = f"""
+    \\begin{{figure}}[htb!]
+    \\centering
+    \\includegraphics[width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
+    \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
+    \\label{{{import_label}}}
+    \\end{{figure}}
+    """
+
+        elif import_type == "Figure":
+            figurepath = "/tex/" + \
+                contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
+
+            if not glob.glob(figurepath):
+                raise NotImplementedError(
+                    "Currently only the import of locally stored figures is supported!")
+
+            snippet = f"""
+    \\begin{{figure}}[htb!]
+    \\centering
+    \\includegraphics[max width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
+    \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
+    \\label{{{import_label}}}
+    \\end{{figure}}
+    """
+
+        elif import_type == "Software":
+            snippet = f"""
+    \\begin{{software}}
+    {contribution_data["https://example.org/scikg/terms/software_name"]}~\\cite{{{citation_key}}}\\\\
+    Available at: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
+    Description: ``{contribution_data["https://example.org/scikg/terms/software_description"]}"~\\cite{{{citation_key}}}
+    \\label{{{import_label}}}
+    \\end{{software}}
+    """
+        snippet = re.sub(r" {2,}", " ", snippet)
+
+        return snippet
 
     def __store_graph(self, graph, exportpath) -> None:
         with open(exportpath, "w+") as file:

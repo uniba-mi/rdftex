@@ -1,10 +1,4 @@
 """Utility module for common tasks."""
-
-import re
-import glob
-from pyparsing import ParseException
-from typing import Dict
-
 from minskg import MinSKG
 
 def generate_snippet(import_uri: str, import_label: str, citation_key: str, target_skg: str) -> str:
@@ -22,64 +16,9 @@ def generate_snippet(import_uri: str, import_label: str, citation_key: str, targ
     import_type, contribution_data = skg_wrapper.get_subgraph_for_subject(import_uri)
     
     if not import_type:
-        raise Exception("Data of contribution to be imported is incomplete.")
-        
-    if import_type == "Dataset":
-        snippet = f"""
-\\begin{{dataset}}
-{contribution_data["https://example.org/scikg/terms/dataset_name"]}~\\cite{{{citation_key}}}\\\\
-Domain: {contribution_data["https://example.org/scikg/terms/dataset_domain"]}\\\\
-Description: ``{contribution_data["https://example.org/scikg/terms/dataset_description"]}"~\\cite{{{citation_key}}}
-\\label{{{import_label}}}
-\\end{{dataset}}
-"""
+        raise Exception("Data of contribution lacks type information.")
 
-    elif import_type == "Definition":
-        snippet = f"""
-\\begin{{definition}}
-\\label{{{import_label}}}
-{contribution_data["https://example.org/scikg/terms/definition_content"]}\\normalfont{{~\\cite{{{citation_key}}}}}
-\\end{{definition}}
-"""
-
-    elif import_type == "ExpResult":
-        snippet = f"""
-\\begin{{figure}}[htb!]
-\\centering
-\\includegraphics[width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
-\\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
-\\label{{{import_label}}}
-\\end{{figure}}
-"""
-
-    elif import_type == "Figure":
-        figurepath = "/tex/" + \
-            contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
-
-        if not glob.glob(figurepath):
-            raise NotImplementedError(
-                "Currently only the import of locally stored figures is supported!")
-
-        snippet = f"""
-\\begin{{figure}}[htb!]
-\\centering
-\\includegraphics[max width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
-\\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
-\\label{{{import_label}}}
-\\end{{figure}}
-"""
-
-    elif import_type == "Software":
-        snippet = f"""
-\\begin{{software}}
-{contribution_data["https://example.org/scikg/terms/software_name"]}~\\cite{{{citation_key}}}\\\\
-Available at: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
-Description: ``{contribution_data["https://example.org/scikg/terms/software_description"]}"~\\cite{{{citation_key}}}
-\\label{{{import_label}}}
-\\end{{software}}
-"""
-
-    snippet = re.sub(r" {2,}", " ", snippet)
+    snippet = skg_wrapper.generate_snippet(import_label, citation_key, import_type, contribution_data)
 
     return snippet, import_type
 

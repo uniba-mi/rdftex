@@ -24,9 +24,15 @@ class SkgInterface:
         """
         pass
             
-    def get_pred_obj_for_subject(self, subject: str) -> dict:
+    def get_subgraph_for_subject(self, subject: str) -> dict:
         """
-        Returns the predicates and objects related to a given subject.
+        Returns the subgraph where the specified subject is the root node.
+        """
+        pass
+
+    def generate_snippet(self, import_label, citation_key, import_type, contribution_data) -> str:
+        """
+        Returns the content snippet.
         """
         pass
 
