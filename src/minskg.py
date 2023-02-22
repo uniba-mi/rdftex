@@ -194,14 +194,14 @@ class MinSKG(SkgInterface):
         Returns the subgraph where the specified subject is the root node.
         """
 
-        query = """
-        prefix x: <>
+        query = f"""
+        prefix x: <urn:ex:>
 
-        construct {?s ?p ?o}
-        where {
-          <contrib-iri> (x:|!x:)* ?s .
+        construct {{?s ?p ?o}}
+        where {{
+          {subject} (x:|!x:)* ?s .
           ?s ?p ?o .
-        }
+        }}
         """
         print(query)
 
