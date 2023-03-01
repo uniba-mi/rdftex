@@ -51,7 +51,7 @@ def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None
     software_env = """
 \\newcounter{software}[section]
 \\newenvironment{software}[1][]{\\refstepcounter{software}\\par\\medskip
-\\textbf{Software~\\thedataset. #1} \\rmfamily}{\\medskip}
+\\textbf{Software~\\thesoftware. #1} \\rmfamily}{\\medskip}
 
 \\crefname{software}{Software}{Software}  
 \\Crefname{software}{Software}{Software}

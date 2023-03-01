@@ -3,20 +3,20 @@ version: "3"
 services:
   rdftex:
     build: ./src
-    container_name: python
+    container_name: rdftex
     volumes:
       - ./src:/src
       - ./tex:/tex
   rdftex-watch:
     build: ./src
-    container_name: python
+    container_name: rdftex
     volumes:
       - ./src:/src
       - ./tex:/tex
     entrypoint: ./preprocessor.py watch
   latexmk:
     image: texlive/texlive:latest
-    container_name: tex
+    container_name: latexmk
     volumes:
       - ./tex:/tex
     entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex

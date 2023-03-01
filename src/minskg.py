@@ -266,6 +266,7 @@ class MinSKG(SkgInterface):
 
         if import_type == "Dataset":
             snippet = f"""
+    % RDFtex Dataset Import Start
     \\begin{{dataset}}
     {contribution_data["https://example.org/scikg/terms/dataset_name"]}~\\cite{{{citation_key}}}\\\\
     Available at: \\url{{{contribution_data["https://example.org/scikg/terms/dataset_url"]}}}\\\\
@@ -273,24 +274,29 @@ class MinSKG(SkgInterface):
     Description: ``{contribution_data["https://example.org/scikg/terms/dataset_description"]}"~\\cite{{{citation_key}}}
     \\label{{{import_label}}}
     \\end{{dataset}}
+    % RDFtex Dataset Import End
     """
 
         elif import_type == "Definition":
             snippet = f"""
+    % RDFtex Definition Import Start
     \\begin{{definition}}
     \\label{{{import_label}}}
     {contribution_data["https://example.org/scikg/terms/definition_content"]}\\normalfont{{~\\cite{{{citation_key}}}}}
     \\end{{definition}}
+    % RDFtex Definition Import End
     """
 
         elif import_type == "ExpResult":
             snippet = f"""
+    % RDFtex ExpResult Import Start
     \\begin{{figure}}[htb!]
     \\centering
     \\includegraphics[width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
     \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
     \\label{{{import_label}}}
     \\end{{figure}}
+    % RDFtex ExpResult Import End
     """
 
         elif import_type == "Figure":
@@ -302,22 +308,26 @@ class MinSKG(SkgInterface):
                     "Currently only the import of locally stored figures is supported!")
 
             snippet = f"""
+    % RDFtex Figure Import Start
     \\begin{{figure}}[htb!]
     \\centering
     \\includegraphics[max width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
     \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
     \\label{{{import_label}}}
     \\end{{figure}}
+    % RDFtex Figure Import End
     """
 
         elif import_type == "Software":
             snippet = f"""
+    % RDFtex Software Import Start
     \\begin{{software}}
     {contribution_data["https://example.org/scikg/terms/software_name"]}~\\cite{{{citation_key}}}\\\\
     Available at: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
     Description: ``{contribution_data["https://example.org/scikg/terms/software_description"]}"~\\cite{{{citation_key}}}
     \\label{{{import_label}}}
     \\end{{software}}
+    % RDFtex Software Import End
     """
         snippet = re.sub(r" {2,}", " ", snippet)
 
