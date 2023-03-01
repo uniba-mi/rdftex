@@ -195,7 +195,7 @@ class Preprocessor:
         else:
             processed_lines.append(line)
 
-    def __preprocess_file(self, rdftexpath, imported_types) -> None:
+    def __preprocess_file(self, rdftexpath, imported_types, make_imports, make_exports) -> None:
         """
         Scans files for custom RDFtex commands and issues their processing.
         """
@@ -215,20 +215,20 @@ class Preprocessor:
 
                     self.__handle_prefix(line)
 
-                elif re.search(r"(?<! )\\rdfimport", line):
+                elif re.search(r"(?<! )\\rdfimport", line) and make_imports:
                     logging.info(
                         f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
                         processed_lines, imported_types, line)
 
-                elif re.search(r"(?<! )\\rdfexport", line):
+                elif re.search(r"(?<! )\\rdfexport", line) and make_exports:
                     logging.info(
                         f"Handling rdfexport command in line {linenumber}...")
 
                     self.__handle_export(processed_lines, line)
 
-                elif re.search(r"\\rdfproperty", line):
+                elif re.search(r"\\rdfproperty", line)  and make_exports:
                     logging.info(
                         f"Handling rdfproperty command(s) in line {linenumber}...")
 
@@ -239,7 +239,7 @@ class Preprocessor:
 
         return preamble_end_index, processed_lines
 
-    def run(self):
+    def run(self, make_imports=True, make_exports=True):
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
@@ -253,7 +253,7 @@ class Preprocessor:
 
         for rdftexpath in glob.glob(f"{self.texdir}*.rdf.tex"):
             logging.info(f"Preprocessing {rdftexpath}...")
-            preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types)
+            preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types, make_imports, make_exports)
 
             if preamble_end_index != -1:
                 logging.info(f"Identified {rdftexpath} as root file...")
