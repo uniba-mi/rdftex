@@ -12,7 +12,9 @@ from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
 from constants import TEX_DIR
-from utils import get_custom_envs, generate_snippet, generate_exports_rdf_document
+from scikg_adapter import (generate_exports_rdf_document, generate_snippet,
+                           get_custom_envs)
+
 
 class Preprocessor:
     """

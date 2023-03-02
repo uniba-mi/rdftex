@@ -5,7 +5,6 @@
 import logging
 import re
 import uuid
-import glob
 
 import bibtexparser
 import fire
@@ -13,9 +12,10 @@ from bibtexparser.bparser import BibTexParser
 from pylatexenc.latex2text import LatexNodes2Text
 from rdflib import Graph, Literal, Namespace, URIRef
 
-from skg_interface import SkgInterface
+from scikg_interface import SciKGInterface
 
-class MinSKG(SkgInterface):
+
+class MinSKG(SciKGInterface):
     """
     The class representing the MinSKG that is used to demonstrate RDFtex.
     """
@@ -222,7 +222,7 @@ class MinSKG(SkgInterface):
 
     def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
         """
-        Generates a knowledge graph based on the exports of the preprocessed publication.
+        Generates exports RDF document based on the exports of the preprocessed publication.
         """
 
         exports = dict(

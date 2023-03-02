@@ -1,31 +1,31 @@
 @prefix ns1: <https://example.org/scikg/terms/> .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291> ns1:has_contribution <https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib0>,
-        <https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib1>,
-        <https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib2>,
-        <https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib3>,
-        <https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib4> .
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59> ns1:has_contribution <https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib0>,
+        <https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib1>,
+        <https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib2>,
+        <https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib3>,
+        <https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib4> .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib0> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib0> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
     ns1:type "Definition" .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib1> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib1> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
     ns1:dataset_domain "Noipping" ;
     ns1:dataset_name "noipperbase" ;
     ns1:dataset_url "https://example.org/datasets/noipperbase" ;
     ns1:type "Dataset" .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib2> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib2> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
     ns1:expresult_result "0.123 seconds" ;
     ns1:expresult_samplesize "100000000" ;
     ns1:type "ExpResult" .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib3> ns1:figure_description "A diagram showing the function of a noipper." ;
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib3> ns1:figure_description "A diagram showing the function of a noipper." ;
     ns1:figure_mime "application/pdf" ;
     ns1:figure_url "./figures/noipper_function" ;
     ns1:type "Figure" .
 
-<https://example.org/scikg/publications/NEW/d2e2b4d8044a450b94b66204e3ba2291/contrib4> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+<https://example.org/scikg/publications/NEW/d8b8ed8835854d81bd12d6a41647de59/contrib4> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
     ns1:software_name "neippingviz" ;
     ns1:software_url "https://example.org/software/neippingviz-repo" ;
     ns1:type "Software" .

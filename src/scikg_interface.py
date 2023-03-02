@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-class SkgInterface:
+class SciKGInterface:
     """
     The SciKG interface.
     """
