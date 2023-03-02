@@ -1,5 +1,6 @@
 """Utility module for common tasks."""
 from minskg import MinSKG
+from constants import EXPORTS_SCIKG, EXPORTS_RDF_DOCUMENT_PATH
 
 def generate_snippet(import_uri: str, import_label: str, citation_key: str, target_skg: str) -> str:
     """
@@ -9,7 +10,6 @@ def generate_snippet(import_uri: str, import_label: str, citation_key: str, targ
 
     if target_skg == "MinSKG":
         skg_wrapper = MinSKG()
-
     else:
         raise NotImplementedError("Only the MinSKG is currently supported for importing contributions.")
 
@@ -23,44 +23,24 @@ def generate_snippet(import_uri: str, import_label: str, citation_key: str, targ
     return snippet, import_type
 
 
-def add_custom_envs(processed_lines, preamble_end_index, imported_types) -> None:
-    """
-    Adds custom environments to the LaTeX project if necessary based on the types
-    of the imported contributions.
-    """
+def get_custom_envs(imported_types, target_skg):
+    if target_skg == "MinSKG":
+        skg_wrapper = MinSKG()
+    else:
+        raise NotImplementedError("Only the MinSKG is currently supported for importing contributions.")
+    
+    custom_envs = skg_wrapper.get_custom_envs()
+    required_custom_envs = {key: custom_envs[key] for key in imported_types if key in custom_envs}
 
-    dataset_env = """
-\\newcounter{dataset}[section]
-\\newenvironment{dataset}[1][]{\\refstepcounter{dataset}\\par\\medskip
-\\textbf{Dataset~\\thedataset. #1} \\rmfamily}{\\medskip}
+    return required_custom_envs
 
-\\crefname{dataset}{Dataset}{Datasets}  
-\\Crefname{dataset}{Dataset}{Datasets}
-"""
+            
+def generate_exports_rdf_document(exports):
 
-    expresult_env = """
-\\newcounter{expresult}[section]
-\\newenvironment{expresult}[1][]{\\refstepcounter{expresult}\\par\\medskip
-\\textit{Experimental Result~\\thedataset. #1} \\rmfamily}{\\medskip}
-"""
+    if EXPORTS_SCIKG == "MinSKG":
+        skg_wrapper = MinSKG()
+    else:
+        raise NotImplementedError("Only the MinSKG is currently supported for importing contributions.")
+    
+    skg_wrapper.generate_exports_document(exports, EXPORTS_RDF_DOCUMENT_PATH)
 
-    figure_env = """
-\\usepackage[export]{adjustbox}
-"""
-
-    software_env = """
-\\newcounter{software}[section]
-\\newenvironment{software}[1][]{\\refstepcounter{software}\\par\\medskip
-\\textbf{Software~\\thesoftware. #1} \\rmfamily}{\\medskip}
-
-\\crefname{software}{Software}{Software}  
-\\Crefname{software}{Software}{Software}
-"""
-
-    custom_envs = {"Dataset": dataset_env, "ExpResult": expresult_env,
-                   "Figure": figure_env, "Software": software_env}
-
-    for import_type in imported_types:
-        if import_type in custom_envs:
-            processed_lines.insert(
-                preamble_end_index, custom_envs[import_type])

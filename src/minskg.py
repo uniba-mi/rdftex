@@ -121,7 +121,7 @@ class MinSKG(SkgInterface):
                 scikg.add(
                     (contrib2, self.terms["figure_mime"], Literal("pdf")))
                 scikg.add((contrib2, self.terms["figure_url"], Literal(
-                    "./figures/triple_example")))
+                    "./tex/example/figures/triple_example")))
 
             elif pub == self.publ["DBLP:journals/corr/abs-1809-06532"]:
                 contrib1 = self.publ[f"{entry['ID']}/contrib1"]
@@ -182,7 +182,7 @@ class MinSKG(SkgInterface):
         parser = BibTexParser(common_strings=False)
         parser.ignore_nonstandard_types = False
 
-        with open("/tex/example.bib") as bibtex_file:
+        with open("/tex/example/example.bib") as bibtex_file:
             bib_data = bibtexparser.load(bibtex_file, parser)
 
         logging.info("Building MinSKG...")
@@ -300,13 +300,6 @@ class MinSKG(SkgInterface):
     """
 
         elif import_type == "Figure":
-            figurepath = "/tex/" + \
-                contribution_data["https://example.org/scikg/terms/figure_url"] + ".*"
-
-            if not glob.glob(figurepath):
-                raise NotImplementedError(
-                    "Currently only the import of locally stored figures is supported!")
-
             snippet = f"""
     % RDFtex Figure Import Start
     \\begin{{figure}}[htb!]
@@ -330,8 +323,45 @@ class MinSKG(SkgInterface):
     % RDFtex Software Import End
     """
         snippet = re.sub(r" {2,}", " ", snippet)
+        snippet = snippet.strip()
 
         return snippet
+    
+    def get_custom_envs(self) -> dict:
+        """
+        Returns the custom LaTeX environments used for the snippets.
+        """
+
+        dataset_env = """
+    \\newcounter{dataset}[section]
+    \\newenvironment{dataset}[1][]{\\refstepcounter{dataset}\\par\\medskip
+    \\textbf{Dataset~\\thedataset. #1} \\rmfamily}{\\medskip}
+
+    \\crefname{dataset}{Dataset}{Datasets}  
+    \\Crefname{dataset}{Dataset}{Datasets}
+    """
+
+        expresult_env = """
+    \\newcounter{expresult}[section]
+    \\newenvironment{expresult}[1][]{\\refstepcounter{expresult}\\par\\medskip
+    \\textit{Experimental Result~\\thedataset. #1} \\rmfamily}{\\medskip}
+    """
+
+        figure_env = """
+    \\usepackage[export]{adjustbox}
+    """
+
+        software_env = """
+    \\newcounter{software}[section]
+    \\newenvironment{software}[1][]{\\refstepcounter{software}\\par\\medskip
+    \\textbf{Software~\\thesoftware. #1} \\rmfamily}{\\medskip}
+
+    \\crefname{software}{Software}{Software}  
+    \\Crefname{software}{Software}{Software}
+    """
+
+        return {"Dataset": dataset_env, "ExpResult": expresult_env,
+                    "Figure": figure_env, "Software": software_env}
 
     def __store_graph(self, graph, exportpath) -> None:
         with open(exportpath, "w+") as file:

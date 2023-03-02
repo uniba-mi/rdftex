@@ -6,15 +6,13 @@ import glob
 import logging
 import re
 import time
-from configparser import ConfigParser
 
 import fire
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
-from minskg import MinSKG
-from utils import add_custom_envs, generate_snippet
-
+from constants import TEX_DIR
+from utils import get_custom_envs, generate_snippet, generate_exports_rdf_document
 
 class Preprocessor:
     """
@@ -22,18 +20,6 @@ class Preprocessor:
     """
 
     def __init__(self) -> None:
-        self.config = ConfigParser()
-        self.config.read("config.ini")
-
-        self.texdir = self.config["main"]["texdir"]
-        self.exportpath = self.config["main"]["exportpath"]
-
-        if self.config["main"]["exportskg"] == "MinSKG":
-            self.exportskg = MinSKG()
-        else:
-            raise NotImplementedError(
-                "Currently, only the MinSKG is supported for export!")
-
         self.prefixes = {}
         self.exports = {}
 
@@ -99,11 +85,14 @@ class Preprocessor:
 
         self.prefixes[prefix] = written_out
 
-    def __handle_import(self, processed_lines, imported_types, line) -> None:
+    def __handle_import(self, processed_lines, imported_types, line, make_imports) -> None:
         """
         Handles lines with the custom \\rdfimport command.
         """
 
+        if not make_imports:
+            return
+        
         param_list, _ = self.__parse_rdftex_command(line)
 
         if len(param_list) != 4:
@@ -116,18 +105,21 @@ class Preprocessor:
 
         try:
             snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key, target_skg)
-        except:
+        except Exception as e:
             logging.warning(
-                "Error during snippet generation -> Skipping import")
+                f"Skipping import due to error during snippet generation: {e}")
             return
 
         imported_types.add(contribution_type)
         processed_lines.append(snippet)
 
-    def __handle_export(self, processed_lines, line) -> None:
+    def __handle_export(self, processed_lines, line, make_exports) -> None:
         """
         Handles lines with the custom \\rdfexport command.
         """
+
+        if not make_exports:
+            return
 
         param_list, _ = self.__parse_rdftex_command(line)
 
@@ -152,7 +144,7 @@ class Preprocessor:
 
             self.exports[export_name] += other_pred_obj_exports
 
-    def __handle_property(self, processed_lines, line) -> None:
+    def __handle_property(self, processed_lines, line, make_exports) -> None:
         """
         Handles lines with the custom \\rdfproperty command.
         """
@@ -176,14 +168,17 @@ class Preprocessor:
 
             export_name, export_predicate, export_object, *_ = param_list
 
-            # FIXME This workaround is only necessary for the RDFtex papers and can be removed later
-            if export_object == "<object>":
-                logging.warning(
-                    f"Found <object> as export_object (RDFtex workaround) -> Skipping")
-                parsing_successful = False
-                break
+            if make_exports:
 
-            self.exports.setdefault(export_name, []).append((export_predicate, export_object))
+                # FIXME This workaround is only necessary for the RDFtex papers and can be removed later
+                # should be removable by adding a ~ in the .rdf.tex file
+                if export_object == "<object>":
+                    logging.warning(
+                        f"Found <object> as export_object (RDFtex workaround) -> Skipping")
+                    parsing_successful = False
+                    break
+            
+                self.exports.setdefault(export_name, []).append((export_predicate, export_object))
 
             processed_line += line[lastcommandendindex:
                                    commandstartindex] + export_object
@@ -215,24 +210,24 @@ class Preprocessor:
 
                     self.__handle_prefix(line)
 
-                elif re.search(r"(?<! )\\rdfimport", line) and make_imports:
+                elif re.search(r"(?<! )\\rdfimport", line):
                     logging.info(
                         f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
-                        processed_lines, imported_types, line)
+                        processed_lines, imported_types, line, make_imports)
 
-                elif re.search(r"(?<! )\\rdfexport", line) and make_exports:
+                elif re.search(r"(?<! )\\rdfexport", line):
                     logging.info(
                         f"Handling rdfexport command in line {linenumber}...")
 
-                    self.__handle_export(processed_lines, line)
+                    self.__handle_export(processed_lines, line, make_exports)
 
-                elif re.search(r"\\rdfproperty", line)  and make_exports:
+                elif re.search(r"\\rdfproperty", line):
                     logging.info(
                         f"Handling rdfproperty command(s) in line {linenumber}...")
 
-                    self.__handle_property(processed_lines, line)
+                    self.__handle_property(processed_lines, line, make_exports)
 
                 else:
                     processed_lines.append(line)
@@ -251,7 +246,7 @@ class Preprocessor:
         roottex_lines = []
         roottex_preamble_endindex = -1
 
-        for rdftexpath in glob.glob(f"{self.texdir}*.rdf.tex"):
+        for rdftexpath in glob.glob(f"{TEX_DIR}*.rdf.tex"):
             logging.info(f"Preprocessing {rdftexpath}...")
             preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types, make_imports, make_exports)
 
@@ -267,13 +262,15 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
-        add_custom_envs(roottex_lines, roottex_preamble_endindex, imported_types)
+        custom_envs = get_custom_envs(imported_types, "MinSKG")
+        for env in custom_envs.values():
+            processed_lines.insert(roottex_preamble_endindex, env)
 
         logging.info(f"Adding custom environments to {roottex_path}...")
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.exportskg.generate_exports_document(self.exports, self.exportpath)
+        generate_exports_rdf_document(self.exports)
 
         logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
@@ -316,7 +313,7 @@ class Preprocessor:
         event_handler.on_moved = on_moved
 
         observer = Observer()
-        observer.schedule(event_handler, self.texdir, recursive=True)
+        observer.schedule(event_handler, TEX_DIR, recursive=True)
 
         logging.info(
             "=== Watching for updated .rdf.tex files. Use ctrl/C to stop ...")

@@ -36,6 +36,11 @@ class SkgInterface:
         """
         pass
 
+    def get_custom_envs(self) -> dict:
+        """
+        Returns the custom LaTeX environments used for the snippets.
+        """
+
     def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
         """
         Generates a knowledge graph based on the exports of the preprocessed publication.
