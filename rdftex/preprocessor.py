@@ -6,11 +6,13 @@ import glob
 import logging
 import re
 import time
+import uuid
 
 import fire
-from constants import TEX_DIR
+from constants import TEX_DIR, EXPORTS_RDF_DOCUMENT_PATH
+from rdflib import Graph, URIRef, Literal, Namespace
 from scikg_adapter import (retrieve_env_snippets, retrieve_content_snippet,
-                           store_exports)
+                           retrieve_validated_exports)
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
@@ -263,6 +265,7 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
+        # add custom LaTeX environments to root file
         custom_envs = retrieve_env_snippets(imported_types, "MinSKG")
         for env in custom_envs.values():
             roottex_lines.insert(roottex_preamble_endindex, env)
@@ -271,7 +274,35 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        store_exports(self.exports)
+        # validate exports and generate/store exports RDF document
+        validated_exports = retrieve_validated_exports(self.exports)
+        
+        exports_graph = Graph()
+        terms = Namespace("https://example.org/scikg/terms/")
+        publ = Namespace("https://example.org/scikg/publications/")
+
+        publication_uri = publ[f"NEW/{uuid.uuid4().hex}"]
+        new_publication = URIRef(publication_uri)
+        export_ctr = 0
+
+        for _, predicate_object_tuples in validated_exports.items():
+            contrib_uri = URIRef(
+                f"{publication_uri}/contrib{export_ctr}")
+
+            exports_graph.add(
+                (new_publication, terms["has_contribution"], contrib_uri))
+
+            for pred, obj in predicate_object_tuples:
+                exports_graph.add(
+                    (contrib_uri, URIRef(pred), Literal(obj)))
+
+            export_ctr += 1
+
+        with open(EXPORTS_RDF_DOCUMENT_PATH, "w+") as file:
+            file.write(exports_graph.serialize(format="ttl"))
+
+        logging.info(
+            f"{export_ctr} contribution(s) successfully exported to {EXPORTS_RDF_DOCUMENT_PATH}...")
 
         logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 

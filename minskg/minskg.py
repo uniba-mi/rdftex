@@ -343,35 +343,9 @@ class MinSKG():
         
         return custom_envs
     
+
+    def validate_exports(self, exports):
+        validated_exports = dict(filter(lambda export: self.__validate_export(*export), exports.items()))
+
+        return validated_exports
     
-    def generate_exports_rdf_document(self, exports: dict, exportsfilepath: str) -> None:
-        """
-        Generates exports RDF document based on the exports of the preprocessed publication.
-        """
-
-        exports = dict(
-            filter(lambda export: self.__validate_export(*export), exports.items()))
-
-        exports_graph = Graph()
-
-        new_uri = self.publ[f"NEW/{uuid.uuid4().hex}"]
-        new_publication = URIRef(new_uri)
-        export_ctr = 0
-
-        for _, predicate_object_tuples in exports.items():
-            contrib_uri = URIRef(
-                f"{new_uri}/contrib{export_ctr}")
-
-            exports_graph.add(
-                (new_publication, self.terms["has_contribution"], contrib_uri))
-
-            for pred, obj in predicate_object_tuples:
-                exports_graph.add(
-                    (contrib_uri, URIRef(pred), Literal(obj)))
-
-            export_ctr += 1
-
-        self.__store_graph(exports_graph, exportsfilepath)
-
-        logging.info(
-            f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")

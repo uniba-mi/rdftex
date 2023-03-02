@@ -59,29 +59,24 @@ def content_snippet():
 @app.route("/env_snippets")
 def env_snippets():
     """
-    Returns the custom LaTeX environments used for the snippets.
+    Returns the custom LaTeX environments used for some snippets.
     """
 
     env_snippets = minskg.generate_env_snippets()
 
-    return jsonify(
-        env_snippets
-    ), 200
+    return jsonify(env_snippets), 200
 
 
-@app.route("/exports_document")
-def exports_document() -> None:
+@app.route("/validated_exports", methods=["POST"])
+def validated_exports():
     """
-    Generates the exports RDF document of the preprocessed publication.
+    Returns the validated exports.
     """
 
-    exports = request.args.get("exports")
-    exports_rdf_document_path = request.args.get("exports_rdf_document_path")
+    exports = request.json
+    validated_exports = minskg.validate_exports(exports)
 
-    minskg.generate_exports_rdf_document(exports, exports_rdf_document_path)
-
-    return "Exports RDF document successfully generated."
-
+    return jsonify(validated_exports), 200
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
