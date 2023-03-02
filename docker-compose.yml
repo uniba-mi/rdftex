@@ -2,20 +2,32 @@ version: "3"
 
 services:
   rdftex:
-    build: ./src
+    build: ./rdftex
     container_name: rdftex
     volumes:
-      - ./src:/src
+      - ./rdftex:/src
       - ./tex:/tex
+    network_mode: host
+
   rdftex-watch:
-    build: ./src
+    build: ./rdftex
     container_name: rdftex
     volumes:
-      - ./src:/src
+      - ./rdftex:/src
       - ./tex:/tex
+    network_mode: host
     entrypoint: ./preprocessor.py watch
+
+  minskg:
+    build: ./minskg
+    ports:
+    - "5000:5000"
+    volumes:
+      - ./minskg:/src
+      - ./tex:/tex
+    
   latexmk:
-    image: texlive/texlive:latest
+    build: ./rdftex
     container_name: latexmk
     volumes:
       - ./tex:/tex

@@ -12,6 +12,7 @@ RUN pip install -U watchdog
 RUN pip install -U fire
 RUN pip install -U pyparsing
 RUN pip install -U matplotlib
+RUN pip install -U requests
 
 VOLUME [ "/src" ]
 WORKDIR /src

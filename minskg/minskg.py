@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """MinSKG module."""
 
 import logging
@@ -7,15 +5,11 @@ import re
 import uuid
 
 import bibtexparser
-import fire
 from bibtexparser.bparser import BibTexParser
 from pylatexenc.latex2text import LatexNodes2Text
 from rdflib import Graph, Literal, Namespace, URIRef
 
-from scikg_interface import SciKGInterface
-
-
-class MinSKG(SciKGInterface):
+class MinSKG():
     """
     The class representing the MinSKG that is used to demonstrate RDFtex.
     """
@@ -25,6 +19,8 @@ class MinSKG(SciKGInterface):
         self.terms = Namespace("https://example.org/scikg/terms/")
         self.publ = Namespace("https://example.org/scikg/publications/")
         self.supported_contributions = self.__get_supported_contributions()
+
+        logging.basicConfig(level=logging.INFO)
 
     def __get_supported_contributions(self):
         """
@@ -172,12 +168,19 @@ class MinSKG(SciKGInterface):
             valid = False
 
         return valid
+
+    
+    def __store_graph(self, graph, exportpath) -> None:
+        with open(exportpath, "w+") as file:
+            file.write(graph.serialize(format="ttl"))
+
     
     def __clean_snippet(self, snippet) -> str:
         snippet = re.sub(r" {2,}", "", snippet)
         snippet = snippet.strip()
 
         return snippet
+    
 
     def build(self) -> None:
         """
@@ -196,6 +199,7 @@ class MinSKG(SciKGInterface):
 
         logging.info("Storing MinSKG...")
         self.__store_graph(self.skg, "./minskg.ttl")
+
 
     def get_subgraph_for_subject(self, subject: str) -> str:
         """
@@ -217,60 +221,28 @@ class MinSKG(SciKGInterface):
 
         import_triples = list(filter(lambda x: x[1] == "https://example.org/scikg/terms/type", triples))
 
-        if len(import_triples) >= 1:
-            import_type = import_triples[0][2]
-        else:
-            import_type = None
+        if len(import_triples) != 1:
+            raise Exception("Contribution lacks type information!")
 
         contribution_data = {triple[1]: triple[2] for triple in triples}
 
-        return import_type, contribution_data
+        return contribution_data
+    
 
-    def generate_exports_document(self, exports: dict, exportsfilepath: str) -> None:
-        """
-        Generates exports RDF document based on the exports of the preprocessed publication.
-        """
-
-        exports = dict(
-            filter(lambda export: self.__validate_export(*export), exports.items()))
-
-        exports_graph = Graph()
-
-        new_uri = self.publ[f"NEW/{uuid.uuid4().hex}"]
-        new_publication = URIRef(new_uri)
-        export_ctr = 0
-
-        for _, predicate_object_tuples in exports.items():
-            contrib_uri = URIRef(
-                f"{new_uri}/contrib{export_ctr}")
-
-            exports_graph.add(
-                (new_publication, self.terms["has_contribution"], contrib_uri))
-
-            for pred, obj in predicate_object_tuples:
-                exports_graph.add(
-                    (contrib_uri, URIRef(pred), Literal(obj)))
-
-            export_ctr += 1
-
-        self.__store_graph(exports_graph, exportsfilepath)
-
-        logging.info(
-            f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")
-
-    def generate_snippet(self, import_label, citation_key, import_type, contribution_data) -> str:
+    def generate_content_snippet(self, label, citation_key, contribution_data) -> str:
         """
         Returns the content snippet.
         """
 
-        required_props = [str(prop) for prop in self.supported_contributions[import_type]]
+        contribution_type = contribution_data["https://example.org/scikg/terms/type"]
+        required_props = [str(prop) for prop in self.supported_contributions[contribution_type]]
 
         if not set(required_props).issubset(contribution_data.keys()):
             print(set(required_props))
             print(contribution_data.keys())
             raise Exception("Data of contribution to be imported is incomplete.")
 
-        if import_type == "Dataset":
+        if contribution_type == "Dataset":
             snippet = f"""
     % RDFtex Dataset Import Start
     \\begin{{dataset}}
@@ -278,60 +250,60 @@ class MinSKG(SciKGInterface):
     Available at: \\url{{{contribution_data["https://example.org/scikg/terms/dataset_url"]}}}\\\\
     Domain: {contribution_data["https://example.org/scikg/terms/dataset_domain"]}\\\\
     Description: ``{contribution_data["https://example.org/scikg/terms/dataset_description"]}"~\\cite{{{citation_key}}}
-    \\label{{{import_label}}}
+    \\label{{{label}}}
     \\end{{dataset}}
     % RDFtex Dataset Import End
     """
 
-        elif import_type == "Definition":
+        elif contribution_type == "Definition":
             snippet = f"""
     % RDFtex Definition Import Start
     \\begin{{definition}}
-    \\label{{{import_label}}}
+    \\label{{{label}}}
     {contribution_data["https://example.org/scikg/terms/definition_content"]}\\normalfont{{~\\cite{{{citation_key}}}}}
     \\end{{definition}}
     % RDFtex Definition Import End
     """
 
-        elif import_type == "ExpResult":
+        elif contribution_type == "ExpResult":
             snippet = f"""
     % RDFtex ExpResult Import Start
     \\begin{{figure}}[htb!]
     \\centering
     \\includegraphics[width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
     \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
-    \\label{{{import_label}}}
+    \\label{{{label}}}
     \\end{{figure}}
     % RDFtex ExpResult Import End
     """
 
-        elif import_type == "Figure":
+        elif contribution_type == "Figure":
             snippet = f"""
     % RDFtex Figure Import Start
     \\begin{{figure}}[htb!]
     \\centering
     \\includegraphics[max width=0.7\\columnwidth]{{{contribution_data["https://example.org/scikg/terms/figure_url"]}}}
     \\caption{{{contribution_data["https://example.org/scikg/terms/figure_description"]} (Figure and caption adopted from~\\cite{{{citation_key}}}.)}}
-    \\label{{{import_label}}}
+    \\label{{{label}}}
     \\end{{figure}}
     % RDFtex Figure Import End
     """
 
-        elif import_type == "Software":
+        elif contribution_type == "Software":
             snippet = f"""
     % RDFtex Software Import Start
     \\begin{{software}}
     {contribution_data["https://example.org/scikg/terms/software_name"]}~\\cite{{{citation_key}}}\\\\
     Available at: \\url{{{contribution_data["https://example.org/scikg/terms/software_url"]}}}\\\\
     Description: ``{contribution_data["https://example.org/scikg/terms/software_description"]}"~\\cite{{{citation_key}}}
-    \\label{{{import_label}}}
+    \\label{{{label}}}
     \\end{{software}}
     % RDFtex Software Import End
     """
 
         return self.__clean_snippet(snippet)
     
-    def get_custom_envs(self) -> dict:
+    def generate_env_snippets(self) -> dict:
         """
         Returns the custom LaTeX environments used for the snippets.
         """
@@ -370,11 +342,36 @@ class MinSKG(SciKGInterface):
         custom_envs = {import_type: self.__clean_snippet(snippet) for import_type, snippet in custom_envs.items()}
         
         return custom_envs
+    
+    
+    def generate_exports_rdf_document(self, exports: dict, exportsfilepath: str) -> None:
+        """
+        Generates exports RDF document based on the exports of the preprocessed publication.
+        """
 
-    def __store_graph(self, graph, exportpath) -> None:
-        with open(exportpath, "w+") as file:
-            file.write(graph.serialize(format="ttl"))
+        exports = dict(
+            filter(lambda export: self.__validate_export(*export), exports.items()))
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    fire.Fire(MinSKG)
+        exports_graph = Graph()
+
+        new_uri = self.publ[f"NEW/{uuid.uuid4().hex}"]
+        new_publication = URIRef(new_uri)
+        export_ctr = 0
+
+        for _, predicate_object_tuples in exports.items():
+            contrib_uri = URIRef(
+                f"{new_uri}/contrib{export_ctr}")
+
+            exports_graph.add(
+                (new_publication, self.terms["has_contribution"], contrib_uri))
+
+            for pred, obj in predicate_object_tuples:
+                exports_graph.add(
+                    (contrib_uri, URIRef(pred), Literal(obj)))
+
+            export_ctr += 1
+
+        self.__store_graph(exports_graph, exportsfilepath)
+
+        logging.info(
+            f"{export_ctr} contribution(s) successfully exported to {exportsfilepath}...")

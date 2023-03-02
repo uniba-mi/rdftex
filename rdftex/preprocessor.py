@@ -8,12 +8,11 @@ import re
 import time
 
 import fire
+from constants import TEX_DIR
+from scikg_adapter import (retrieve_env_snippets, retrieve_content_snippet,
+                           store_exports)
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
-
-from constants import TEX_DIR
-from scikg_adapter import (generate_exports_rdf_document, generate_snippet,
-                           get_custom_envs)
 
 
 class Preprocessor:
@@ -103,17 +102,17 @@ class Preprocessor:
             processed_lines.append(line)
             return
 
-        import_label, citation_key, import_uri, target_skg, *_ = param_list
+        label, citation_key, contribution_iri, skg, *_ = param_list
 
         try:
-            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key, target_skg)
+            content_snippet, contribution_type = retrieve_content_snippet(label, citation_key, contribution_iri, skg)
         except Exception as e:
             logging.warning(
                 f"Skipping import due to error during snippet generation: {e}")
             return
 
         imported_types.add(contribution_type)
-        processed_lines.append(snippet)
+        processed_lines.append(content_snippet)
 
     def __handle_export(self, processed_lines, line, make_exports) -> None:
         """
@@ -264,7 +263,7 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
-        custom_envs = get_custom_envs(imported_types, "MinSKG")
+        custom_envs = retrieve_env_snippets(imported_types, "MinSKG")
         for env in custom_envs.values():
             roottex_lines.insert(roottex_preamble_endindex, env)
 
@@ -272,7 +271,7 @@ class Preprocessor:
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        generate_exports_rdf_document(self.exports)
+        store_exports(self.exports)
 
         logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
