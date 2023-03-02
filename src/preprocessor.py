@@ -266,7 +266,7 @@ class Preprocessor:
 
         custom_envs = get_custom_envs(imported_types, "MinSKG")
         for env in custom_envs.values():
-            processed_lines.insert(roottex_preamble_endindex, env)
+            roottex_lines.insert(roottex_preamble_endindex, env)
 
         logging.info(f"Adding custom environments to {roottex_path}...")
         with open(roottex_path, "w+") as file:

@@ -121,7 +121,7 @@ class MinSKG(SciKGInterface):
                 scikg.add(
                     (contrib2, self.terms["figure_mime"], Literal("pdf")))
                 scikg.add((contrib2, self.terms["figure_url"], Literal(
-                    "./tex/example/figures/triple_example")))
+                    "/tex/example/figures/triple_example")))
 
             elif pub == self.publ["DBLP:journals/corr/abs-1809-06532"]:
                 contrib1 = self.publ[f"{entry['ID']}/contrib1"]
@@ -172,6 +172,12 @@ class MinSKG(SciKGInterface):
             valid = False
 
         return valid
+    
+    def __clean_snippet(self, snippet) -> str:
+        snippet = re.sub(r" {2,}", "", snippet)
+        snippet = snippet.strip()
+
+        return snippet
 
     def build(self) -> None:
         """
@@ -322,10 +328,8 @@ class MinSKG(SciKGInterface):
     \\end{{software}}
     % RDFtex Software Import End
     """
-        snippet = re.sub(r" {2,}", " ", snippet)
-        snippet = snippet.strip()
 
-        return snippet
+        return self.__clean_snippet(snippet)
     
     def get_custom_envs(self) -> dict:
         """
@@ -359,9 +363,13 @@ class MinSKG(SciKGInterface):
     \\crefname{software}{Software}{Software}  
     \\Crefname{software}{Software}{Software}
     """
-
-        return {"Dataset": dataset_env, "ExpResult": expresult_env,
-                    "Figure": figure_env, "Software": software_env}
+        
+        custom_envs = {"Dataset": dataset_env, "ExpResult": expresult_env,
+        "Figure": figure_env, "Software": software_env}
+        
+        custom_envs = {import_type: self.__clean_snippet(snippet) for import_type, snippet in custom_envs.items()}
+        
+        return custom_envs
 
     def __store_graph(self, graph, exportpath) -> None:
         with open(exportpath, "w+") as file:

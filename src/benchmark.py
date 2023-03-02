@@ -8,15 +8,19 @@ import matplotlib.pyplot as plt
 import time
 import os
 import statistics
+import glob
 
 import fire
 
+from constants import TEX_DIR
 
-def run(runs=10):
+
+def run(runs=100):
     """
     Captures the runtime of RDFtex and Latexmk across n runs.
     Uses subprocess to avoid benefits from warmed up code across the runs since that
-    would be unrealistic. Temporary LaTeX files are removed in between runs, too.
+    would be unrealistic. Temporary LaTeX files and previously generated .tex files
+    are removed in between runs, too.
     """
 
     scenarios = {
@@ -27,31 +31,18 @@ def run(runs=10):
     }
 
     results = {scenario: [] for scenario in scenarios}
+    tmp_file_extensions = ["aux", "bbl", "blg", "fdb_latexmk", "fls", "log", "out", "xdv", "tex"] 
 
     for scenario, rdftex_command in scenarios.items():
         for ctr in range(runs):
-            # initial cleanup
-            if os.path.isfile("/tex/example.aux"):
-                os.remove("/tex/example.aux")
 
-            if os.path.isfile("/tex/example.bbl"):
-                os.remove("/tex/example.bbl")
+            # remove temporary LaTeX files
+            for extension in tmp_file_extensions:
+                for path in glob.glob(f"{TEX_DIR}*.{extension}"):
+                    if not ".rdf.tex" in path:
+                        logging.info(f"Removing {path}...")
+                        os.remove(path)
 
-            if os.path.isfile("/tex/example.blg"):
-                os.remove("/tex/example.blg")
-
-            if os.path.isfile("/tex/example.fdb_latexmk"):
-                os.remove("/tex/example.fdb_latexmk")
-
-            if os.path.isfile("/tex/example.fls"):
-                os.remove("/tex/example.fls")
-
-            if os.path.isfile("/tex/example.log"):
-                os.remove("/tex/example.log")
-
-            if os.path.isfile("/tex/example.out"):
-                os.remove("/tex/example.out")
-                
             # benchmark rdftex
             if rdftex_command:
                 t1_start = time.perf_counter()
@@ -67,17 +58,17 @@ def run(runs=10):
 
             # benchmark latexmk
             t2_start = time.perf_counter()
-            subprocess.run(["latexmk -pdf -xelatex -cd ../tex/example.tex"], capture_output=False, shell=True)
+            subprocess.run([f"latexmk -pdf -xelatex -cd {TEX_DIR}example.tex"], capture_output=True, shell=True)
             t2_stop = time.perf_counter()
             latexmk_duration = t2_stop - t2_start
 
             results[scenario].append((rdftex_duration, latexmk_duration))
 
     # stacked bar chart of average runtimes
-    average_latexmk = [statistics.mean([latexmk_time for _, latexmk_time in times]) for scenario, times in results.items()]
-    average_rdftex = [statistics.mean([rdftex_time for rdftex_time, _ in times]) for scenario, times in results.items()]
+    average_latexmk = [statistics.mean([latexmk_time for _, latexmk_time in times]) for times in results.values()]
+    average_rdftex = [statistics.mean([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
 
-    weight_counts = {
+    average_results = {
         "Latexmk": average_latexmk,
         "RDFtex": average_rdftex,
     }
@@ -85,13 +76,12 @@ def run(runs=10):
     fig, ax = plt.subplots()
     bottom = [0 for _ in range(len(scenarios))]
 
-    for boolean, weight_count in weight_counts.items():
-        print(scenarios.keys(), bottom)
-        p = ax.bar(scenarios.keys(), weight_count, label=boolean, bottom=bottom)
-        bottom = [b + w for b, w in zip(bottom, weight_count)]
+    for scenario, average_result in average_results.items():
+        p = ax.bar(scenarios.keys(), average_result, label=scenario, bottom=bottom)
+        bottom = [b + w for b, w in zip(bottom, average_result)]
 
     ax.set_ylabel("Seconds")
-    ax.set_title("RDFtex + Latexmk Runtime (n = 100)")
+    ax.set_title(f"RDFtex & Latexmk Runtime (n = {runs})")
     ax.legend(loc="upper right")
 
     fig.savefig("benchmark-runtime-bar.pdf", bbox_inches="tight")
@@ -103,7 +93,7 @@ def run(runs=10):
     boxplot = ax.boxplot(aggregated_results.values(), patch_artist=True, showfliers=False, medianprops={"color": "white"})
     ax.set_xticklabels(aggregated_results.keys())
     ax.set_ylabel("Seconds")
-    ax.set_title(f"RDFtex Runtime + Latexmk Runtime (n = 100)")
+    ax.set_title(f"RDFtex Runtime & Latexmk Runtime (n = {runs})")
 
     for patch in boxplot["boxes"]:
         patch.set_facecolor("black")

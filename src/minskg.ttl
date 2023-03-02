@@ -59,7 +59,7 @@ for Scientific Knowledge Graph Construction""" ;
 
 <https://example.org/scikg/publications/Martin21/contrib2> ns1:figure_description "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs." ;
     ns1:figure_mime "pdf" ;
-    ns1:figure_url "./tex/example/figures/triple_example" ;
+    ns1:figure_url "/tex/example/figures/triple_example" ;
     ns1:type "Figure" .
 
 <https://example.org/scikg/publications/Martin21/meta> ns1:has_author <https://example.org/scikg/authors/Andreas_Henrich>,
