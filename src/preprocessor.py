@@ -360,4 +360,4 @@ class Preprocessor:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    fire.Fire(Preprocessor)
+    fire.Fire(Preprocessor().run)

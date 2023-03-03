@@ -2,21 +2,21 @@ version: "3"
 
 services:
   rdftex:
-    build: ./rdftex
+    build: ./src
     container_name: rdftex
     volumes:
-      - ./rdftex:/src
+      - ./src:/src
       - ./tex:/tex
     network_mode: host
 
   rdftex-watch:
-    build: ./rdftex
-    container_name: rdftex
+    build: ./src
+    container_name: src
     volumes:
-      - ./rdftex:/src
+      - ./src:/src
       - ./tex:/tex
     network_mode: host
-    entrypoint: ./preprocessor.py watch
+    entrypoint: python3 preprocessor.py watch
 
   minskg:
     build: ./minskg
@@ -25,10 +25,11 @@ services:
     volumes:
       - ./minskg:/src
       - ./tex:/tex
+    entrypoint: python3 api.py
     
   latexmk:
-    build: ./rdftex
+    build: ./src
     container_name: latexmk
     volumes:
       - ./tex:/tex
-    entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example.tex
+    entrypoint: latexmk -pvc -pdf -xelatex -cd /tex/example/example.tex

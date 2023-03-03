@@ -1,19 +1,23 @@
 @prefix ns1: <https://example.org/scikg/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ;
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/meta> .
 
-<https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ;
+<https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> .
 
-<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ;
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> .
 
-<https://example.org/scikg/publications/Martin21> ns1:has_contribution <https://example.org/scikg/publications/Martin21/contrib1>,
-        <https://example.org/scikg/publications/Martin21/contrib2> ;
+<https://example.org/scikg/publications/Martin21> ns1:has_contribution <https://example.org/scikg/publications/Martin21/contrib0>,
+        <https://example.org/scikg/publications/Martin21/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/Martin21/meta> .
 
-<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib1> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies." ;
+<https://example.org/scikg/publications/martin2022specification> ns1:has_contribution <https://example.org/scikg/publications/martin2022specification/contrib0> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/martin2022specification/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib0> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies." ;
     ns1:software_name "Prot{\\'{e}}g{\\'{e}}-2000" ;
     ns1:software_url "https://protege.stanford.edu" ;
     ns1:type "Software" .
@@ -30,7 +34,7 @@
 and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
     ns1:url "https://knowledge.amia.org/amia-55142-a2003a-1.616734/t-002-1.618748/f-001-1.618749/a-336-1.619077/a-337-1.619074" .
 
-<https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib1> ns1:dataset_description "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts." ;
+<https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib0> ns1:dataset_description "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts." ;
     ns1:dataset_domain "Artificial Intelligence" ;
     ns1:dataset_name "SciERC" ;
     ns1:dataset_url <https://paperswithcode.com/dataset/scierc> ;
@@ -45,7 +49,7 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
 for Scientific Knowledge Graph Construction""" ;
     ns1:url "https://doi.org/10.18653/v1/d18-1360" .
 
-<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib1> ns1:definition_content "A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge." ;
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib0> ns1:definition_content "A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge." ;
     ns1:type "Definition" .
 
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> ns1:has_author <https://example.org/scikg/authors/Lisa_Ehrlinger>,
@@ -54,10 +58,10 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_title "Towards a Definition of Knowledge Graphs" ;
     ns1:url "http://ceur-ws.org/Vol-1695/paper4.pdf" .
 
-<https://example.org/scikg/publications/Martin21/contrib1> ns1:definition_content "[...] knowledge graphs that result from transforming document-based publications will be referred to as RDF-transformed publications." ;
+<https://example.org/scikg/publications/Martin21/contrib0> ns1:definition_content "[...] knowledge graphs that result from transforming document-based publications will be referred to as RDF-transformed publications." ;
     ns1:type "Definition" .
 
-<https://example.org/scikg/publications/Martin21/contrib2> ns1:figure_description "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs." ;
+<https://example.org/scikg/publications/Martin21/contrib1> ns1:figure_description "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs." ;
     ns1:figure_mime "pdf" ;
     ns1:figure_url "/tex/example/figures/triple_example" ;
     ns1:type "Figure" .
@@ -69,4 +73,14 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_publication_year "(accepted for publication) 2021" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
+
+<https://example.org/scikg/publications/martin2022specification/contrib0> ns1:expresult_description "An assessment of the tool’s performance was also conducted. For this, the time it takes for the backend to perform the SHACL and the OWL approach was measured on a standard desktop PC. As repositories, the top twenty trending GitHub repositories15 were used, which are well maintained and rather large." ;
+    ns1:expresult_result "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime. " ;
+    ns1:expresult_samplesize 20 ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/martin2022specification/meta> ns1:has_author <https://example.org/scikg/authors/Henrich,_Andreas>,
+        <https://example.org/scikg/authors/Martin,_Leon> ;
+    ns1:has_publication_year "2022" ;
+    ns1:has_title "Specification and Validation of Quality Criteria for Git Repositories using RDF and SHACL" .
 

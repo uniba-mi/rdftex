@@ -18,6 +18,24 @@ def build():
     return "MinSKG successfully built."
 
 
+@app.route("/query")
+def query():
+    """
+    Returns the subgraph where the specified subject is the root node.
+    """
+
+    query = request.args.get("query")
+
+    query_result = minskg.query(query)
+    print(query_result)
+
+    return jsonify(
+        {
+            "contribution_data": contribution_data,
+        }
+    ), 200
+
+
 @app.route("/subgraph")
 def subgraph():
     """

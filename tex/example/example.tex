@@ -13,12 +13,17 @@
 \textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
 
 \crefname{dataset}{Dataset}{Datasets}
-\Crefname{dataset}{Dataset}{Datasets}\newcounter{software}[section]
+\Crefname{dataset}{Dataset}{Datasets}\usepackage[export]{adjustbox}\newcounter{software}[section]
 \newenvironment{software}[1][]{\refstepcounter{software}\par\medskip
 \textbf{Software~\thesoftware. #1} \rmfamily}{\medskip}
 
 \crefname{software}{Software}{Software}
-\Crefname{software}{Software}{Software}\usepackage[export]{adjustbox}\begin{document}
+\Crefname{software}{Software}{Software}\newcounter{expresult}[section]
+\newenvironment{expresult}[1][]{\refstepcounter{expresult}\par\medskip
+\textit{Experimental Result~\theexpresult. #1} \rmfamily}{\medskip}
+
+\crefname{expresult}{Experimental Result}{Experimental Results}
+\Crefname{expresult}{Experimental Result}{Experimental Results}\begin{document}
 \maketitle
 
 \input{./example_imports.tex}
