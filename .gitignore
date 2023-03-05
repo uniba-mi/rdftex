@@ -227,3 +227,6 @@ dmypy.json
 main.pdf
 *-eps-converted-to.pdf
 *.loe
+
+# custom
+benchmark*.pdf

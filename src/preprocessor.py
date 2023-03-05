@@ -9,7 +9,7 @@ import time
 import uuid
 
 import fire
-from constants import TEX_DIR, EXPORTS_RDF_DOCUMENT_PATH
+from constants import TEX_DIR, PROJECT_DIR, EXPORTS_RDF_DOCUMENT_FILE
 from rdflib import Graph, URIRef, Literal, Namespace
 from scikg_adapter import (retrieve_env_snippets, retrieve_content_snippet,
                            retrieve_validated_exports)
@@ -249,7 +249,7 @@ class Preprocessor:
         roottex_lines = []
         roottex_preamble_endindex = -1
 
-        for rdftexpath in glob.glob(f"{TEX_DIR}*.rdf.tex"):
+        for rdftexpath in glob.glob(f"{TEX_DIR}{PROJECT_DIR}/*.rdf.tex"):
             logging.info(f"Preprocessing {rdftexpath}...")
             preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types, make_imports, make_exports)
 
@@ -298,11 +298,11 @@ class Preprocessor:
 
             export_ctr += 1
 
-        with open(EXPORTS_RDF_DOCUMENT_PATH, "w+") as file:
+        with open(f"{TEX_DIR}{PROJECT_DIR}{EXPORTS_RDF_DOCUMENT_FILE}", "w+") as file:
             file.write(exports_graph.serialize(format="ttl"))
 
         logging.info(
-            f"{export_ctr} contribution(s) successfully exported to {EXPORTS_RDF_DOCUMENT_PATH}...")
+            f"{export_ctr} contribution(s) successfully exported to {TEX_DIR}{PROJECT_DIR}{EXPORTS_RDF_DOCUMENT_FILE}...")
 
         logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
