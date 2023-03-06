@@ -25,15 +25,9 @@ def query():
     """
 
     query = request.args.get("query")
+    query_result = minskg.query(query).serialize(format="ttl")
 
-    query_result = minskg.query(query)
-    print(query_result)
-
-    return jsonify(
-        {
-            "contribution_data": contribution_data,
-        }
-    ), 200
+    return query_result, 200
 
 
 @app.route("/subgraph")

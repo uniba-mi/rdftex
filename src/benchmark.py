@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """Benchmarking module."""
 
+import glob
 import logging
-import subprocess
-import time
-import matplotlib.pyplot as plt
-import time
 import os
 import statistics
-import glob
+import subprocess
+import time
 
 import fire
+import matplotlib.pyplot as plt
+from rdflib import Graph
 
-from constants import TEX_DIR, PROJECT_DIR, MAIN_TEX_FILE
+import scikg_adapter
+from constants import MAIN_TEX_FILE, PROJECT_DIR, TEX_DIR
 
 
 def runtime(runs=100):
@@ -100,9 +101,73 @@ def runtime(runs=100):
     fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
     fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
 
-def query_times(n=100):
-    pass
+
+def response_times(runs=100):
+
+    query_response_times = {
+        "MinSKG": {
+            "https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib0": [],
+            "https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib0": [],
+            "https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib0": [],
+        },
+        "ORKG": {
+            "http://orkg.org/orkg/resource/R36110": [],
+            "http://orkg.org/orkg/resource/R368042": [],
+            "http://orkg.org/orkg/resource/R8199": [],
+        } 
+    }
+
+    # query minskg
+    for ctr_one in range(runs):
+        for ctr_two, entity in enumerate(query_response_times["MinSKG"].keys()):
+            t1_start = time.perf_counter()
+            result = scikg_adapter.get_tree_for_contribution_entity(entity, "MinSKG")
+            t1_stop = time.perf_counter()
+            response_time = t1_stop - t1_start
+
+            g = Graph()
+            g.parse(data=result.text)
+
+            query_response_times["MinSKG"][entity].append((len(g), response_time))
+            logging.info(f"Querying entity {ctr_two + 1} - Run {ctr_one + 1} from MinSKG took {response_time} seconds.")
+
+    # query orkg
+    for ctr_one in range(runs):
+        for ctr_two, entity in enumerate(query_response_times["ORKG"].keys()):
+            t1_start = time.perf_counter()
+            result = scikg_adapter.get_tree_for_contribution_entity(entity, "ORKG")
+            t1_stop = time.perf_counter()
+            response_time = t1_stop - t1_start
+
+            g = Graph()
+            g.parse(data=result.text)
+
+            query_response_times["ORKG"][entity].append((len(g), response_time))
+            logging.info(f"Querying entity {ctr_two + 1} - Run {ctr_one + 1} from ORKG took {response_time} seconds.")
+            time.sleep(3)
+
+    processed_results = {}
+
+    for skg, entity_response_times in query_response_times.items():
+        processed_results[skg] = {}
+
+        for entity, times in entity_response_times.items():
+            processed_results[skg][f"{skg}-{times[0][0]}"] = [time for _, time in times]
+
+    combined_results = processed_results["MinSKG"] | processed_results["ORKG"]
+
+    fig, ax = plt.subplots()
+    boxplot = ax.boxplot(combined_results.values(), patch_artist=True, showfliers=False, medianprops={"color": "white"})
+    ax.set_xticklabels(combined_results.keys())
+    ax.set_ylabel("Seconds")
+
+    for patch in boxplot["boxes"]:
+        patch.set_facecolor("black")
+
+    fig.savefig(f"benchmark-response-box-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"benchmark-response-box-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    fire.Fire(runtime)
+    fire.Fire()
