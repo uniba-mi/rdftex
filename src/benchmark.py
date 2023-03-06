@@ -15,6 +15,8 @@ from rdflib import Graph
 import scikg_adapter
 from constants import MAIN_TEX_FILE, PROJECT_DIR, TEX_DIR
 
+plt.rcParams["font.size"] = 16
+
 
 def runtime(runs=100):
     """
@@ -65,41 +67,27 @@ def runtime(runs=100):
             logging.info(f"{config} - Run {ctr + 1} completed. RDFtex/Latexmk took {rdftex_duration}/{latexmk_duration} seconds.")
 
     # stacked bar chart of average runtimes
-    median_latexmk = [statistics.median([latexmk_time for _, latexmk_time in times]) for times in results.values()]
-    median_rdftex = [statistics.median([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
+    average_latexmk = [statistics.mean([latexmk_time for _, latexmk_time in times]) for times in results.values()]
+    average_rdftex = [statistics.mean([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
 
-    median_results = {
-        "Latexmk": median_latexmk,
-        "RDFtex": median_rdftex,
+    average_results = {
+        "Latexmk": average_latexmk,
+        "RDFtex": average_rdftex,
     }
 
     fig, ax = plt.subplots()
     bottom = [0 for _ in range(len(configs))]
 
-    for which_average, median_result in median_results.items():
+    for which_average, average_result in average_results.items():
         color = "white" if which_average == "Latexmk" else "black"
-        p = ax.bar(configs.keys(), median_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
-        bottom = [b + w for b, w in zip(bottom, median_result)]
+        p = ax.bar(configs.keys(), average_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
+        bottom = [b + w for b, w in zip(bottom, average_result)]
 
     ax.set_ylabel("Seconds")
     ax.legend(loc="lower left")
 
     fig.savefig(f"./benchmark-results/benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
     fig.savefig(f"./benchmark-results/benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
-
-    # box plot of runtimes
-    aggregated_results = {scenario: [r + l for r, l in times] for scenario, times in results.items()}
-
-    fig, ax = plt.subplots()
-    boxplot = ax.boxplot(aggregated_results.values(), patch_artist=True, showfliers=False, medianprops={"color": "white"})
-    ax.set_xticklabels(aggregated_results.keys())
-    ax.set_ylabel("Seconds")
-
-    for patch in boxplot["boxes"]:
-        patch.set_facecolor("black")
-
-    fig.savefig(f"./benchmark-results/benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
-    fig.savefig(f"./benchmark-results/benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
 
 
 def response_times(runs=100):

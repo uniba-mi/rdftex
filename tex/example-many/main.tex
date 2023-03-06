@@ -8,22 +8,22 @@
 \title{RDFtex: Import and Export Examples}
 \date{}
 
-\newcounter{dataset}[section]
-\newenvironment{dataset}[1][]{\refstepcounter{dataset}\par\medskip
-\textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
-
-\crefname{dataset}{Dataset}{Datasets}
-\Crefname{dataset}{Dataset}{Datasets}\newcounter{expresult}[section]
-\newenvironment{expresult}[1][]{\refstepcounter{expresult}\par\medskip
-\textbf{Experimental Result~\theexpresult. #1} \rmfamily}{\medskip}
-
-\crefname{expresult}{Experimental Result}{Experimental Results}
-\Crefname{expresult}{Experimental Result}{Experimental Results}\usepackage[export]{adjustbox}\newcounter{software}[section]
+\newcounter{software}[section]
 \newenvironment{software}[1][]{\refstepcounter{software}\par\medskip
 \textbf{Software~\thesoftware. #1} \rmfamily}{\medskip}
 
 \crefname{software}{Software}{Software}
-\Crefname{software}{Software}{Software}\begin{document}
+\Crefname{software}{Software}{Software}\newcounter{expresult}[section]
+\newenvironment{expresult}[1][]{\refstepcounter{expresult}\par\medskip
+\textbf{Experimental Result~\theexpresult. #1} \rmfamily}{\medskip}
+
+\crefname{expresult}{Experimental Result}{Experimental Results}
+\Crefname{expresult}{Experimental Result}{Experimental Results}\newcounter{dataset}[section]
+\newenvironment{dataset}[1][]{\refstepcounter{dataset}\par\medskip
+\textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
+
+\crefname{dataset}{Dataset}{Datasets}
+\Crefname{dataset}{Dataset}{Datasets}\usepackage[export]{adjustbox}\begin{document}
 \maketitle
 
 \input{./imports.tex}

@@ -1,1 +1,583 @@
+@prefix ns1: <https://example.org/scikg/terms/> .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836> ns1:has_contribution <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib0>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib1>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib10>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib11>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib12>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib13>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib14>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib15>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib16>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib17>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib18>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib19>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib2>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib20>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib21>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib22>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib23>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib24>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib25>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib26>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib27>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib28>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib29>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib3>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib30>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib31>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib32>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib33>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib34>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib35>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib36>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib37>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib38>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib39>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib4>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib40>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib41>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib42>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib43>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib44>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib45>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib46>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib47>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib48>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib49>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib5>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib50>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib51>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib52>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib53>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib54>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib55>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib56>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib57>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib58>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib59>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib6>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib60>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib61>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib62>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib63>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib64>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib65>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib66>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib67>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib68>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib69>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib7>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib70>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib71>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib72>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib73>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib74>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib75>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib76>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib77>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib78>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib79>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib8>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib80>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib81>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib82>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib83>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib84>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib85>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib86>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib87>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib88>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib89>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib9>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib90>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib91>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib92>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib93>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib94>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib95>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib96>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib97>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib98>,
+        <https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib99> .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib0> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib1> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib10> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib11> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib12> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib13> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib14> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib15> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib16> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib17> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib18> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib19> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib2> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib20> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib21> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib22> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib23> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib24> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib25> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib26> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib27> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib28> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib29> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib3> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib30> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib31> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib32> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib33> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib34> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib35> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib36> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib37> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib38> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib39> ns1:definition_content "A noipper is the main technical component of a noipping machine. Its purpose is to nullify the interference that is caused by exceedingly high neipping values in the system." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib4> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib40> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib41> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib42> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib43> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib44> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib45> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib46> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib47> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib48> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib49> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib5> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib50> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib51> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib52> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib53> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib54> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib55> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib56> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib57> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib58> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib59> ns1:figure_description "A diagram showing the function of a noipper." ;
+    ns1:figure_mime "application/pdf" ;
+    ns1:figure_url "./figures/noipper_function" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib6> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib60> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib61> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib62> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib63> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib64> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib65> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib66> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib67> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib68> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib69> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib7> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib70> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib71> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib72> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib73> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib74> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib75> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib76> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib77> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib78> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib79> ns1:software_description "Upon startup, the neippingviz tool continuously monitors and displays fluctuations of neipping values in the system using appropriate diagrams. Wheneveer critical values are observed, warning messages are displayed." ;
+    ns1:software_name "neippingviz" ;
+    ns1:software_url "https://example.org/software/neippingviz-repo" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib8> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib80> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib81> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib82> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib83> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib84> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib85> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib86> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib87> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib88> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib89> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib9> ns1:expresult_description "We tested a readily available noipper in a typical neipping system and monitored the time it takes to nullify the interference when exceedingly high neipping values are encountered." ;
+    ns1:expresult_result "0.123 seconds" ;
+    ns1:expresult_samplesize "100000000" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib90> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib91> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib92> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib93> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib94> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib95> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib96> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib97> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib98> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/77c91a4b748b40c7b8a143a14bb9a836/contrib99> ns1:dataset_description "We compiled an exhaustive dataset that lists all available noippers and their features to allow for a fair comparison" ;
+    ns1:dataset_domain "Noipping" ;
+    ns1:dataset_name "noipperbase" ;
+    ns1:dataset_url "https://example.org/datasets/noipperbase" ;
+    ns1:type "Dataset" .
 
