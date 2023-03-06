@@ -154,7 +154,6 @@ def response_times(runs=1):
         for entity, times in entity_response_times.items():
             processed_results[skg][f"{skg}-{times[0][0]}"] = [time for _, time in times]
 
-
     combined_results = processed_results["MinSKG"] | processed_results["ORKG"]
 
     fig, ax = plt.subplots()
