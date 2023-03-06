@@ -67,21 +67,21 @@ def runtime(runs=100):
             logging.info(f"{config} - Run {ctr + 1} completed. RDFtex/Latexmk took {rdftex_duration}/{latexmk_duration} seconds.")
 
     # stacked bar chart of average runtimes
-    average_latexmk = [statistics.mean([latexmk_time for _, latexmk_time in times]) for times in results.values()]
-    average_rdftex = [statistics.mean([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
+    median_latexmk = [statistics.median([latexmk_time for _, latexmk_time in times]) for times in results.values()]
+    median_rdftex = [statistics.median([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
 
-    average_results = {
-        "Latexmk": average_latexmk,
-        "RDFtex": average_rdftex,
+    median_results = {
+        "Latexmk": median_latexmk,
+        "RDFtex": median_rdftex,
     }
 
     fig, ax = plt.subplots()
     bottom = [0 for _ in range(len(configs))]
 
-    for which_average, average_result in average_results.items():
+    for which_average, median_result in median_results.items():
         color = "white" if which_average == "Latexmk" else "black"
-        p = ax.bar(configs.keys(), average_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
-        bottom = [b + w for b, w in zip(bottom, average_result)]
+        p = ax.bar(configs.keys(), median_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
+        bottom = [b + w for b, w in zip(bottom, median_result)]
 
     ax.set_ylabel("Seconds")
     ax.legend(loc="lower left")
@@ -140,7 +140,7 @@ def response_times(runs=100):
         processed_results[skg] = {}
 
         for entity, times in entity_response_times.items():
-            processed_results[skg][f"{skg}-{times[0][0]}"] = [time for _, time in times]
+            processed_results[skg][f"{skg}\n({times[0][0]})"] = [time for _, time in times]
 
     combined_results = processed_results["MinSKG"] | processed_results["ORKG"]
 
