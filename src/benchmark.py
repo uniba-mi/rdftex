@@ -83,8 +83,8 @@ def runtime(runs=100):
     ax.set_ylabel("Seconds")
     ax.legend(loc="lower left")
 
-    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')-{runs}}.eps", bbox_inches="tight", format="eps")
-    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')-{runs}}.pdf", bbox_inches="tight")
+    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
 
     # box plot of runtimes
     aggregated_results = {scenario: [r + l for r, l in times] for scenario, times in results.items()}
@@ -97,8 +97,8 @@ def runtime(runs=100):
     for patch in boxplot["boxes"]:
         patch.set_facecolor("black")
 
-    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')-{runs}}.eps", bbox_inches="tight", format="eps")
-    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')-{runs}}.pdf", bbox_inches="tight")
+    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
 
 def query_times(n=100):
     pass
