@@ -77,14 +77,14 @@ def runtime(runs=100):
 
     for which_average, average_result in average_results.items():
         color = "white" if which_average == "Latexmk" else "black"
-        p = ax.bar(configs.keys(), average_result, label=which_average, color=color, bottom=bottom)
+        p = ax.bar(configs.keys(), average_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
         bottom = [b + w for b, w in zip(bottom, average_result)]
 
     ax.set_ylabel("Seconds")
-    ax.set_title(f"RDFtex & Latexmk Runtime (n = {runs})")
     ax.legend(loc="lower left")
 
-    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}.pdf", bbox_inches="tight")
+    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')-{runs}}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')-{runs}}.pdf", bbox_inches="tight")
 
     # box plot of runtimes
     aggregated_results = {scenario: [r + l for r, l in times] for scenario, times in results.items()}
@@ -93,12 +93,12 @@ def runtime(runs=100):
     boxplot = ax.boxplot(aggregated_results.values(), patch_artist=True, showfliers=False, medianprops={"color": "white"})
     ax.set_xticklabels(aggregated_results.keys())
     ax.set_ylabel("Seconds")
-    ax.set_title(f"RDFtex Runtime & Latexmk Runtime (n = {runs})")
 
     for patch in boxplot["boxes"]:
         patch.set_facecolor("black")
 
-    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')}.pdf", bbox_inches="tight")
+    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')-{runs}}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"benchmark-runtime-box-{PROJECT_DIR.replace('/', '')-{runs}}.pdf", bbox_inches="tight")
 
 def query_times(n=100):
     pass
