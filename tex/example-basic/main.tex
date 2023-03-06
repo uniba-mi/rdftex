@@ -8,7 +8,12 @@
 \title{RDFtex: Import and Export Examples}
 \date{}
 
-\newcounter{software}[section]
+\newcounter{expresult}[section]
+\newenvironment{expresult}[1][]{\refstepcounter{expresult}\par\medskip
+\textbf{Experimental Result~\theexpresult. #1} \rmfamily}{\medskip}
+
+\crefname{expresult}{Experimental Result}{Experimental Results}
+\Crefname{expresult}{Experimental Result}{Experimental Results}\newcounter{software}[section]
 \newenvironment{software}[1][]{\refstepcounter{software}\par\medskip
 \textbf{Software~\thesoftware. #1} \rmfamily}{\medskip}
 
@@ -18,18 +23,13 @@
 \textbf{Dataset~\thedataset. #1} \rmfamily}{\medskip}
 
 \crefname{dataset}{Dataset}{Datasets}
-\Crefname{dataset}{Dataset}{Datasets}\newcounter{expresult}[section]
-\newenvironment{expresult}[1][]{\refstepcounter{expresult}\par\medskip
-\textit{Experimental Result~\theexpresult. #1} \rmfamily}{\medskip}
-
-\crefname{expresult}{Experimental Result}{Experimental Results}
-\Crefname{expresult}{Experimental Result}{Experimental Results}\begin{document}
+\Crefname{dataset}{Dataset}{Datasets}\begin{document}
 \maketitle
 
-\input{./example_imports.tex}
-\input{./example_exports.tex}
+\input{./imports.tex}
+\input{./exports.tex}
 
 \bibliographystyle{plain}
-\bibliography{example}
+\bibliography{main}
 
 \end{document}

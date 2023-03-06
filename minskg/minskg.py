@@ -117,7 +117,7 @@ class MinSKG():
                 scikg.add(
                     (contrib1, self.terms["figure_mime"], Literal("pdf")))
                 scikg.add((contrib1, self.terms["figure_url"], Literal(
-                    "/tex/example/figures/triple_example")))
+                    "/tex/example-basic/figures/triple_example")))
 
             elif pub == self.publ["DBLP:journals/corr/abs-1809-06532"]:
                 contrib0 = self.publ[f"{entry['ID']}/contrib0"]
@@ -151,7 +151,7 @@ class MinSKG():
                     "An assessment of the tool’s performance was also conducted. For this, the time it takes for the backend to perform the SHACL and the OWL approach was measured on a standard desktop PC. As repositories, the top twenty trending GitHub repositories were used, which are well maintained and rather large.")))
                 scikg.add((contrib0, self.terms["expresult_samplesize"], Literal(20)))
                 scikg.add((contrib0, self.terms["expresult_result"], Literal(
-                    "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime. ")))
+                    "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime.")))
 
         return scikg
 
@@ -290,10 +290,10 @@ class MinSKG():
         elif contribution_type == "ExpResult":
             snippet = f"""
     % RDFtex ExpResult Import Start
-    \\begin{{expresult}}
+    \\begin{{expresult}}\\\\
     Description: ``{contribution_data["https://example.org/scikg/terms/expresult_description"]}"~\\cite{{{citation_key}}}\\\\
     Sample size: \\url{{{contribution_data["https://example.org/scikg/terms/expresult_samplesize"]}}}\\\\
-    Result: ``{contribution_data["https://example.org/scikg/terms/expresult_result"]}"\\\\
+    Result: ``{contribution_data["https://example.org/scikg/terms/expresult_result"]}"~\\cite{{{citation_key}}}\\\\
     \\label{{{label}}}
     \\end{{expresult}}
     % RDFtex ExpResult Import End
@@ -327,7 +327,7 @@ class MinSKG():
     
     def generate_env_snippets(self) -> dict:
         """
-        Returns the custom LaTeX environments used for the snippets.
+        Returns the custom LaTeX environments used for the snippets of particular contribution types.
         """
 
         dataset_env = """
@@ -342,7 +342,7 @@ class MinSKG():
         expresult_env = """
     \\newcounter{expresult}[section]
     \\newenvironment{expresult}[1][]{\\refstepcounter{expresult}\\par\\medskip
-    \\textit{Experimental Result~\\theexpresult. #1} \\rmfamily}{\\medskip}
+    \\textbf{Experimental Result~\\theexpresult. #1} \\rmfamily}{\\medskip}
 
     \\crefname{expresult}{Experimental Result}{Experimental Results}  
     \\Crefname{expresult}{Experimental Result}{Experimental Results}

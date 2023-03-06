@@ -63,7 +63,7 @@ for Scientific Knowledge Graph Construction""" ;
 
 <https://example.org/scikg/publications/Martin21/contrib1> ns1:figure_description "A simple exemplary knowledge graph consisting of two RDF triples. The upper triple provides contextual information, the lower triple contentual information of the publication \\emph{{pub1}}. All non-literal triple members are identified using IRIs." ;
     ns1:figure_mime "pdf" ;
-    ns1:figure_url "/tex/example/figures/triple_example" ;
+    ns1:figure_url "/tex/example-basic/figures/triple_example" ;
     ns1:type "Figure" .
 
 <https://example.org/scikg/publications/Martin21/meta> ns1:has_author <https://example.org/scikg/authors/Andreas_Henrich>,
@@ -74,8 +74,8 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
 
-<https://example.org/scikg/publications/martin2022specification/contrib0> ns1:expresult_description "An assessment of the tool’s performance was also conducted. For this, the time it takes for the backend to perform the SHACL and the OWL approach was measured on a standard desktop PC. As repositories, the top twenty trending GitHub repositories15 were used, which are well maintained and rather large." ;
-    ns1:expresult_result "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime. " ;
+<https://example.org/scikg/publications/martin2022specification/contrib0> ns1:expresult_description "An assessment of the tool’s performance was also conducted. For this, the time it takes for the backend to perform the SHACL and the OWL approach was measured on a standard desktop PC. As repositories, the top twenty trending GitHub repositories were used, which are well maintained and rather large." ;
+    ns1:expresult_result "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime." ;
     ns1:expresult_samplesize 20 ;
     ns1:type "ExpResult" .
 
