@@ -86,8 +86,8 @@ def runtime(runs=100):
     ax.set_ylabel("Seconds")
     ax.legend(loc="lower left")
 
-    fig.savefig(f"./benchmark-results/benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
-    fig.savefig(f"./benchmark-results/benchmark-runtime-bar-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
+    fig.savefig(f"./benchmark-results/fig-benchmark-runtime-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"./benchmark-results/fig-benchmark-runtime-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
 
 
 def response_times(runs=100):
@@ -152,8 +152,8 @@ def response_times(runs=100):
     for patch in boxplot["boxes"]:
         patch.set_facecolor("black")
 
-    fig.savefig(f"./benchmark-results/benchmark-response-box-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
-    fig.savefig(f"./benchmark-results/benchmark-response-box-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
+    fig.savefig(f"./benchmark-results/fig-benchmark-response-{runs}.eps", bbox_inches="tight", format="eps")
+    fig.savefig(f"./benchmark-results/fig-benchmark-response-{runs}.pdf", bbox_inches="tight")
 
 
 if __name__ == "__main__":
