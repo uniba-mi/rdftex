@@ -227,3 +227,6 @@ dmypy.json
 main.pdf
 *-eps-converted-to.pdf
 *.loe
+
+# exclude journal folder that is only added for benchmarking
+journal

@@ -4,15 +4,52 @@
 <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/meta> .
 
+<https://example.org/scikg/publications/DBLP:conf/eScience/KuhnMMPHOFQCBWE18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/eScience/KuhnMMPHOFQCBWE18/contrib0> ;
+    ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/eScience/KuhnMMPHOFQCBWE18/meta> .
+
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/ercimdl/MartinH21> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/ercimdl/MartinH21/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07/meta> .
 
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16> ns1:has_contribution <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/meta> .
 
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/KohlhaseK010> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/i-semantics/KohlhaseK010/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18/meta> .
+
+<https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19/meta> .
+
+<https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15> ns1:has_meta_information <https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15/meta> .
+
 <https://example.org/scikg/publications/Martin21> ns1:has_contribution <https://example.org/scikg/publications/Martin21/contrib0>,
         <https://example.org/scikg/publications/Martin21/contrib1> ;
     ns1:has_meta_information <https://example.org/scikg/publications/Martin21/meta> .
+
+<https://example.org/scikg/publications/WEB:Beckett14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Beckett14/meta> .
+
+<https://example.org/scikg/publications/WEB:Cyganiak14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Cyganiak14/meta> .
+
+<https://example.org/scikg/publications/WEB:Herman15> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Herman15/meta> .
+
+<https://example.org/scikg/publications/WEB:Schreiber14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Schreiber14/meta> .
+
+<https://example.org/scikg/publications/WEB:SciSpace> ns1:has_meta_information <https://example.org/scikg/publications/WEB:SciSpace/meta> .
+
+<https://example.org/scikg/publications/WEB:W3COWLWG> ns1:has_meta_information <https://example.org/scikg/publications/WEB:W3COWLWG/meta> .
+
+<https://example.org/scikg/publications/WEB:W3CSPARQLWG> ns1:has_meta_information <https://example.org/scikg/publications/WEB:W3CSPARQLWG/meta> .
+
+<https://example.org/scikg/publications/WEB:XANADU> ns1:has_meta_information <https://example.org/scikg/publications/WEB:XANADU/meta> .
+
+<https://example.org/scikg/publications/manghi2019openaire> ns1:has_meta_information <https://example.org/scikg/publications/manghi2019openaire/meta> .
 
 <https://example.org/scikg/publications/martin2022specification> ns1:has_contribution <https://example.org/scikg/publications/martin2022specification/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/martin2022specification/meta> .
@@ -34,6 +71,32 @@
 and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
     ns1:url "https://knowledge.amia.org/amia-55142-a2003a-1.616734/t-002-1.618748/f-001-1.618749/a-336-1.619077/a-337-1.619074" .
 
+<https://example.org/scikg/publications/DBLP:conf/eScience/KuhnMMPHOFQCBWE18/contrib0> ns1:definition_content "Nanopublications [provide] a granular and principled way of publishing scientific (and other types of) data in a provenance-centric manner. Such a nanopublication consists of an atomic snippet of a formal statement [...] that comes with information about where this knowledge came from [...] and with metadata about the nanopublication as a whole [...]. All these three parts are represented as Linked Data (in RDF) [...]." ;
+    ns1:type "Definition" .
+
+<https://example.org/scikg/publications/DBLP:conf/eScience/KuhnMMPHOFQCBWE18/meta> ns1:has_author <https://example.org/scikg/authors/Albert_Meroño-Peñuela>,
+        <https://example.org/scikg/authors/Alex>,
+        <https://example.org/scikg/authors/Allen_H._Hurlbert>,
+        <https://example.org/scikg/authors/Chris_T._A._Evelo>,
+        <https://example.org/scikg/authors/Christine_Chichester>,
+        <https://example.org/scikg/authors/Egon_L._Willighagen>,
+        <https://example.org/scikg/authors/Emilio_Centeno_Ortiz>,
+        <https://example.org/scikg/authors/Friederike_Ehrhart>,
+        <https://example.org/scikg/authors/Jorrit_H._Poelen>,
+        <https://example.org/scikg/authors/Juan_M._B>,
+        <https://example.org/scikg/authors/Laura_I._Furlong>,
+        <https://example.org/scikg/authors/Michel_Dumontier>,
+        <https://example.org/scikg/authors/Núria_Queralt-Rosinach>,
+        <https://example.org/scikg/authors/Tareq_B._Malas>,
+        <https://example.org/scikg/authors/Tobias_Kuhn>,
+        <https://example.org/scikg/authors/a>,
+        <https://example.org/scikg/authors/er_Malic> ;
+    ns1:has_doi "10.1109/eScience.2018.00024" ;
+    ns1:has_publication_year "2018" ;
+    ns1:has_title """Nanopublications: {A} Growing Resource of Provenance-Centric Scientific
+Linked Data""" ;
+    ns1:url "https://doi.org/10.1109/eScience.2018.00024" .
+
 <https://example.org/scikg/publications/DBLP:conf/emnlp/LuanHOH18/contrib0> ns1:dataset_description "Our dataset (called SciERC) includes annotations for scientific entities, their relations, and coreference clusters for 500 scientific abstracts." ;
     ns1:dataset_domain "Artificial Intelligence" ;
     ns1:dataset_name "SciERC" ;
@@ -49,6 +112,23 @@ and Knowledge-Acquisition Environment: {AMIA} 2003 Open Source Expo""" ;
 for Scientific Knowledge Graph Construction""" ;
     ns1:url "https://doi.org/10.18653/v1/d18-1360" .
 
+<https://example.org/scikg/publications/DBLP:conf/ercimdl/MartinH21/meta> ns1:has_author <https://example.org/scikg/authors/Andreas_Henrich>,
+        <https://example.org/scikg/authors/Leon_Martin> ;
+    ns1:has_doi "10.1007/978-3-031-16802-4\\_3" ;
+    ns1:has_publication_year "2022" ;
+    ns1:has_title """{RDFtex}: Knowledge Exchange Between {LaTeX}-Based Research Publications and Scientific Knowledge
+Graphs""" ;
+    ns1:url "https://doi.org/10.1007/978-3-031-16802-4\\_3" .
+
+<https://example.org/scikg/publications/DBLP:conf/esws/GrozaHMD07/meta> ns1:has_author <https://example.org/scikg/authors/Knud_Möller>,
+        <https://example.org/scikg/authors/Siegfried_H>,
+        <https://example.org/scikg/authors/Stefan_Decker>,
+        <https://example.org/scikg/authors/Tudor_Groza>,
+        <https://example.org/scikg/authors/schuh> ;
+    ns1:has_publication_year "2007" ;
+    ns1:has_title "{SALT} - {S}emantically Annotated {LaTeX} for Scientific Publications" ;
+    ns1:url "https://doi.org/10.1007/978-3-540-72667-8\\_37" .
+
 <https://example.org/scikg/publications/DBLP:conf/i-semantics/EhrlingerW16/contrib0> ns1:definition_content "A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge." ;
     ns1:type "Definition" .
 
@@ -57,6 +137,66 @@ for Scientific Knowledge Graph Construction""" ;
     ns1:has_publication_year "2016" ;
     ns1:has_title "Towards a Definition of Knowledge Graphs" ;
     ns1:url "http://ceur-ws.org/Vol-1695/paper4.pdf" .
+
+<https://example.org/scikg/publications/DBLP:conf/i-semantics/KohlhaseK010/meta> ns1:has_author <https://example.org/scikg/authors/Andrea_Kohlhase>,
+        <https://example.org/scikg/authors/Christoph_Lange>,
+        <https://example.org/scikg/authors/Michael_Kohlhase> ;
+    ns1:has_publication_year "2010" ;
+    ns1:has_title """S\\({}^{\\mbox{T}}\\)E\\({}^{\\mbox{X}}\\)+: a system for flexible formalization
+of linked data""" .
+
+<https://example.org/scikg/publications/DBLP:conf/kcap/JaradehOFPDKSA19/meta> ns1:has_author <https://example.org/scikg/authors/Allard_Oelen>,
+        <https://example.org/scikg/authors/Gábor_Kismihók>,
+        <https://example.org/scikg/authors/Jennifer_D'Souza>,
+        <https://example.org/scikg/authors/Kheir_Eddine_Farfar>,
+        <https://example.org/scikg/authors/Manuel_Prinz>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Mohamad_Yaser_Jaradeh>,
+        <https://example.org/scikg/authors/Sören_Auer> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """Open Research Knowledge Graph: {N}ext Generation Infrastructure for
+Semantic Scholarly Knowledge""" ;
+    ns1:url "https://doi.org/10.1145/3360901.3364435" .
+
+<https://example.org/scikg/publications/DBLP:conf/kdd/JiangZ00C019/meta> ns1:has_author <https://example.org/scikg/authors/Bing_Qin>,
+        <https://example.org/scikg/authors/Meng_Jiang>,
+        <https://example.org/scikg/authors/Nitesh_V._Chawla>,
+        <https://example.org/scikg/authors/Tianwen_Jiang>,
+        <https://example.org/scikg/authors/Ting_Liu>,
+        <https://example.org/scikg/authors/Tong_Zhao> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """The Role of {"Condition"}: {A} Novel Scientific Knowledge Graph Representation and
+Construction Model""" ;
+    ns1:url "https://doi.org/10.1145/3292500.3330942" .
+
+<https://example.org/scikg/publications/DBLP:conf/wims/AuerKPKSV18/meta> ns1:has_author <https://example.org/scikg/authors/Anna_Kasprzik>,
+        <https://example.org/scikg/authors/Manuel_Prinz>,
+        <https://example.org/scikg/authors/Maria-Esther_Vidal>,
+        <https://example.org/scikg/authors/Markus_Stocker>,
+        <https://example.org/scikg/authors/Sören_Auer>,
+        <https://example.org/scikg/authors/Viktor_Kovtun> ;
+    ns1:has_publication_year "2018" ;
+    ns1:has_title "Towards a Knowledge Graph for Science" ;
+    ns1:url "https://doi.org/10.1145/3227609.3227689" .
+
+<https://example.org/scikg/publications/DBLP:conf/www/0001SCBMN19/meta> ns1:has_author <https://example.org/scikg/authors/Axel-Cyrille_Ngonga_Ngomo>,
+        <https://example.org/scikg/authors/Felix_Conrads>,
+        <https://example.org/scikg/authors/Gábor_Szárnyas>,
+        <https://example.org/scikg/authors/Muhammad_Saleem>,
+        <https://example.org/scikg/authors/Qaiser_Mehmood>,
+        <https://example.org/scikg/authors/Syed_Ahmad_Chan_Bukhari> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title """How Representative Is a {SPARQL} Benchmark? {A}n Analysis of {RDF} Triplestore
+Benchmarks""" ;
+    ns1:url "https://doi.org/10.1145/3308558.3313556" .
+
+<https://example.org/scikg/publications/DBLP:journals/bmcbi/ErnstSW15/meta> ns1:has_author <https://example.org/scikg/authors/Amy_Siu>,
+        <https://example.org/scikg/authors/Gerhard_Weikum>,
+        <https://example.org/scikg/authors/Patrick_Ernst> ;
+    ns1:has_publication_year "2015" ;
+    ns1:has_title """KnowLife: a versatile approach for constructing a large knowledge
+graph for biomedical sciences""" ;
+    ns1:url "https://doi.org/10.1186/s12859-015-0549-5" .
 
 <https://example.org/scikg/publications/Martin21/contrib0> ns1:definition_content "[...] knowledge graphs that result from transforming document-based publications will be referred to as RDF-transformed publications." ;
     ns1:type "Definition" .
@@ -70,9 +210,63 @@ for Scientific Knowledge Graph Construction""" ;
         <https://example.org/scikg/authors/Leon_Martin>,
         <https://example.org/scikg/authors/Robin_Jegan> ;
     ns1:has_doi "" ;
-    ns1:has_publication_year "(accepted for publication) 2021" ;
+    ns1:has_publication_year "accepted for publication 2021" ;
     ns1:has_title "On the Form of Research Publications for Use in Scientific Knowledge Graphs" ;
     ns1:url "" .
+
+<https://example.org/scikg/publications/WEB:Beckett14/meta> ns1:has_author <https://example.org/scikg/authors/Beckett,_David>,
+        <https://example.org/scikg/authors/Berners-Lee,_Tim>,
+        <https://example.org/scikg/authors/Carothers,_Gavin>,
+        <https://example.org/scikg/authors/Prud'hommeaux,_Eric> ;
+    ns1:has_publication_year "2014" ;
+    ns1:has_title "{RDF} 1.1 {Terse RDF Triple Language}" .
+
+<https://example.org/scikg/publications/WEB:Cyganiak14/meta> ns1:has_author <https://example.org/scikg/authors/-Wood,_David>,
+        <https://example.org/scikg/authors/Cyganiak,_Richard>,
+        <https://example.org/scikg/authors/Hyl>,
+        <https://example.org/scikg/authors/Lanthaler,_Markus> ;
+    ns1:has_publication_year "2014" ;
+    ns1:has_title "{RDF} 1.1 Concepts and Abstract Syntax" .
+
+<https://example.org/scikg/publications/WEB:Herman15/meta> ns1:has_author <https://example.org/scikg/authors/Adida,_Ben>,
+        <https://example.org/scikg/authors/Birbeck,_Mark>,
+        <https://example.org/scikg/authors/Herman,_Ivan>,
+        <https://example.org/scikg/authors/Sporny,_Manu> ;
+    ns1:has_publication_year "2015" ;
+    ns1:has_title "{RDFa} 1.1 Primer" .
+
+<https://example.org/scikg/publications/WEB:Schreiber14/meta> ns1:has_author <https://example.org/scikg/authors/Raimond,_Yves>,
+        <https://example.org/scikg/authors/Schreiber,_Guus> ;
+    ns1:has_publication_year "2014" ;
+    ns1:has_title "{RDF} 1.1 Primer" .
+
+<https://example.org/scikg/publications/WEB:SciSpace/meta> ns1:has_author <https://example.org/scikg/authors/PubGenius_Inc.> ;
+    ns1:has_publication_year "2022" ;
+    ns1:has_title "Discover, Create, and Publish your research paper" .
+
+<https://example.org/scikg/publications/WEB:W3COWLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_OWL_Working_Group> ;
+    ns1:has_publication_year "2013" ;
+    ns1:has_title """{OWL} 2 {Web Ontology Language}
+Document Overview (Second Edition)""" .
+
+<https://example.org/scikg/publications/WEB:W3CSPARQLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_SPARQL_Working_Group> ;
+    ns1:has_publication_year "2013" ;
+    ns1:has_title "{SPARQL} 1.1 Overview" .
+
+<https://example.org/scikg/publications/WEB:XANADU/meta> ns1:has_author <https://example.org/scikg/authors/Project_Xanadu> ;
+    ns1:has_publication_year "2021" ;
+    ns1:has_title "{Project Xanadu}" .
+
+<https://example.org/scikg/publications/manghi2019openaire/meta> ns1:has_author <https://example.org/scikg/authors/Atzori,_Claudio>,
+        <https://example.org/scikg/authors/Baglioni,_Miriam>,
+        <https://example.org/scikg/authors/Bardi,_Alessia>,
+        <https://example.org/scikg/authors/Manghi,_Paolo>,
+        <https://example.org/scikg/authors/Manola,_Natalia>,
+        <https://example.org/scikg/authors/Principe,_Pedro>,
+        <https://example.org/scikg/authors/Schirrwagen,_Jochen> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title "The {OpenAIRE} Research Graph Data Model" ;
+    ns1:url "https://doi.org/10.5281/zenodo.2643199" .
 
 <https://example.org/scikg/publications/martin2022specification/contrib0> ns1:expresult_description "An assessment of the tool’s performance was also conducted. For this, the time it takes for the backend to perform the SHACL and the OWL approach was measured on a standard desktop PC. As repositories, the top twenty trending GitHub repositories were used, which are well maintained and rather large." ;
     ns1:expresult_result "Figure 4 shows that the SHACL approach is faster in both scenarios even though Pellet stops the validation as soon as a violation is encountered. Hence, the SHACL approach provides a complete picture of the violations and is also faster. Furthermore, the figure shows that the project type does not significantly affect the runtime." ;

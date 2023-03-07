@@ -119,7 +119,7 @@ class MinSKG():
                 scikg.add((contrib1, self.terms["figure_url"], Literal(
                     "/tex/example-basic/figures/triple_example")))
 
-            elif pub == self.publ["DBLP:journals/corr/abs-1809-06532"]:
+            elif pub == self.publ["DBLP:conf/eScience/KuhnMMPHOFQCBWE18"]:
                 contrib0 = self.publ[f"{entry['ID']}/contrib0"]
 
                 scikg.add((pub, self.terms["has_contribution"], contrib0))
@@ -244,7 +244,7 @@ class MinSKG():
         import_triples = list(filter(lambda x: x[1] == "https://example.org/scikg/terms/type", triples))
 
         if len(import_triples) != 1:
-            raise Exception("Contribution lacks type information!")
+            raise Exception(f"Contribution {subject} lacks type information!")
 
         contribution_data = {triple[1]: triple[2] for triple in triples}
 
