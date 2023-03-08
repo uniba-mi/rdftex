@@ -15,8 +15,6 @@ from rdflib import Graph
 import scikg_adapter
 from constants import MAIN_TEX_FILE, PROJECT_DIR, TEX_DIR
 
-plt.rcParams["font.size"] = 16
-
 
 def runtime(runs=100):
     """
@@ -26,15 +24,18 @@ def runtime(runs=100):
     are removed in between runs, too.
     """
 
+    plt.rcParams["axes.grid"] = True
+    plt.rcParams["axes.grid.axis"] = "y"
+
     configs = {
-        "$R_{i,e} + L$": "python3 ./preprocessor.py True True",
-        "$R_{i} + L$": "python3 ./preprocessor.py True False",
-        "$R_{e} + L$": "python3 ./preprocessor.py False True",
         "$L$": "",
+        "$R_{e} + L$": "python3 ./preprocessor.py False True",
+        "$R_{i} + L$": "python3 ./preprocessor.py True False",
+        "$R_{i,e} + L$": "python3 ./preprocessor.py True True",
     }
 
     results = {config: [] for config in configs}
-    tmp_file_extensions = ["aux", "bbl", "blg", "fdb_latexmk", "fls", "log", "out", "xdv", "tex"] 
+    tmp_file_extensions = ["aux", "bbl", "blg", "fdb_latexmk", "fls", "log", "out", "xdv", "tex", "pdf"] 
 
     for config, rdftex_command in configs.items():
         for ctr in range(runs):
@@ -43,8 +44,8 @@ def runtime(runs=100):
             for extension in tmp_file_extensions:
                 for path in glob.glob(f"{TEX_DIR}{PROJECT_DIR}/*.{extension}"):
                     if not ".rdf.tex" in path:
-                        logging.info(f"Removing {path}...")
                         os.remove(path)
+                        logging.info(f"Removed {path}...")
 
             # benchmark rdftex
             if rdftex_command:
@@ -64,27 +65,29 @@ def runtime(runs=100):
             latexmk_duration = t2_stop - t2_start
 
             results[config].append((rdftex_duration, latexmk_duration))
+
             logging.info(f"{config} - Run {ctr + 1} completed. RDFtex/Latexmk took {rdftex_duration}/{latexmk_duration} seconds.")
 
     # stacked bar chart of average runtimes
-    median_latexmk = [statistics.median([latexmk_time for _, latexmk_time in times]) for times in results.values()]
-    median_rdftex = [statistics.median([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
+    average_latexmk = [statistics.mean([latexmk_time for _, latexmk_time in times]) for times in results.values()]
+    average_rdftex = [statistics.mean([rdftex_time for rdftex_time, _ in times]) for times in results.values()]
 
-    median_results = {
-        "Latexmk": median_latexmk,
-        "RDFtex": median_rdftex,
+    average_results = {
+        "Latexmk": average_latexmk,
+        "RDFtex": average_rdftex,
     }
 
     fig, ax = plt.subplots()
     bottom = [0 for _ in range(len(configs))]
+    plt.ylim(0, 12)
 
-    for which_average, median_result in median_results.items():
-        color = "white" if which_average == "Latexmk" else "black"
-        p = ax.bar(configs.keys(), median_result, label=which_average, color=color, edgecolor="black", bottom=bottom)
-        bottom = [b + w for b, w in zip(bottom, median_result)]
+    for which_average, average_result in average_results.items():
+        color = "white" if which_average == "Latexmk" else "grey"
+        p = ax.bar(configs.keys(), average_result, width=0.6, label=which_average, color=color, edgecolor="black", bottom=bottom)
+        bottom = [b + w for b, w in zip(bottom, average_result)]
 
     ax.set_ylabel("Seconds")
-    ax.legend(loc="lower left")
+    ax.legend(loc="lower right")
 
     fig.savefig(f"./benchmark-results/fig-benchmark-runtime-{PROJECT_DIR.replace('/', '')}-{runs}.eps", bbox_inches="tight", format="eps")
     fig.savefig(f"./benchmark-results/fig-benchmark-runtime-{PROJECT_DIR.replace('/', '')}-{runs}.pdf", bbox_inches="tight")
@@ -164,4 +167,8 @@ def response_times(runs=100):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
+    plt.rcParams["font.size"] = 14
+    plt.rcParams["figure.figsize"] = [6.0, 3.4]
+    plt.rcParams["ytick.minor.visible"] = True
+
     fire.Fire()

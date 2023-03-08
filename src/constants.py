@@ -1,5 +1,5 @@
 TEX_DIR = "/tex"
-PROJECT_DIR = "/journal"
+PROJECT_DIR = "/example-many"
 MAIN_TEX_FILE = PROJECT_DIR + "/main.tex"
 EXPORTS_RDF_DOCUMENT_FILE = "/exports.ttl"
 EXPORTS_SCIKG = "MinSKG"
