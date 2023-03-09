@@ -19,18 +19,18 @@
 
 ## Summary
 
-RDFtex is a framework that employs extended LaTeX documents and a preprocessor program to support the production of research publications that allow a bidirectional knowledge exchange with a scientific knowledge graph (SciKG). To implement the said knowledge exchange, RDFtex provides two main functionalities:
+RDFtex is a framework that employs custom LaTeX commands and a preprocessor program to implement a bidirectional knowledge exchange with scientific knowledge graphs (SciKGs). To implement the said knowledge exchange, RDFtex provides two main functionalities:
 
-- The import functionality allows to import research contributions from a SciKG in LaTeX documents via custom import commands
-- The export functionality allows to export original research contributions from LaTeX documents to a SciKG via custom export commands
+- The import functionality allows to import research contributions from a specified SciKG in LaTeX documents via custom import commands.
+- The export functionality allows to export original research contributions from LaTeX documents to a SciKG via custom export commands.
 
-This repository contains the proof-of-concept implementation of RDFtex and other sources as proposed in the RDFtex papers (https://link.springer.com/chapter/10.1007/978-3-031-16802-4_3).
+This repository contains the proof-of-concept implementation of RDFtex and other sources as proposed in the [TPDL 2022 RDFtex paper](https://link.springer.com/chapter/10.1007/978-3-031-16802-4_3) and its extended version currently in preparation.
 
 ## MinSKG
 
-Currently, RDFtex can only interact with the MinSKG, a minimal SciKG that serves as a temporal makeshift for an actual SciKG. The MinSKG is populated with all publications that are used as references for the RDFtex paper. The contextual information of the publications, i.e., the metadata, was added automatically by parsing their entries from the `bibtex` file using a simple script. The contentual information, i.e, their contributions, was added manually.
+Currently, RDFtex can only interact with the MinSKG, a minimal SciKG that serves as a makeshift for an actual SciKG. The MinSKG is populated with all publications that are used as references for the RDFtex paper. The contextual information of the publications, i.e., the metadata, was added automatically by parsing their entries from the `bibtex` file using a simple script. The contentual information, i.e, their contributions, was added manually.
 
-There are currently five types of contributions that can be imported from and exported to the MinSKG. Each of them are represented using type-specific properties in the MinSKG. The following list specifies the supported contributions and their properties (as URIs):
+The MinSKG supports five types of contributions for importing and exporting. Each of them are represented using type-specific properties. The following list specifies the supported contributions and their properties (as IRIs):
 
 - Definitions
   - `https://example.org/scikg/terms/type`
@@ -61,16 +61,18 @@ The file [minskg.ttl](./src/minskg.ttl) contains the MinSKG, as employed for the
 
 ## Usage
 
-RDFtex operates on `.rdf.tex` files that feature custom commands for importing and exporting contributions. To preprocess `.rdf.tex` of a LaTeX project files and produce a PDF based on the automatically generated `.tex` files, there are several options.
+RDFtex operates on `.rdf.tex` files that allow the usage of the custom RDFtex commands for importing and exporting contributions. To preprocess the `.rdf.tex` files of a LaTeX project files and produce a PDF based on the automatically generated `.tex` files, there are several options.
 
-### Installation
+### Setup
 
-The recommended and easier way to run RDFtex is to use Docker, which also ensures reproducibility. In this case, you only have to install:
+The recommended and easiest way to run RDFtex is to use Docker, which also ensures reproducibility. In this case, you only have to install:
 
 - Docker
 - Docker Compose
 
-The [docker-compose.yml](./docker-compose.yml) is currently configured to run RDFtex on the exemplary `.rdf.tex` files in the [example](./tex/example/) folder. If you want to run RDFtex on another LaTeX project, edit the `volumes` option therein accordingly. The easier option is to move your LaTeX project into the [your project](./tex/your-project/) folder instead and adjust the constants in the [constants.py](./src/constants.py) file.
+Out of the box, RDFtex is configured to run RDFtex on the exemplary `.rdf.tex` files in the [example-basic folder](./tex/example-basic/). If you want to start a new LaTeX project that employs RDFtex, create a new folder in the [tex](./tex/) folder and adjust the constants in the [constants.py file](./src/constants.py) accordingly.
+
+If you want to run RDFtex on an existing LaTeX project, move your LaTeX project folder into the [tex](./tex/) folder and adjust the constants in the [constants.py file](./src/constants.py) file accordingly. Then, create copies of each `.tex` file in the folder with the `.rdf.tex` file extension.
 
 Running the software without Docker might cause problems depending on the host system. If you still want to execute the software without Docker you have to install:
 
@@ -80,35 +82,54 @@ Running the software without Docker might cause problems depending on the host s
 
 ### Fully automatic build process (only on Linux hosts)
 
-1. Run `docker-compose run latexmk` in a command line to start up a `latexmk` container that listens for changes made to `.tex` files.
+1. Run `docker compose run latexmk` in a command line to start up a `latexmk` container that listens for changes made to `.tex` files.
 
-2. Run `docker-compose run rdftex-watch` in another command line to start up a preprocessor container that listens for changes made to `.rdf.tex` files. `latexmk` will then detect the changes and thus recompile the PDF.
+2. Run `docker compose run --service-ports minskg` in another command line to the MinSKG server.
 
-3. Whenever you edit any `.rdf.tex` file and save, the preprocessor first generate the `.tex` files accordingly. `latexmk` will then detect the changes and thus recompile the PDF.
+3. Run `docker compose run rdftex-watch` in another command line to start up a preprocessor container that listens for changes made to `.rdf.tex` files. `latexmk` will then detect the changes and thus recompile the PDF.
+
+4. Whenever you edit and save any `.rdf.tex` file, the preprocessor first generate the `.tex` files. `latexmk` will then detect the changes and thus recompile the PDF.
 
 ### Semi-automatic build process
 
 1. Run `docker-compose run latexmk` in a command line to start up a `latexmk` container that listens for changes made to `.tex` files.
 
-2. Run `docker-compose run rdftex` in another command line to start up a container for the preprocessor and attach to its command line.
+2. Run `docker compose run --service-ports minskg` in another command line to the MinSKG server.
 
-3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py run` in the container command line to trigger the preprocessor and generate the `.tex` files.
+3. Run `docker-compose run rdftex` in another command line to start up a container for the preprocessor and attach to its command line.
 
-To run the benchmark used in the paper to assess the duration of the preprocessing on **your** RDFtex project, run `python3 benchmark.py` after steps 1 and 2 of the semi-automatic build process.
+4. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py` in the container command line to trigger the preprocessor and generate the `.tex` files.
 
 ### Semi-automatic build process (without Docker)
 
 1. Run `latexmk -pvc -pdf -xelatex -cd /tex/example.tex` in a command line to listen for changes made to `.tex` files.
 
-2. Open another command line and move to the [src](./src/) folder.
+2. Open another command line and navigate to the [src](./src/) folder.
 
 3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py run` in the new command line to trigger the preprocessor and generate the `.tex` files.
 
+### Benchmarks
+
+⚠ Attention ⚠: Rerunning the benchmarks might overwrite the plots in the [benchmark-results folder](./src/benchmark-results/).
+
+To run the benchmark used in the paper to assess the runtime of the preprocessing on the LaTeX project specified in the [constants.py file](./src/constants.py), run `python3 benchmark.py runtime` or `python3 benchmark.py response_times` after steps 1 and 2 of the semi-automatic build process. The plots showing the benchmark results, can be found in the [benchmark-results folder](./src/benchmark-results/).
+
+The contribution entities used to assess the query response times of the MinSKG SPARQL interface and the [ORKG](https://orkg.org) SPARQL interface can be found in the [benchmark.py file](./src/benchmark.py).
+
 ## Examples
 
-The [docker-compose.yml](./docker-compose.yml) is currently configured to run RDFtex on the exemplary `.rdf.tex` files in the [example](./tex/example/) folder. To run RDFtex on the example files, proceed as described in section [Usage](#usage). For convenience, the folder already contains the `.tex` files generated by RDFtex as well as the resulting PDF and the RDF export document. The examples use the [LNCS LaTeX template](https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines) to showcase RDFtex's compatibility with popular templates.
+The [tex](./tex/) folder contains two example projects that employ RDFtex:
 
-The RDF document resulting from the preprocessing of the RDFtex paper can be found at [rdftex_paper_exports.ttl](./rdftex_paper_exports.ttl).
+- [example-basic](./tex/example-basic/): A project with one import and export for each supported contribution type, which totals five imports and five exports.
+- [example-many](./tex/example-many/): A derivation of the example-basic project, where each import and export is included 20 times, resulting in 100 imports and 100 exports. Use this project only for benchmarking.
+
+The examples use the [LNCS LaTeX template](https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines) to showcase RDFtex's compatibility with typical LaTeX publication templates.
+
+## Exports RDF documents of RDFtex papers
+
+The exports RDF document resulting from the preprocessing of the TPDL 2022 RDFtex paper can be found [here](./exports_tpdl22_rdftex_paper.ttl).
+
+The exports RDF document resulting from the preprocessing of the extended RDFtex paper currently in preparation can be found at [here](./exports_extended_rdftex_paper.ttl).
 
 ## License
 

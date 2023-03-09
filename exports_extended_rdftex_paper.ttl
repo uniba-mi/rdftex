@@ -1,0 +1,57 @@
+@prefix ns1: <https://example.org/scikg/terms/> .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382> ns1:has_contribution <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib0>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib1>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib2>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib3>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib4>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib5>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib6>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib7>,
+        <https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib8> .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib0> ns1:dataset_description "The MinSKG is a minimal scientific knowledge graph populated with all publications that are used as references for the present paper. The contextual information of the publications, i.e., the metadata, was added automatically by parsing their entries from the \\texttt{bibtex} file. Their original contributions were added manually." ;
+    ns1:dataset_domain "knowledge representation" ;
+    ns1:dataset_name "MinSKG" ;
+    ns1:dataset_url "https://example.org/scikg/terms/software_url" ;
+    ns1:type "Dataset" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib1> ns1:figure_description "The information available for each publication represented in the MinSKG. The type-specific information of a contribution depends on its type. Note that edge labels, i.e., predicates, and IRIs are omitted for readability." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-scikg-structure.eps" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib2> ns1:figure_description "A flowchart of RDFtex's preprocessing workflow. For conciseness, the injection of custom \\LaTeX\\ environments which is necessary for importing some of the supported contribution types was omitted." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-rdftex-activity.eps" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib3> ns1:figure_description "The triples of an exports RDF document describing the contribution of the RDFtex implementation depicted as a graph. Nodes with a grey background represent entities, the others literal nodes. Note the tree-like structure of the graph." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-exports-example.eps" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib4> ns1:software_description "RDFtex is a framework enabling a bidirectional knowledge exchange between \\LaTeX-based research publications and \\acp{skg}." ;
+    ns1:software_name "RDFtex" ;
+    ns1:software_url "https://github.com/uniba-mi/rdftex" ;
+    ns1:type "Software" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib5> ns1:figure_description "A comparison between a standard three-staged research and publication process on the left with another incorporating RDFtex on the right. The parts with a black background are changes to the process introduced by RDFtex." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-research-process.eps" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib6> ns1:expresult_description "To assess the runtime of RDFtex, the preprocessor was tested on three \\LaTeX\\ projects with different characteristics using MinSKG for importing and exporting contributions." ;
+    ns1:expresult_result "The results show that RDFtex increases the time to produce the PDF files only by a fraction, even for the third project with its exceptionally large number of imports and exports. Furthermore, the runtime of the export functionality is negligible compared to the runtime of the import functionality." ;
+    ns1:expresult_samplesize "100 times per configuration per project" ;
+    ns1:type "ExpResult" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib7> ns1:figure_description "The general process for producing a PDF file using RDFtex. The gray box indicates additional steps and resources introduced or used by RDFtex." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-rdftex-diagram.eps" ;
+    ns1:type "Figure" .
+
+<https://example.org/scikg/publications/NEW/c0a57405a0b946929a0d493de8194382/contrib8> ns1:figure_description "An HTML mockup following the Semantic Scholar design showing how the contributions of a research publication could be presented on a search engine result page. For conciseness, the example only includes a subset of all exported contributions of the present paper with made-up origin information." ;
+    ns1:figure_mime "application/postscript" ;
+    ns1:figure_url "./fig-semscholar-mockup.eps" ;
+    ns1:type "Figure" .
