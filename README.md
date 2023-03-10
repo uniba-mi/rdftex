@@ -24,7 +24,7 @@ RDFtex is a framework that employs custom LaTeX commands and a preprocessor prog
 - The import functionality allows to import research contributions from a specified SciKG in LaTeX documents via custom import commands.
 - The export functionality allows to export original research contributions from LaTeX documents to a SciKG via custom export commands.
 
-This repository contains the proof-of-concept implementation of RDFtex and other sources as proposed in the [TPDL 2022 RDFtex paper](https://link.springer.com/chapter/10.1007/978-3-031-16802-4_3) and its extended version currently in preparation.
+This repository contains the proof-of-concept implementation of RDFtex and other sources as proposed in our [TPDL 2022 RDFtex paper](https://link.springer.com/chapter/10.1007/978-3-031-16802-4_3) and its extended version currently in preparation.
 
 ## MinSKG
 
@@ -106,7 +106,7 @@ Running the software without Docker might cause problems depending on the host s
 
 2. Open another command line and navigate to the [src](./src/) folder.
 
-3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py run` in the new command line to trigger the preprocessor and generate the `.tex` files.
+3. Whenever you edit any `.rdf.tex` file and save, run `python3 preprocessor.py` in the new command line to trigger the preprocessor and generate the `.tex` files.
 
 ### Benchmarks
 
@@ -125,7 +125,7 @@ The [tex](./tex/) folder contains two example projects that employ RDFtex:
 
 The examples use the [LNCS LaTeX template](https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines) to showcase RDFtex's compatibility with typical LaTeX publication templates.
 
-## Exports RDF documents of RDFtex papers
+## Exports RDF Documents of RDFtex papers
 
 The exports RDF document resulting from the preprocessing of the TPDL 2022 RDFtex paper can be found [here](./exports_tpdl22_rdftex_paper.ttl).
 
