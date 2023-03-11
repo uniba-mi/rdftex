@@ -39,7 +39,11 @@
 
 <https://example.org/scikg/publications/WEB:Herman15> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Herman15/meta> .
 
+<https://example.org/scikg/publications/WEB:Latexmk> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Latexmk/meta> .
+
 <https://example.org/scikg/publications/WEB:Schreiber14> ns1:has_meta_information <https://example.org/scikg/publications/WEB:Schreiber14/meta> .
+
+<https://example.org/scikg/publications/WEB:SciKGTeX> ns1:has_meta_information <https://example.org/scikg/publications/WEB:SciKGTeX/meta> .
 
 <https://example.org/scikg/publications/WEB:SciSpace> ns1:has_meta_information <https://example.org/scikg/publications/WEB:SciSpace/meta> .
 
@@ -53,6 +57,8 @@
 
 <https://example.org/scikg/publications/martin2022specification> ns1:has_contribution <https://example.org/scikg/publications/martin2022specification/contrib0> ;
     ns1:has_meta_information <https://example.org/scikg/publications/martin2022specification/meta> .
+
+<https://example.org/scikg/publications/white2019publications> ns1:has_meta_information <https://example.org/scikg/publications/white2019publications/meta> .
 
 <https://example.org/scikg/publications/DBLP:conf/amia/NoyCFKTVM03/contrib0> ns1:software_description "Prot\\'{e}g\\'{e}-2000 is an open-source tool that assists users in the construction of large electronic knowledge bases. It has an intuitive user interface that enables developers to create and edit domain ontologies." ;
     ns1:software_name "Prot{\\'{e}}g{\\'{e}}-2000" ;
@@ -114,7 +120,6 @@ for Scientific Knowledge Graph Construction""" ;
 
 <https://example.org/scikg/publications/DBLP:conf/ercimdl/MartinH21/meta> ns1:has_author <https://example.org/scikg/authors/Andreas_Henrich>,
         <https://example.org/scikg/authors/Leon_Martin> ;
-    ns1:has_doi "10.1007/978-3-031-16802-4\\_3" ;
     ns1:has_publication_year "2022" ;
     ns1:has_title """{RDFtex}: Knowledge Exchange Between {LaTeX}-Based Research Publications and Scientific Knowledge
 Graphs""" ;
@@ -235,13 +240,21 @@ graph for biomedical sciences""" ;
     ns1:has_publication_year "2015" ;
     ns1:has_title "{RDFa} 1.1 Primer" .
 
+<https://example.org/scikg/publications/WEB:Latexmk/meta> ns1:has_author <https://example.org/scikg/authors/Collins,_John> ;
+    ns1:has_publication_year "2023" ;
+    ns1:has_title "Latexmk" .
+
 <https://example.org/scikg/publications/WEB:Schreiber14/meta> ns1:has_author <https://example.org/scikg/authors/Raimond,_Yves>,
         <https://example.org/scikg/authors/Schreiber,_Guus> ;
     ns1:has_publication_year "2014" ;
     ns1:has_title "{RDF} 1.1 Primer" .
 
+<https://example.org/scikg/publications/WEB:SciKGTeX/meta> ns1:has_author <https://example.org/scikg/authors/Technische_Informationsbibliothek_(TIB)> ;
+    ns1:has_publication_year "2023" ;
+    ns1:has_title "{SciKGTeX - ORKG}" .
+
 <https://example.org/scikg/publications/WEB:SciSpace/meta> ns1:has_author <https://example.org/scikg/authors/PubGenius_Inc.> ;
-    ns1:has_publication_year "2022" ;
+    ns1:has_publication_year "2023" ;
     ns1:has_title "Discover, Create, and Publish your research paper" .
 
 <https://example.org/scikg/publications/WEB:W3COWLWG/meta> ns1:has_author <https://example.org/scikg/authors/W3C_OWL_Working_Group> ;
@@ -254,7 +267,7 @@ Document Overview (Second Edition)""" .
     ns1:has_title "{SPARQL} 1.1 Overview" .
 
 <https://example.org/scikg/publications/WEB:XANADU/meta> ns1:has_author <https://example.org/scikg/authors/Project_Xanadu> ;
-    ns1:has_publication_year "2021" ;
+    ns1:has_publication_year "2007" ;
     ns1:has_title "{Project Xanadu}" .
 
 <https://example.org/scikg/publications/manghi2019openaire/meta> ns1:has_author <https://example.org/scikg/authors/Atzori,_Claudio>,
@@ -277,4 +290,8 @@ Document Overview (Second Edition)""" .
         <https://example.org/scikg/authors/Martin,_Leon> ;
     ns1:has_publication_year "2022" ;
     ns1:has_title "Specification and Validation of Quality Criteria for Git Repositories using RDF and SHACL" .
+
+<https://example.org/scikg/publications/white2019publications/meta> ns1:has_author <https://example.org/scikg/authors/White,_Karen> ;
+    ns1:has_publication_year "2019" ;
+    ns1:has_title "Publications Output: {US} Trends and International Comparisons. Science \\& Engineering Indicators 2020. NSB-2020-6." .
 
