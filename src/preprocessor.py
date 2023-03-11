@@ -6,14 +6,15 @@ import glob
 import logging
 import re
 import time
-from configparser import ConfigParser
+import uuid
 
 import fire
+from constants import TEX_DIR, PROJECT_DIR, EXPORTS_RDF_DOCUMENT_FILE
+from rdflib import Graph, URIRef, Literal, Namespace
+from scikg_adapter import (retrieve_env_snippets, retrieve_content_snippet,
+                           retrieve_validated_exports)
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
-
-from minskg import MinSKG
-from utils import add_custom_envs, generate_snippet
 
 
 class Preprocessor:
@@ -22,18 +23,6 @@ class Preprocessor:
     """
 
     def __init__(self) -> None:
-        self.config = ConfigParser()
-        self.config.read("config.ini")
-
-        self.texdir = self.config["main"]["texdir"]
-        self.exportpath = self.config["main"]["exportpath"]
-
-        if self.config["main"]["exportskg"] == "MinSKG":
-            self.exportskg = MinSKG()
-        else:
-            raise NotImplementedError(
-                "Currently, only the MinSKG is supported for export!")
-
         self.prefixes = {}
         self.exports = {}
 
@@ -92,18 +81,21 @@ class Preprocessor:
 
         if len(param_list) != 2:
             logging.warning(
-                f"RDFtex prefix commands require 2 parameters (got {len(param_list)}) -> Skipping")
+                f"RDFtex prefix commands require 2 parameters (got {len(param_list)}) -> Skipping prefix")
             return
 
         prefix, written_out, *_ = param_list
 
         self.prefixes[prefix] = written_out
 
-    def __handle_import(self, processed_lines, imported_types, line) -> None:
+    def __handle_import(self, processed_lines, imported_types, line, make_imports) -> None:
         """
         Handles lines with the custom \\rdfimport command.
         """
 
+        if not make_imports:
+            return
+        
         param_list, _ = self.__parse_rdftex_command(line)
 
         if len(param_list) != 4:
@@ -112,22 +104,25 @@ class Preprocessor:
             processed_lines.append(line)
             return
 
-        import_label, citation_key, import_uri, target_skg, *_ = param_list
+        label, citation_key, contribution_iri, skg, *_ = param_list
 
         try:
-            snippet, contribution_type = generate_snippet(import_uri, import_label, citation_key, target_skg)
-        except:
+            content_snippet, contribution_type = retrieve_content_snippet(label, citation_key, contribution_iri, skg)
+        except Exception as e:
             logging.warning(
-                "Error during snippet generation -> Skipping import")
+                f"Skipping import due to error during snippet generation: {e}")
             return
 
         imported_types.add(contribution_type)
-        processed_lines.append(snippet)
+        processed_lines.append(content_snippet)
 
-    def __handle_export(self, processed_lines, line) -> None:
+    def __handle_export(self, processed_lines, line, make_exports) -> None:
         """
         Handles lines with the custom \\rdfexport command.
         """
+
+        if not make_exports:
+            return
 
         param_list, _ = self.__parse_rdftex_command(line)
 
@@ -152,7 +147,7 @@ class Preprocessor:
 
             self.exports[export_name] += other_pred_obj_exports
 
-    def __handle_property(self, processed_lines, line) -> None:
+    def __handle_property(self, processed_lines, line, make_exports) -> None:
         """
         Handles lines with the custom \\rdfproperty command.
         """
@@ -176,14 +171,17 @@ class Preprocessor:
 
             export_name, export_predicate, export_object, *_ = param_list
 
-            # This workaround is only necessary for the RDFtex paper and can be removed later
-            if export_object == "<object>":
-                logging.warning(
-                    f"Found <object> as export_object (RDFtex workaround) -> Skipping")
-                parsing_successful = False
-                break
+            if make_exports:
 
-            self.exports.setdefault(export_name, []).append((export_predicate, export_object))
+                # FIXME This workaround is only necessary for the RDFtex papers and can be removed later
+                # should be removable by adding a ~ in the .rdf.tex file
+                if export_object == "<object>":
+                    logging.warning(
+                        f"Found <object> as export_object (RDFtex workaround) -> Skipping")
+                    parsing_successful = False
+                    break
+            
+                self.exports.setdefault(export_name, []).append((export_predicate, export_object))
 
             processed_line += line[lastcommandendindex:
                                    commandstartindex] + export_object
@@ -195,7 +193,7 @@ class Preprocessor:
         else:
             processed_lines.append(line)
 
-    def __preprocess_file(self, rdftexpath, imported_types) -> None:
+    def __preprocess_file(self, rdftexpath, imported_types, make_imports, make_exports) -> None:
         """
         Scans files for custom RDFtex commands and issues their processing.
         """
@@ -220,26 +218,26 @@ class Preprocessor:
                         f"Handling rdfimport command in line {linenumber}...")
 
                     self.__handle_import(
-                        processed_lines, imported_types, line)
+                        processed_lines, imported_types, line, make_imports)
 
                 elif re.search(r"(?<! )\\rdfexport", line):
                     logging.info(
                         f"Handling rdfexport command in line {linenumber}...")
 
-                    self.__handle_export(processed_lines, line)
+                    self.__handle_export(processed_lines, line, make_exports)
 
                 elif re.search(r"\\rdfproperty", line):
                     logging.info(
                         f"Handling rdfproperty command(s) in line {linenumber}...")
 
-                    self.__handle_property(processed_lines, line)
+                    self.__handle_property(processed_lines, line, make_exports)
 
                 else:
                     processed_lines.append(line)
 
         return preamble_end_index, processed_lines
 
-    def run(self):
+    def run(self, make_imports=True, make_exports=True):
         """
         Issues the preprocessing on every .rdf.tex file found in the specified project directory.
         """
@@ -251,9 +249,9 @@ class Preprocessor:
         roottex_lines = []
         roottex_preamble_endindex = -1
 
-        for rdftexpath in glob.glob(f"{self.texdir}*.rdf.tex"):
+        for rdftexpath in glob.glob(f"{TEX_DIR}{PROJECT_DIR}/*.rdf.tex"):
             logging.info(f"Preprocessing {rdftexpath}...")
-            preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types)
+            preamble_end_index, processed_lines = self.__preprocess_file(rdftexpath, imported_types, make_imports, make_exports)
 
             if preamble_end_index != -1:
                 logging.info(f"Identified {rdftexpath} as root file...")
@@ -267,13 +265,44 @@ class Preprocessor:
                 with open(texpath, "w+") as file:
                     file.writelines(processed_lines)
 
-        add_custom_envs(roottex_lines, roottex_preamble_endindex, imported_types)
+        # add custom LaTeX environments to root file
+        custom_envs = retrieve_env_snippets(imported_types, "MinSKG")
+        for env in custom_envs.values():
+            roottex_lines.insert(roottex_preamble_endindex, env)
 
         logging.info(f"Adding custom environments to {roottex_path}...")
         with open(roottex_path, "w+") as file:
             file.writelines(roottex_lines)
 
-        self.exportskg.generate_exports_document(self.exports, self.exportpath)
+        # validate exports and generate/store exports RDF document
+        validated_exports = retrieve_validated_exports(self.exports)
+        
+        exports_graph = Graph()
+        terms = Namespace("https://example.org/scikg/terms/")
+        publ = Namespace("https://example.org/scikg/publications/")
+
+        publication_uri = publ[f"NEW/{uuid.uuid4().hex}"]
+        new_publication = URIRef(publication_uri)
+        export_ctr = 0
+
+        for _, predicate_object_tuples in validated_exports.items():
+            contrib_uri = URIRef(
+                f"{publication_uri}/contrib{export_ctr}")
+
+            exports_graph.add(
+                (new_publication, terms["has_contribution"], contrib_uri))
+
+            for pred, obj in predicate_object_tuples:
+                exports_graph.add(
+                    (contrib_uri, URIRef(pred), Literal(obj)))
+
+            export_ctr += 1
+
+        with open(f"{TEX_DIR}{PROJECT_DIR}{EXPORTS_RDF_DOCUMENT_FILE}", "w+") as file:
+            file.write(exports_graph.serialize(format="ttl"))
+
+        logging.info(
+            f"{export_ctr} contribution(s) successfully exported to {TEX_DIR}{PROJECT_DIR}{EXPORTS_RDF_DOCUMENT_FILE}...")
 
         logging.info(f"Preprocessing took {time.time() - start_time} seconds!")
 
@@ -316,7 +345,7 @@ class Preprocessor:
         event_handler.on_moved = on_moved
 
         observer = Observer()
-        observer.schedule(event_handler, self.texdir, recursive=True)
+        observer.schedule(event_handler, TEX_DIR, recursive=True)
 
         logging.info(
             "=== Watching for updated .rdf.tex files. Use ctrl/C to stop ...")
@@ -331,4 +360,4 @@ class Preprocessor:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    fire.Fire(Preprocessor)
+    fire.Fire(Preprocessor().run)
